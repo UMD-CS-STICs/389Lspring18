@@ -50,9 +50,9 @@ Even if you are already familiar with Python, I'd still recommend that you skim 
 
 If you would like to take a deeper dive into the internals of Python, I would recommend checking out the following resources (read: skimming the parts that interest you!):
 
-[Python Library Reference](https://docs.python.org/3/library/index.html)
-[Python Language Reference](https://docs.python.org/3/reference/index.html)
-[Or even...](http://akaptur.com/blog/2014/08/03/getting-started-with-python-internals/)
+- [Python Library Reference](https://docs.python.org/3/library/index.html)
+- [Python Language Reference](https://docs.python.org/3/reference/index.html)
+- [Getting started with Python internals](http://akaptur.com/blog/2014/08/03/getting-started-with-python-internals/)
 
 ### Assignment
 
