@@ -87,7 +87,7 @@ Students will have access to AWS resources via the [AWS Free Tier](https://aws.a
 
 | instructor 		| Hours               													| Location |
 | ----------------- | --------------------------------------------------------------------- | -------- |
-| Colin King 		| Tuesdays 4-5PM, Fridays 2-3PM, or [by appt](mailto:colink@umd.edu).   | Tuesdays: Sandbox, Fridays: CMSC 3118      |
+| Colin King 		| Wednesday 1-2PM, Fridays 2-3PM, or [by appt](mailto:colink@umd.edu).   | CSIC 3107 (Sandbox)      |
 | Andrej Rasevic 	| TBD, or [by appt](mailto:arasevic@cs.umd.edu).				   		| TBD     |
 | Isaac Lockwood 	| Mondays 2-3PM, Thursdays 5-6PM or [by appt](mailto:ialock@terpmail.umd.edu).   					| ESJ 1204 Huddle Room      |
 
