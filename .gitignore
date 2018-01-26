@@ -1,0 +1,33 @@
+# Gitbook
+*.epub
+*.mobi
+*.pdf
+_book/
+
+# Node
+node_modules/
+
+# Mac
+.DS_Store
+
+# Spell Check
+docs-dictionary*
+
+# Vagrant
+.vagrant
+
+# Python
+__pycache__
+
+# AWS Credentials
+aws.credentials
+
+*.pem
+
+vagrant/tmp
+vagrant/codelabs/codelab-04/tmp/**/*.py
+vagrant/codelabs/codelab-04/tmp/**/*.jpg
+vagrant/codelabs/codelab-04/images
+
+*.log
+keys/*.pem
