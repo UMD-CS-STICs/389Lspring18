@@ -1,3 +1,3 @@
 # Week 1 Slides
 
-{{ 'http://slides.com/colinking/cmsc389l-week-01' | iframely }}
+{{ 'https://slides.com/colinking/cmsc389l-s18-week-01' | iframely }}
