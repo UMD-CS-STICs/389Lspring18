@@ -2,7 +2,10 @@
 
 
 def foobar_flip(value):
-    """Utility for converting foo to bar and vice versa."""
+    """Utility for converting foo to bar and vice versa.
+
+    Raises a ValueError if value is not "foo" or "bar".
+    """
     pass
 
 
@@ -18,12 +21,4 @@ def string_compress(string):
 
 def fibonacci(n):
     """Computes the fibonacci of n."""
-
-    # Use this cache to store values as you compute them.
-    cache = {}
-
-    def fibonacci_helper(n):
-        """Computes the fibonacci of n, but caches values in a map."""
-        pass
-
-    return fibonacci_helper(n)
+    pass

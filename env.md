@@ -2,57 +2,62 @@
 
 ## Instructions
 
-We will use `pyenv` to install Python 3.6.2. See: https://github.com/pyenv/pyenv
+#### Python
 
-```bash
-$ # You may need to install curl.
-$ curl -sL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-$ # Swap .bashrc with .zshrc, etc. depending on what shell you use.
-$ cat >> ~/.bashrc <<'EOL'
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-EOL
-$ source ~/.bashrc
-$ # Make sure pyenv installed correctly.
-$ pyenv --version
-$ pyenv install 3.6.2
-$ pyenv global 3.6.2
+We will use [`pyenv`](https://github.com/pyenv/pyenv) to manage various versions of Python installed locally. For example, macOS comes with a pre-installed (usually outdated) version of Python. We'll be using Python 3.6.2.
+
+First, install `pyenv`:
+
+> **Note**: You will need to install `curl` and `git` if they aren't already installed on your computer (they probably are).
+
+	$ curl -sL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+	
+Next, add the following lines to your `~/.bashrc`:
+
+	export PATH="$HOME/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+
+Then, load those changes from your `.bashrc` and verify that `pyenv` is functioning:
+
+	$ source ~/.bashrc
+	$ pyenv versions
+
+Now, go ahead and install Python:
+
+	$ pyenv install 3.6.2
+	$ pyenv global 3.6.2
+
+Note that whenever you run Python, it will now use this version as the default. However, you can also set a directory-local version using the `pyenv local <python version>` command.
+
+#### Pip
+
+You will also be using [`pipenv`](https://github.com/pypa/pipenv) to manage pip packages.
+
+If you are on macOS, run the following:
+
+	$ brew install pipenv
+
+Otherwise, run the following:
+
+	$ pip install pipenv
+
+To install the packages for a given codelab, run the following:
+
+```
+$ pipenv install
 ```
 
-You will also be using `pipenv` to manage pip packages.
-
-```
-$ TODO
-```
-
-To install the packages for a given codelab or project, run the following from within it's directory:
-
-```
-$ TODO
-```
+#### AWS
 
 You will also need to set up the AWS CLI. To install the CLI:
 
-```
-$ TODO
-$ TODO: configure us-east-1
-$ TODO: set up auto-completion
-```
+	$ pip install awscli
+	$ aws --version
 
-Place a file named `aws.credentials` in your `~/.aws` directory with the following contents (change the access key and secret access key):
+Now, set up your default region and your AWS credentials by running:
 
-```
-[default]
-aws_access_key_id = AIUBG23BWONGOIWEN83N
-aws_secret_access_key = oinwgoi2n3th040BIGUEBW4t8h493g3nUUB023jn
-```
-
-Add the following to a file called `~/.aws/config`:
-
-```
-[default]
-region=us-east-1
-```
+	$ aws configure
 
 ## Warnings
 

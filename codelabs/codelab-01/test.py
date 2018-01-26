@@ -39,7 +39,7 @@ class TestFibonacci(unittest.TestCase):
         for answer, n in zip(answers, range(3, 10)):
             self.assertEqual(answer, functions.fibonacci(n))
 
-    # Optional Test
+    # Hint: use a dictionary!
     def test_large_numbers(self):
         self.assertEqual(102334155, functions.fibonacci(40))
         self.assertEqual(1548008755920, functions.fibonacci(60))
