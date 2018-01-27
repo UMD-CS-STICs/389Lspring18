@@ -12,7 +12,7 @@ In this codelab, you'll learn (or review!) the basics of Python. We will be usin
 
 ##### Environment Setup
 
-To get started, you will need to set up your local development environment. Follow the instructions here: [Environment Setup](env.md).
+To get started, you will need to set up your local development environment. Follow the instructions here: [Environment Setup](https://github.com/UMD-CS-STICs/389Lspring18/env.md).
 
 ##### Download Starter Code
 
