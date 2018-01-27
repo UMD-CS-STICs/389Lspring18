@@ -12,7 +12,7 @@ First, install `pyenv`:
 
 	$ curl -sL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 	
-Next, add the following lines to your `~/.bashrc`:
+Next, add the following lines to your `~/.bashrc` (Note that on OSX, you should edit '~/.bash_profile' instead as Terminal opens a login shell by default)  :
 
 	export PATH="$HOME/.pyenv/bin:$PATH"
 	eval "$(pyenv init -)"
