@@ -12,13 +12,13 @@ In this codelab, you'll learn (or review!) the basics of Python. We will be usin
 
 ##### Environment Setup
 
-To get started, you will need to set up your local development environment. Follow the instructions here: [Environment Setup](env.md).
+To get started, you will need to set up your local development environment. Follow the instructions here: [Environment Setup](https://github.com/UMD-CS-STICs/389Lspring18/blob/master/env.md).
 
 ##### Download Starter Code
 
-For codelabs in this class, you will want to clone the [class repository](https://github.com/UMD-CS-STICs/389Lfall17) from GitHub onto your computer:
+For codelabs in this class, you will want to clone the [class repository](https://github.com/UMD-CS-STICs/389Lspring18) from GitHub onto your computer:
 
-	$ git clone https://github.com/UMD-CS-STICs/389Lfall17.git
+	$ git clone https://github.com/UMD-CS-STICs/389Lspring18.git
 
 Each week, when new content is pushed into this repository, you'll need to pull in these changes. All you need to do is run:
 
