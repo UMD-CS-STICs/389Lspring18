@@ -415,13 +415,7 @@ The `upload.py` file in the `code/` directory includes some boilerplate to get y
 
 Like the previous codelab, you only need to pass the public tests to get full credit.
 
-To run the tests, you will need to install a few dependencies:
-
-```
-$ pip install -R requirements.txt
-```
-
-Then, the tests can be run like so:
+The tests can be run like so:
 
 ```
 $ python test.py
