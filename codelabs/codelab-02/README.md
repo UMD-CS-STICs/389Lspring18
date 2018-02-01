@@ -2,7 +2,7 @@
 
 ### Due Date
 
-This codelab is due on *Thursday, February 8th at 11:59:59PM*.
+This codelab comes in two parts, both of which are due on *Thursday, February 15th at 11:59:59PM*. This is part A, it looks long, but a lot of it is just setup + casual walkthrough. Part B will be release 1 week later and cover CloudFront.
 
 ### Goal
 
@@ -12,11 +12,11 @@ In this codelab, you'll get to play around with S3.
 
 ### Setting Up
 
-Before starting this codelab, run `git pull` in the `389Lfall18` directory to update your local copy of the class repository.
+Before starting this codelab, run `git pull` in the `389Lspring18` directory to update your local copy of the class repository.
 
 ### Getting Started with AWS
 
-The first step is going to be to get an [AWS account](https://aws.amazon.com (https://aws.amazon.com/)). If you already have an Amazon.com (http://amazon.com/) account with your umd.edu (http://umd.edu/) email, then you can go ahead and sign in with the same account. Sign in or Sign up [here](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct).
+The first step is going to be to get an [AWS account](https://aws.amazon.com). If you already have an Amazon.com (http://amazon.com/) account with your umd.edu (http://umd.edu/) email, then you can go ahead and sign in with the same account. Sign in or Sign up [here](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct).
 
 #### Free Tier Accounts
 
@@ -34,17 +34,19 @@ After you complete this process, you will receive a promotional credit via email
 
 ![Credits Page](../../../media/codelabs/codelab-02/credits.png)
 
+If you're concerned about how much you're using, there's more information [here](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html).
+
+*AWS Educate grants students access to $100 in credit to pay for services not covered under the free tier.*
+
 #### AWS GUI
 
-This class will use a combination of the CLI and the GUI (referred to as the AWS Management Console, or just the AWS console). It's a good idea to become familiar with it now, as it can be a useful tool to verify that things are working as you expect.
+This class will use a combination of the CLI and the GUI (referred to as the AWS Management Console, or just the AWS console). You can do everything you can do in the GUI via the CLI, but the goal is to get you comfortable with each as we'll use both throughout the class.
 
 The two keys components to understand here are how to access different services, and how to change between regions.
 
 You can see the full list of services from the "Services" dropdown in the top-left corner:
 
 ![Services Tab](../../../media/codelabs/codelab-02/services.png)
-
-You can also use either search bar to locate services.
 
 To see which region you are currently in, look for the region tab in the top-right corner:
 
@@ -70,23 +72,27 @@ To work with the CLI, you'll need to first create an IAM user via the AWS Consol
 
 ![Admin Permissions](../../../media/codelabs/codelab-02/admin-group.png)
 
-3. Click through to the "Complete" page where AWS will provide you with the access key ID and secret access key. Keep the latter safe, perhaps saving them in a text file on your machine, because AWS will not show it to you again. These keys are used to sign programmatic requests that you make to AWS.
+3. Click through to the "Complete" page where AWS will provide you with the access key ID and secret access key. Keep the latter safe, perhaps saving them in a text file on your machine, because _AWS will not show it to you again_. These keys are used to sign programmatic requests that you make to AWS. _If lost, you must restart and create a new IAM user_.
 
 ##### Testing the CLI
 
-If you haven't already done so, set up your local development environment. Follow the instructions here: [Environment Setup](https://github.com/UMD-CS-STICs/389Lspring18/blob/master/env.md). Upon entering the final command, you will be prompted to give the keys you just obtained. Set us-east-1 and json as the default region and output respectively.
+If you haven't already done so, set up your local development environment. Follow the instructions here: ![Environment Setup](../../../env.md). Upon entering the final command, you will be prompted to give the keys you just obtained. Set `us-east-1` and `json` as the default region and output respectively.
 
+```
 $ aws configure 
 AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE 
 AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY 
 Default region name [None]: us-east-1 
 Default output format [None]: json
+```
 
 Now test your credentials with the following command.
 
-$ aws its get-caller-identity
+```
+$ aws sts get-caller-identity
+```
 
-Good to go. We'll use the CLI more below.
+Make sure the account ID matches and you're good to go. We'll use the CLI more below.
 
 ##### Root User
 
@@ -94,7 +100,7 @@ To clarify the difference between the user you have been using to log in to the 
 
 The credentials you've been using to log in with are the root user credentials. Normally, you avoid using the root account and instead federate access out to IAM users so that you can audit their usage. However, in this class, we will continue to use the root account for simplicity.
 
-Essentially, you have two users for your account: the root user, which you use to access the AWS console, and the IAM user, which you use to programmatically access AWS. You won't need to think about this now that your AWS environment is configured, but it is good to know.
+Essentially, you have two users for your account: the root user, which you use to sign-in to the AWS console, and the IAM user (which has an Account ID and Secret Access Key), which you use to programmatically access AWS. We can't programmatically access the API with the root user, because it does not have associated access keys. In general, you tend to avoid using the root account on teams since it is hard to audit. Preferably all team members have an IAM user they can access, with a limited set of permissions. However, in this class, we will continue to use the root account for simplicity.
 
 ### S3 Basics
 
@@ -106,13 +112,11 @@ Feel free to ask on Piazza if you have any trouble or questions about boto3 APIs
 
 #### References
 
-You want to reference the [aws s3api](http://docs.aws.amazon.com/cli/latest/reference/s3api/index.html) documentation while working through this codelab.
-
-#### Basic Operations
-
-From this point forward, we will be working exclusively inside of the Vagrant box.
+You want to _reference the [aws s3api](http://docs.aws.amazon.com/cli/latest/reference/s3api/index.html) documentation while working through this codelab_.
 
 ##### CLI Overview
+
+*This section relies on having the AWS cli installed, see ![Environment Setup](../../../env.md)*
 
 The `aws` cli exposes commands for almost every service in the form of:
 
@@ -333,8 +337,8 @@ For example, you can `ls` a directory on S3:
 
 ```
 $ aws s3 ls s3://cmsc389l-colink
-PRE dir1/
-PRE dir2/
+	PRE dir1/
+	PRE dir2/
 2017-09-13 11 (tel:2017091311):44:17 13 hello_world.txt
 2017-09-13 12 (tel:2017091312):24:14 25165824 output.dat
 ```
@@ -358,11 +362,11 @@ As an example of how this script works, say you had a directory like so:
 ```
 a.txt
 folder1/
-b.txt
-c.txt
+	b.txt
+	c.txt
 folder2/
-folder3/
-d.txt
+	folder3/
+		d.txt
 ```
 
 Then here are a few examples of the resulting state in S3:
@@ -427,7 +431,7 @@ Note that if you kill the testing program, it won't clean up after itself. If yo
 $ aws s3 ls | grep "test-bucket" | cut -f3 -d ' ' | xargs -I {} aws s3 rb 's3://{}'
 ```
 
-Feel free to install any packages you would like to use. Just make sure to add them to the `requirements.txt` file (run `pip freeze > requirements.txt`).
+_Don't stop now, you're almost there, read on_
 
 #### Host a Static Website
 
@@ -435,7 +439,7 @@ As mentioned in class, you can use S3 to host static content, like static websit
 
 Now that you've finished the assignment, you have a tool that you could use to upload static content for a website, however the tool does not set the Content-Type of each file when they are uploaded (they default to a byte stream type). If you tried to open an HTML file in your browser that was hosted on S3 with this Content-Type, then your browser would just download the file instead of serving it (it doesn't use the file ending to determine the type of file, as you might expect, it instead uses the Content-Type header in the response).
 
-Therefore you have two options: 1) update your tool to detect and set the Content-Type header (use a library like [`python-magic`](https://github.com/ahupp/python-magic)). Otherwise, you can use the `aws s3 sync` command.
+Here's how you check the content type. Look it's octet-stream! It's just 2-3 lines to use a library like [`python-magic`](https://github.com/ahupp/python-magic) to detect and set the content type. Update your tool to detect and set the Content-Type header.
 
 You will want to clone the source code from it's GitHub repository here: https://github.com/UMD-CS-STICs/UMD-CS-STICs.github.io
 
@@ -449,17 +453,13 @@ Then, create a new bucket specifically for this site, such as `cmsc389l-<directo
 $ aws s3 website s3://cmsc389l-colink-website —index-document index.html
 ```
 
-##### Option 1: upload.py
+##### upload.py
 
 Assuming that your tool will properly set the Content-Type header, then you can copy the source code into the root directory of this new bucket using your tool:
 
 ```
 $ python upload.py UMD-CS-STICs.github.io —bucket cmsc389l-colink-website —acl public-read
 ```
-
-##### Option 2: s3 sync
-
-If not, you can use the `s3 sync` tool instead. Make sure to sync the contents of the STICs site into the root of the bucket.
 
 ##### View the site!
 
@@ -473,7 +473,7 @@ Submit a screenshot of the front page of the STICs site hosted on your S3. Make 
 
 ### Submission
 
-You will submit a zipped directory containing your script, `upload.py`, plus an updated `requirements.txt` if you installed any packages. You will also include the screenshot of the STICs homepage and your audit log.
+You will submit a zipped directory containing your script, `upload.py`, plus a  `pipfile` since you used magic. You will also include the screenshot of the STICs homepage and your audit log.
 
 Audit logs are stored in as JSON files in a `.gz` zip archive in the bucket that you created. Within this bucket, these logs are organized in a directory hierarchy by date, region, and a few other factors (see [this documentation page](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html)). You'll need to download all of your CloudTrail logs from this bucket for the us-east-1 region. You can use the `aws s3` command to sync this directory to your local filesystem. You'll need to configure
 
