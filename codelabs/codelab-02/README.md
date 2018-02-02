@@ -79,10 +79,10 @@ To work with the CLI, you'll need to first create an IAM user via the AWS Consol
 If you haven't already done so, set up your local development environment. Follow the instructions here: ![Environment Setup](../../../env.md). Upon entering the final command, you will be prompted to give the keys you just obtained. Set `us-east-1` and `json` as the default region and output respectively.
 
 ```
-$ aws configure 
-AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE 
-AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY 
-Default region name [None]: us-east-1 
+$ aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
@@ -431,6 +431,11 @@ Note that if you kill the testing program, it won't clean up after itself. If yo
 $ aws s3 ls | grep "test-bucket" | cut -f3 -d ' ' | xargs -I {} aws s3 rb 's3://{}'
 ```
 
+Additionally, we have provided you with a Pipfile that contains all the packages we believe you will need to
+complete the assignment. Pipfiles work just like package.json files in the world of Node and Javascript or Gemfiles
+in the world of Ruby and Rails. When you run `pipenv install`, the Pipfile will be parsed and all the dependencies
+inside of it will be downloaded and installed locally for your project. You are even able to set the specific version of a dependency that you are importing. Feel free to add to the Pipfile and packages you feel you need to add to implement your solution.
+
 _Don't stop now, you're almost there, read on_
 
 #### Host a Static Website
@@ -473,7 +478,7 @@ Submit a screenshot of the front page of the STICs site hosted on your S3. Make 
 
 ### Submission
 
-You will submit a zipped directory containing your script, `upload.py`, plus a  `pipfile` since you used magic. You will also include the screenshot of the STICs homepage and your audit log.
+You will submit a zipped directory containing your script, `upload.py`, plus a  `Pipfile` since you used magic. You will also include the screenshot of the STICs homepage and your audit log.
 
 Audit logs are stored in as JSON files in a `.gz` zip archive in the bucket that you created. Within this bucket, these logs are organized in a directory hierarchy by date, region, and a few other factors (see [this documentation page](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html)). You'll need to download all of your CloudTrail logs from this bucket for the us-east-1 region. You can use the `aws s3` command to sync this directory to your local filesystem. You'll need to configure
 
