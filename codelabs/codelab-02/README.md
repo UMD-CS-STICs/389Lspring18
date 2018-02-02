@@ -442,11 +442,13 @@ _Don't stop now, you're almost there, read on_
 
 As mentioned in class, you can use S3 to host static content, like static websites. Let's do that for the STICs website!
 
-Now that you've finished the assignment, you have a tool that you could use to upload static content for a website, however the tool does not set the Content-Type of each file when they are uploaded (they default to a byte stream type). If you tried to open an HTML file in your browser that was hosted on S3 with this Content-Type, then your browser would just download the file instead of serving it (it doesn't use the file ending to determine the type of file, as you might expect, it instead uses the Content-Type header in the response).
+At this point the assignment, you have a tool that you could use to upload static content for a website, however the tool does not yet set the Content-Type of each file when they are uploaded (they default to a byte stream type). If you tried to open an HTML file in your browser that was hosted on S3 with this Content-Type, then your browser would just download the file instead of serving it. This is because the browser doesn't use the file ending to determine the type of file, as you might expect, it instead uses the Content-Type header in the response.
 
-Here's how you check the content type. Look it's octet-stream! It's just 2-3 lines to use a library like [`python-magic`](https://github.com/ahupp/python-magic) to detect and set the content type. Update your tool to detect and set the Content-Type header.
+So, what we want to do is let S3 know what type of content it's getting during upload. You will do this by updating your tool to detect and set the Content-Type header. S3 will then be able to pass that information to a browser, enabling it to display our content as desired. Take a look at the documentation again and note that `path`, `bucket`, `acl`, and `s3_dest` are not the only paramaters defined for the upload function.
 
-You will want to clone the source code from it's GitHub repository here: https://github.com/UMD-CS-STICs/UMD-CS-STICs.github.io
+How do we know what to pass as arguments? Why, by using a library of course! It's just 2-3 lines when leveraging [`python-magic`](https://github.com/ahupp/python-magic) to detect and set the content type. *Hint: just because your browser doesn't look at file endings, doesn't mean your tool shouldn't*
+
+You will want to clone the source code for the STICS website from it's GitHub repository [here](https://github.com/UMD-CS-STICs/UMD-CS-STICs.github.io).
 
 ```
 $ git clone https://github.com/UMD-CS-STICs/UMD-CS-STICs.github.io
