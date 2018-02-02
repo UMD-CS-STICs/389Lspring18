@@ -18,6 +18,6 @@
 
 ### February 2nd
 
-<!-- link to slides goes here -->
+* [Slides](lectures/lecture-02/slides.md)
+* [Feedback](lectures/lecture-02/feedback.md)
 * [Codelab 2](codelabs/codelab-02/README.md)
-<!-- link to feedback goes here -->
