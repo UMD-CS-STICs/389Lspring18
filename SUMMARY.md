@@ -15,4 +15,9 @@
 * [Slides](lectures/lecture-01/slides.md)
 * [Feedback](lectures/lecture-01/feedback.md)
 * [Codelab 1](codelabs/codelab-01/README.md)
+
+### February 2nd
+
+<!-- link to slides goes here -->
 * [Codelab 2](codelabs/codelab-02/README.md)
+<!-- link to feedback goes here -->

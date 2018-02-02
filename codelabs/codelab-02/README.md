@@ -2,7 +2,7 @@
 
 ### Due Date
 
-This codelab comes in two parts, both of which are due on *Thursday, February 15th at 11:59:59PM*. This is part A, it looks long, but a lot of it is just setup + casual walkthrough. Part B will be release 1 week later and cover CloudFront.
+This codelab comes in two parts, both of which are due on *Thursday, February 15th at 11:59:59PM*. This is part A which may look long, but most of it is just setup paired with a casual walkthrough. Part B will be released next week and will introduce CloudFront.
 
 ### Goal
 
@@ -16,7 +16,7 @@ Before starting this codelab, run `git pull` in the `389Lspring18` directory to 
 
 ### Getting Started with AWS
 
-The first step is going to be to get an [AWS account](https://aws.amazon.com). If you already have an Amazon.com (http://amazon.com/) account with your umd.edu (http://umd.edu/) email, then you can go ahead and sign in with the same account. Sign in or Sign up [here](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct).
+The first step is going to be to get an [AWS account](https://aws.amazon.com). If you already have an [Amazon.com](http://amazon.com/) account with your umd.edu (http://umd.edu/) email, then you can go ahead and sign in with the same account. Sign in or Sign up [here](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct).
 
 #### Free Tier Accounts
 
@@ -100,7 +100,7 @@ To clarify the difference between the user you have been using to log in to the 
 
 The credentials you've been using to log in with are the root user credentials. Normally, you avoid using the root account and instead federate access out to IAM users so that you can audit their usage. However, in this class, we will continue to use the root account for simplicity.
 
-Essentially, you have two users for your account: the root user, which you use to sign-in to the AWS console, and the IAM user (which has an Account ID and Secret Access Key), which you use to programmatically access AWS. We can't programmatically access the API with the root user, because it does not have associated access keys. In general, you tend to avoid using the root account on teams since it is hard to audit. Preferably all team members have an IAM user they can access, with a limited set of permissions. However, in this class, we will continue to use the root account for simplicity.
+Essentially, you have two users for your account: the _root user_, which you use to sign-in to the AWS console, and the _IAM user_ (which has an Account ID and Secret Access Key), which you use to programmatically access AWS. We can't programmatically access the API with the _root_ user, because it does not have associated access keys. In general, you tend to avoid using the _root_ account on teams since it is hard to audit. Preferably all team members have an _IAM_ user they can access, with a limited set of permissions. However, in this class, we will continue to use the _root_ account for simplicity.
 
 ### S3 Basics
 
@@ -112,7 +112,7 @@ Feel free to ask on Piazza if you have any trouble or questions about boto3 APIs
 
 #### References
 
-You want to _reference the [aws s3api](http://docs.aws.amazon.com/cli/latest/reference/s3api/index.html) documentation while working through this codelab_.
+*Do* reference the [aws s3api](http://docs.aws.amazon.com/cli/latest/reference/s3api/index.html) documentation while working through this codelab. You will *need* it for successful completion.
 
 ##### CLI Overview
 
@@ -493,9 +493,9 @@ Submit this assignment to `codelab2` on the submit server. Upload a zipped direc
 
 ```
 <directory id>.zip
-upload.py
-Pipfile
-logs/...
-stics.png
+	upload.py
+	Pipfile
+	logs/...
+	stics.png
 ```
 
