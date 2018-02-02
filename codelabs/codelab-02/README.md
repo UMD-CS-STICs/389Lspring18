@@ -494,7 +494,7 @@ Submit this assignment to `codelab2` on the submit server. Upload a zipped direc
 ```
 <directory id>.zip
 upload.py
-requirements.txt
+Pipfile
 logs/...
 stics.png
 ```
