@@ -22,7 +22,7 @@ By the end of the semester, the above diagram should make sense to you and you w
 ## Course Details
 
 - **Course**: CMSC389L
-- **Links**: [[Testudo](http://ter.ps/ttdo389ls18)] [[GitHub](https://github.com/UMD-CS-STICs/389Lspring18)] [[GitBook](https://umd-cs-stics.gitbooks.io/cmsc389l-spring2018/content/)] [[Piazza](http://piazza.com/umd/fall2017/cmsc389l)]
+- **Links**: [[Testudo](http://ter.ps/ttdo389ls18)] [[GitHub](https://github.com/UMD-CS-STICs/389Lspring18)] [[GitBook](http://ter.ps/pccS18)] [[Piazza](http://piazza.com/umd/fall2017/cmsc389l)]
 - **Prerequisites**: C- or better in **CMSC330** and CMSC250
 - **Credits**: 1
 - **Seats**: 30
