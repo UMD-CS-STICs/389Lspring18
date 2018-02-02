@@ -433,8 +433,8 @@ $ aws s3 ls | grep "test-bucket" | cut -f3 -d ' ' | xargs -I {} aws s3 rb 's3://
 
 Additionally, we have provided you with a Pipfile that contains all the packages we believe you will need to
 complete the assignment. Pipfiles work just like package.json files in the world of Node and Javascript or Gemfiles
-in the world of Ruby and Rails. When you run `pipenv Pipfile`, the Pipfile will be parsed and all the dependencies
-inside of it will be downloaded and installed locally for your project. You are even able to set the specific version of a dependency that you are importing. Feel free to add to the Pipfile and packages you feel you need to add to implement your solution. 
+in the world of Ruby and Rails. When you run `pipenv install`, the Pipfile will be parsed and all the dependencies
+inside of it will be downloaded and installed locally for your project. You are even able to set the specific version of a dependency that you are importing. Feel free to add to the Pipfile and packages you feel you need to add to implement your solution.
 
 _Don't stop now, you're almost there, read on_
 
