@@ -78,11 +78,51 @@ Otherwise, run the following:
 
 	$ pip install pipenv
 
-To install the packages for a given codelab, run the following:
+To verify the installation, run:
 
 ```
-$ pipenv install
+$ pipenv --version
 ```
+
+##### How does pipenv work?
+
+###### Some Context
+
+Normally in Python, you use a `requirements.txt` file to track your project's dependencies. ([An example](https://github.com/aws/aws-cli/blob/develop/requirements.txt) from `aws-cli`) You would run `pip install -r requirements.txt` to install all dependencies. Easy enough.
+
+However, this doesn't work well when you have multiple Python projects on your system. Some of those packages may collide: for example, possibly you want version `1.4.3` of `package-a` for Project 1, but version `1.5.0` for Project 2. You'd have to pick!
+
+Other package managers solve this by storing your dependencies in the same directory as your project. For example, Node's package manager, `npm`, uses a `node_modules` folder and your packages are accessed from that. Therefore, every package can have its own versions of packages.
+
+In Python, the alternative is to use `virtualenv`. This does something similar to `npm` in that it creates a local environment for every Python project. Once you "activate" that local environment, you can then install your Python packages normally.
+
+This separates **global state** from **local state** and is quite important in setting up a good development environment.
+
+However, managing `virtualenv` can be a pain. It's easy to accidentally forget to activate your environment and accidentally install all of your packages into your global Python environment (not great).
+
+Thus, `pipenv`.
+
+###### Usage
+
+`pipenv` introduces a `Pipfile`. It's a deterministic version of `requirement.txt`, and you can read more about it [here](https://github.com/pypa/pipfile).
+
+All codelabs will ship with a `Pipfile`. You can install the specified packages via:
+
+	$ pipenv install
+
+This creates a local environment for you with all of the packages you need already installed.
+
+To access this environment, run:
+
+	$ pipenv shell
+
+*That's it!*
+
+If you want to install other packages (like `python-magic`), just run:
+
+	$ pipenv install python-magic
+
+If you run these install commands outside of your local environment, `pipenv` is still smart enough to figure out which environment to install that package into (based on the location of the `Pipfile`).
 
 #### AWS
 
