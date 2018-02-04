@@ -165,7 +165,7 @@ We will enable the audit log via the AWS Console. Open the CloudTrail service an
 
 The new trail will take a few seconds to appear in the CloudTrail list, but once it does, you are good to go with the remainder of the codelab.
 
-**Important**: You must enable the audit logging before continuing.
+**Important**: You must enable the audit logging before continuing (above).
 
 ###### Listing Buckets
 
@@ -505,4 +505,3 @@ Submit this assignment to `codelab2` on the submit server. Upload a zipped direc
 	logs/...
 	stics.png
 ```
-
