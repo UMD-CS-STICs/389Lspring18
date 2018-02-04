@@ -14,9 +14,10 @@
 
 * [Slides](lectures/lecture-01/slides.md)
 * [Feedback](lectures/lecture-01/feedback.md)
-* [Codelab 1](lectures/lecture-01/codelab.md)
+* [Codelab 1](codelabs/codelab-01/README.md)
 
 ### February 2nd
 
 * [Slides](lectures/lecture-02/slides.md)
 * [Feedback](lectures/lecture-02/feedback.md)
+* [Codelab 2](codelabs/codelab-02/README.md)
