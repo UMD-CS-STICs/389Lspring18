@@ -42,19 +42,19 @@ Keep in mind that once the final project is released, the length of the codelabs
 | Week       | Topic                                    | Codelab    |
 | ---------- | ---------------------------------------- | ---------- |
 | 1/26/2018  |	Introduction and AWS 101				| Codelab 1: Python  |
-| 2/2/2018   |	Object Storage: S3 						| Codelab 2: S3 + CloudFront  |
-| 2/9/2018   |	Content Delivery Networks: CloudFront 	|            |
-| 2/16/2018  |  Compute 1: EC2							| Codelab 3: EC2  |
+| 2/2/2018   |	Object Storage: S3 						| Codelab 2: S3 |
+| 2/9/2018   |	Content Delivery Networks: CloudFront 	| Codelab 3: S3 + CloudFront |
+| 2/16/2018  |  Compute 1: EC2							| Codelab 4: EC2  |
 | 2/23/2018  |	Compute 2: EC2							|            |
-| 3/2/2018   | 	Now You're Thinking with Queues: SQS	| Codelab 4: EC2 + SQS  |
-| 3/9/2018   |	Load Balancers: ALBs 				    | Codelab 5: EC2 + ALBs  |
-| 3/16/2018	 |	FaaS: Lambda					   	    | Codelab 6: Lambda           |
+| 3/2/2018   | 	Now You're Thinking with Queues: SQS	| Codelab 5: EC2 + SQS  |
+| 3/9/2018   |	Load Balancers: ALBs 				    | Codelab 6: EC2 + ALBs  |
+| 3/16/2018	 |	FaaS: Lambda					   	    | Codelab 7: Lambda           |
 | 3/23/2018  |	*Spring Break (Campus Closed)*	 		|            |
-| 3/30/2018  |	Elastic Beanstalk	 				    | Codelab 7: Beanstalk  |
-| 4/6/2018   |	APIs: API Gateway	 					| Codelab 8: API Gateway + Lambda  |
-| 4/13/2018  |	Databases: DynamoDB 			        | Codelab 9: DynamoDB + Lambda  |
-| 4/20/2018  |	Microservices: ECS                    	| Codelab 10: ECS |
-| 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 11: Elasticsearch |
+| 3/30/2018  |	Elastic Beanstalk	 				    | Codelab 8: Beanstalk  |
+| 4/6/2018   |	APIs: API Gateway	 					| Codelab 9: API Gateway + Lambda  |
+| 4/13/2018  |	Databases: DynamoDB 			        | Codelab 10: DynamoDB + Lambda  |
+| 4/20/2018  |	Microservices: ECS                    	| Codelab 11: ECS |
+| 4/27/2018  |  Search: Elasticsearch Service		    |            |
 | 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 12: CloudFormation | 
 
 ## Final Project
@@ -89,7 +89,7 @@ Students will have access to AWS resources via the [AWS Free Tier](https://aws.a
 | ----------------- | --------------------------------------------------------------------- | -------- |
 | Colin King 		| Wednesday 1-2PM, Fridays 2-3PM, or [by appt](mailto:colink@umd.edu).   | CSIC 3107 (Sandbox)      |
 | Andrej Rasevic 	| TBD, or [by appt](mailto:arasevic@cs.umd.edu).				   		| TBD     |
-| Isaac Lockwood 	| Mondays 2-3PM, Thursdays 5-6PM or [by appt](mailto:ialock@terpmail.umd.edu).   					| ESJ 1204 Huddle Room      |
+| Isaac Lockwood 	| Mondays 2-3PM, Thursdays 445-545PM or [by appt](mailto:ialock@terpmail.umd.edu).   					| ESJ 1204 Huddle Room      |
 
 ### Codelab Submission
 
