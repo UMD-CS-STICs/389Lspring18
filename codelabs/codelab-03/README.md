@@ -1,4 +1,4 @@
-#Codelab 3: AWS + S3 + ClounFront
+# Codelab 3: AWS + S3 + ClounFront
 
 ### Due Date
 
@@ -17,12 +17,12 @@ Before starting this codelab, run `git pull` in the `389Lspring18` directory to 
 
 ### Tutorial
 
-<!-- maybe include a summary of what we're going to do -->
+**It's a good idea to read/skim the entire codelab first so you have an idea of what you're doing. At a minimum, look at the submission section to _avoid having to redo your work_ to obtain screenshots**
 
 #### Back to buckets
 
-Fist, download the image `canyon.jpg` located
-[here](https://s3.amazonaws.com/cmsc389l-ialock-lab3/canyon.jpg)
+Fist, download the image `canyon.jpg`
+![here](../../../media/codelabs/codelab-03/canyon.jpg)
 
 Now, using the [AWS GUI](https://console.aws.amazon.com/console/home?region=us-east-1#), navigate to S3.
 
@@ -102,26 +102,23 @@ Edit the shell script again and run it a few times. Does the total time change?
 
 ![lat_test_on_canyon_in_cloudfront_sydney Page](../../../media/codelabs/codelab-03/lat_test_on_canyon_in_cloudfront_sydney.png)
 
+Now suppose we want to change the image we're serving. Using the [AWS GUI](https://console.aws.amazon.com/console/home?region=us-east-1#) again, delete the current `canyon.jpg` and replace it with [this one](https://s3.amazonaws.com/cmsc389l-ialock-lab3/canyon.jpg). *Note: the names are identical.* 
+
+Verify you can reach it by the S3 link from your browser. Then try to reach it with your CloudFront link... and you might not be able to. This is because when CloudFront populates its Edge Cache, each object is given a expiration date called Time-To-Live (24 hours by default). When you used your CloudFront link, the Edge server gave you the object it had because it was still "fresh".
+
 ### Assignment
 
-Your assignment for this codelab is to see why issuing an invalidation may be used
-**Note**:  note
-
-<!-- expand to talk about time-to-live
-have students explain the tradeoff associated with time duration of objects in cache -->
-
-Then here are a few examples of the resulting state in S3:
-
-		<!-- 
-		swap out an image also named canyon.jpg in the bucket
-		load url
-		modify TTL via CLI
-		load url again
-		-->
+Your assignment for this codelab is to reference the [documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AddRemoveReplaceObjects.html) and issue and invalidation via the AWS CLI.
 
 ### Submission
 
-Submit screenshots of your modified `lat_test.sh` script and its output. After editing, run:
+You will be submitting three screenshots 
+*edited lat_test.sh contents + output run on object in S3*
+*edited lat_test.sh contents + output run on object in CloudFront*
+*invalidation command and output*
+and one text file containing 3-5 sentences explaining the tradeoff associated with time duration of objects in cache.
+
+Make sure to capture both commands and their outputs in the same screenshot. To capture screenshots of your modified `lat_test.sh`, after editing, run:
 
 ```
 $ cat lat_test.sh
@@ -133,4 +130,14 @@ Then execute immediately after thus:
 ./lat_test.sh
 ```
 
-Make sure to capture both commands and their outputs in the same screenshot. Do this for when the image is hosted in S3 alone AND once it has been deployed in CloudFront. Include a text file `summary.txt` containing 3-5 sentences explaining why the "total time" is different.
+Do this for when the image is hosted in S3 alone AND once it has been deployed in CloudFront. Similarly, capture the command and output for your invalidation. Finally, write your `summary.txt` file.
+
+Submit this assignment to `codelab3` on the submit server. Upload a zipped directory containing the following files:
+
+```
+<directory id>.zip
+	screenshot1.png 
+	screenshot2.png 
+	screenshot3.png 
+	summary.txt
+```
