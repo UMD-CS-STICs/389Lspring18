@@ -85,7 +85,7 @@ Now execute it but running:
     - appconnect: The time, in seconds, it took from the start until the SSL/SSH/etc connect/handshake to the remote host was completed.
     - pretransfer: he time, in seconds, it took from the start until the file transfer was just about to begin. This includes all pre-transfer commands and negotiations that are specific to the particular protocol(s) involved.
     - redirect: The time, in seconds, it took for all redirection steps including name lookup, connect, pretransfer and transfer before the final transaction was started. Redirect shows the complete execution time for multiple redirections.
-    - starttransfer: The time, in seconds, it took from the start until the first byte was just about to be transferred. This includes time_pretransfer and also the time the server needed to calculate the result.
+    - starttransfer: The time, in seconds, it took from the start until the first byte was just about to be transferred. This includes pretransfer and also the time the server needed to calculate the result.
     - total: The total time, in seconds, that the full operation lasted.
 
 Don't be too surprised if it's several whole seconds. Unlike a ping request which simply tests reachability, this script includes server side time taken. More information about curl may be found on the [manpage](https://curl.haxx.se/docs/manpage.html).
@@ -125,9 +125,9 @@ Your assignment for this codelab is to reference the [documentation](https://doc
 ### Submission
 
 You will be submitting:
-1. Screenshot of lat_test.sh output on canyon.jpg in Sydney S3
-- Two other screenshots of lat_test.sh output on two different images from the internet.
-- Screenshot of lat_test.sh output on canyon.jpg in CloudFront
+1. Screenshot of lat-test.sh output on canyon.jpg in Sydney S3
+- Two other screenshots of lat-test.sh output on two different images from the internet.
+- Screenshot of lat-test.sh output on canyon.jpg in CloudFront
 - Screenshot showing the invalidation command you used and its console output
 - 3-5 sentences explaining the tradeoff associated with time duration of objects in the cache.
 
