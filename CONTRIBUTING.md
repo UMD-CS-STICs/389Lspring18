@@ -2,7 +2,7 @@
 
 You will need to install GitBook: https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md
 
-To run the GitBook server locally:
+To run the GitBook server locally, run the following from the root directory of this repo:
 
 ```
 $ gitbook serve
