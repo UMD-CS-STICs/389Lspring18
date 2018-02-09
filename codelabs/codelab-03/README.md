@@ -2,7 +2,7 @@
 
 ### Due Date
 
-This is codelab 3, which expands upon ![codelab-02](../../../media/codelabs/codelab-02/README.md) by introducing CloudFront. Both are due on *Thursday, February 15th at 11:59:59PM*.
+This is codelab 3, which expands upon [codelab-02](../codelab-02/README.md) by introducing CloudFront. Both are due on *Thursday, February 15th at 11:59:59PM*.
 
 ### Goal
 
@@ -21,7 +21,9 @@ Before starting this codelab, run `git pull` in the `389Lspring18` directory to 
 
 #### Back to buckets
 
-Fist, download the image ![canyon.jpg](../../../media/codelabs/codelab-03/canyon.jpg)
+First, download the image [canyon.jpg](../../../media/codelabs/codelab-03/canyon.jpg).
+
+![canyon.jpg](../../../media/codelabs/codelab-03/canyon.jpg)
 
 Now, using the [AWS GUI](https://console.aws.amazon.com/console/home?region=us-east-1#), navigate to S3.
 
@@ -76,14 +78,14 @@ $ chmod +x lat-test.sh
 Now execute it but running:
 
 ```
-./lat-test.sh
+$ ./lat-test.sh
 ```
 
 - What is the output?
 	- namelookup: The time, in seconds, it took from the start until the name resolving was completed.
 	- connect: The time, in seconds, it took from the start until the TCP connect to the remote host (or proxy) was completed.
     - appconnect: The time, in seconds, it took from the start until the SSL/SSH/etc connect/handshake to the remote host was completed.
-    - pretransfer: he time, in seconds, it took from the start until the file transfer was just about to begin. This includes all pre-transfer commands and negotiations that are specific to the particular protocol(s) involved.
+    - pretransfer: The time, in seconds, it took from the start until the file transfer was just about to begin. This includes all pre-transfer commands and negotiations that are specific to the particular protocol(s) involved.
     - redirect: The time, in seconds, it took for all redirection steps including name lookup, connect, pretransfer and transfer before the final transaction was started. Redirect shows the complete execution time for multiple redirections.
     - starttransfer: The time, in seconds, it took from the start until the first byte was just about to be transferred. This includes pretransfer and also the time the server needed to calculate the result.
     - total: The total time, in seconds, that the full operation lasted.
@@ -108,7 +110,7 @@ Scroll to the bottom and click the blue `Create Distribution` in the bottom-left
 
 Note that the status is *in progress*, deployment may take several minutes. When complete, the status will change to *deployed*. Then, go ahead and grab the _Domain Name_ (it should end in `.cloudfront.net`).
 
-Now we're ready to test. The new URL of our content will be of the form "http://domainName/objectName". So it should look something like `http://3x4mpl3.cloudfront.net/canyon.jpg`. Try this in your browser.
+Now we're ready to test. The new URL of our content will be of the form `http://<domainName>/<objectName>`. So it should look something like `http://3x4mpl3.cloudfront.net/canyon.jpg`. Try this in your browser.
 
 Edit the shell script again and run it a few times. Does the total time change?
 
@@ -137,8 +139,10 @@ Submit this assignment to `codelab3` on the submit server. Upload a zipped direc
 
 ```
 <directory id>.zip
+	s3.png
 	screenshot1.png 
 	screenshot2.png 
-	screenshot3.png 
+	cloudfront.png
+	invalidation.png 
 	summary.txt
 ```
