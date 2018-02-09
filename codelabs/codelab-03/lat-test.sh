@@ -11,6 +11,7 @@ time_appconnect:  %{time_appconnect}
 time_pretransfer:  %{time_pretransfer}
 time_redirect:  %{time_redirect}
 time_starttransfer:  %{time_starttransfer}
+speed_download:  %{speed_download}
 -
 time_total: %{time_total}\n' \
 $URL

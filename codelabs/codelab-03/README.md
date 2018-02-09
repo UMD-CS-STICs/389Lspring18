@@ -85,14 +85,15 @@ $ ./lat-test.sh
 	- namelookup: The time, in seconds, it took from the start until the name resolving was completed.
 	- connect: The time, in seconds, it took from the start until the TCP connect to the remote host (or proxy) was completed.
     - appconnect: The time, in seconds, it took from the start until the SSL/SSH/etc connect/handshake to the remote host was completed.
-    - pretransfer: The time, in seconds, it took from the start until the file transfer was just about to begin. This includes all pre-transfer commands and negotiations that are specific to the particular protocol(s) involved.
+    - pretransfer: The time, in seconds, it took from the start until the file transfer was just about to begin. This includes all pretransfer commands and negotiations that are specific to the particular protocol(s) involved.
     - redirect: The time, in seconds, it took for all redirection steps including name lookup, connect, pretransfer and transfer before the final transaction was started. Redirect shows the complete execution time for multiple redirections.
     - starttransfer: The time, in seconds, it took from the start until the first byte was just about to be transferred. This includes pretransfer and also the time the server needed to calculate the result.
+    - download: The average download speed that curl measured for the complete download. Bytes per second.
     - total: The total time, in seconds, that the full operation lasted.
 
-Don't be too surprised if it's several whole seconds. Unlike a ping request which simply tests reachability, this script includes server side time taken. More information about curl may be found on the [manpage](https://curl.haxx.se/docs/manpage.html).
+Don't be too surprised if it's several whole seconds (our image is nearly 7MB) . Unlike a ping request which simply tests reachability, this script includes server side and download time. More information about curl may be found on the [manpage](https://curl.haxx.se/docs/manpage.html).
 
-![lat-test-on-canyon-in-s3-sydney Page](../../../media/codelabs/codelab-03/lat-test-on-canyon-in-s3-sydney.png)
+![lat-test-s3-1 Page](../../../media/codelabs/codelab-03/lat-test-s3-1.png)
 
 For comparison, try some other URLs in the script. If you use the link for the index file from codelab-02, the time should be on the order of .5 seconds (recall we used us-east-1 which is located in northern Virginia).
 
@@ -114,7 +115,7 @@ Now we're ready to test. The new URL of our content will be of the form `http://
 
 Edit the shell script again and run it a few times. Does the total time change?
 
-![lat-test-on-canyon-in-cloudfront-sydney Page](../../../media/codelabs/codelab-03/lat-test-on-canyon-in-cloudfront-sydney.png)
+![lat-test-cf-3 Page](../../../media/codelabs/codelab-03/lat-test-cf-3.png)
 
 Now suppose we want to change the image we're serving. Using the [AWS GUI](https://console.aws.amazon.com/console/home?region=us-east-1#) again, delete the current `canyon.jpg` and replace it with [this one](https://s3.amazonaws.com/cmsc389l-ialock-lab3/canyon.jpg). *Note: make sure the S3 keys are identical* (`canyon.jpg`) 
 
