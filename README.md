@@ -54,8 +54,8 @@ Keep in mind that once the final project is released, the length of the codelabs
 | 4/6/2018   |	APIs: API Gateway	 					| Codelab 9: API Gateway + Lambda  |
 | 4/13/2018  |	Databases: DynamoDB 			        | Codelab 10: DynamoDB + Lambda  |
 | 4/20/2018  |	Microservices: ECS                    	| Codelab 11: ECS |
-| 4/27/2018  |  Search: Elasticsearch Service		    |            |
-| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 12: CloudFormation | 
+| 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 12: Elasticsearch |
+| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 13: CloudFormation | 
 
 ## Final Project
 
