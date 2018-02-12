@@ -1,8 +1,8 @@
-#Codelab 2: AWS + S3
+# Codelab 2: AWS + S3
 
 ### Due Date
 
-This codelab comes in two parts, both of which are due on *Thursday, February 15th at 11:59:59PM*. This is part A which may look long, but most of it is just setup paired with a casual walkthrough. Part B will be released next week and will introduce CloudFront.
+This codelab is due on *Thursday, February 15th at 11:59:59PM*. It may look long, but most of it is just setup paired with a casual walkthrough.
 
 ### Goal
 

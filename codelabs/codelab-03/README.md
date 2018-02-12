@@ -2,7 +2,7 @@
 
 ### Due Date
 
-This is codelab 3, which expands upon [codelab-02](../codelab-02/README.md) by introducing CloudFront. Both are due on *Thursday, February 15th at 11:59:59PM*.
+This is codelab 3, which expands upon [codelab-02](../codelab-02/README.md) by introducing CloudFront. It is due on *Thursday, February 22nd at 11:59:59PM*.
 
 ### Goal
 
