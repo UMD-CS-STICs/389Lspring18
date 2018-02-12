@@ -104,7 +104,7 @@ Essentially, you have two users for your account: the _root user_, which you use
 
 ### S3 Basics
 
-There are two main ways that you will programmatically interact with AWS. The first is through the CLI and the second is through the boto3 SDK. The CLI is great for one-time changes to your AWS environment. However, if you want to create dynamic scripts, then you will want to use something else — in this class, that will be Python with Amazon's Python SDK, boto3.
+There are two main ways that you will programmatically interact with AWS. The first is through the CLI and the second is through the boto3 SDK. The CLI is great for one-time changes to your AWS environment. However, if you want to create dynamic scripts, then you will want to use something else -- in this class, that will be Python with Amazon's Python SDK, boto3.
 
 For codelabs, I'll be showing you how to interact with AWS via the CLI, since the CLI is easier to experiment with compared to Python code. I won't go into as much detail with the boto3 library, since I don't believe that explaining both adds much value. The APIs for both are fairly similar, so you should be able to easily pick up the relevant boto3 as long as you understand each codelab.
 
@@ -144,13 +144,13 @@ Lets start by working with S3 buckets.
 The `s3api create-bucket` command allows you to create S3 buckets from the CLI. Go ahead and create a bucket to use in this codelab:
 
 ```
-$ aws s3api create-bucket —bucket cmsc389l-<your directory id>
+$ aws s3api create-bucket --bucket cmsc389l-<your directory id>
 ```
 
 Remember that these names must be globally unique. What happens if you try to create a bucket that has already been claimed? Try it against the `cmsc389l` bucket that I created for class:
 
 ```
-$ aws s3api create-bucket —bucket cmsc389l
+$ aws s3api create-bucket --bucket cmsc389l
 ```
 
 ###### Audit Trail
@@ -188,13 +188,13 @@ $ echo "Hello World\!" > hello_world.txt
 $ ll
 total 4.0K
 drwxr-xr-x 1 vagrant vagrant 68 Sep 12 07:28 code
--rw-rw-r— 1 vagrant vagrant 13 Sep 12 13:41 hello_world.txt
+-rw-rw-r-- 1 vagrant vagrant 13 Sep 12 13:41 hello_world.txt
 ```
 
 Upload it into your bucket with the `s3api put-object` command. As mentioned in class, notice how you need to specify the bucket and key, which will map to this object.
 
 ```
-$ aws s3api put-object —bucket cmsc389l-colink —key hello_world.txt —body hello_world.txt
+$ aws s3api put-object --bucket cmsc389l-colink --key hello_world.txt --body hello_world.txt
 ```
 
 You can think of this as a hash table where together the bucket and key uniquely identify an object:
@@ -212,10 +212,10 @@ You can think of this as a hash table where together the bucket and key uniquely
 To verify that the file was uploaded into the bucket, use the `s3api list-objects-v2` command:
 
 ```
-$ aws s3api list-objects-v2 —bucket cmsc389l-colink
+$ aws s3api list-objects-v2 --bucket cmsc389l-colink
 ```
 
-Create and upload another file into this bucket with a different key. Now, you can use the `—prefix` flag of the `list-objects-v2` command to filter which objects to list.
+Create and upload another file into this bucket with a different key. Now, you can use the `--prefix` flag of the `list-objects-v2` command to filter which objects to list.
 
 ##### Directories
 
@@ -238,14 +238,14 @@ $ tree
 Upload both of these files:
 
 ```
-$ aws s3api put-object —bucket cmsc389l-colink —key "dir1/file.txt" —body dir1/file.txt
-$ aws s3api put-object —bucket cmsc389l-colink —key "dir2/file.txt" —body dir2/file.txt
+$ aws s3api put-object --bucket cmsc389l-colink --key "dir1/file.txt" --body dir1/file.txt
+$ aws s3api put-object --bucket cmsc389l-colink --key "dir2/file.txt" --body dir2/file.txt
 ```
 
 Run the `list-objects-v2` command again, and you will see all of these files. However, if you wanted to see only the files in one of these directories, you could limit the list operation to those keys with a given prefix:
 
 ```
-$ aws s3api list-objects-v2 —bucket cmsc389l-colink —prefix dir1
+$ aws s3api list-objects-v2 --bucket cmsc389l-colink --prefix dir1
 ```
 
 This effectively recreates a recursive `ls` operation (`ls -R [<prefix>]`).
@@ -257,7 +257,7 @@ Let's inspect the contents of that "Hello World" file that we uploaded.
 To read the contents of an object, use the `s3api get-object` command. This will stream the contents of the file from S3 into a local file.
 
 ```
-$ aws s3api get-object —bucket cmsc389l-colink —key hello_world.txt out.txt
+$ aws s3api get-object --bucket cmsc389l-colink --key hello_world.txt out.txt
 $ cat out.txt
 Hello World!
 ```
@@ -269,13 +269,13 @@ Hello World!
 Finally, if you want to delete an object, there is the `s3api delete-object` command.
 
 ```
-$ aws s3api delete-object —bucket cmsc389l-colink —key hello_world.txt
+$ aws s3api delete-object --bucket cmsc389l-colink --key hello_world.txt
 ```
 
 We can verify that the file was removed correctly by attempting to read this data back:
 
 ```
-$ aws s3api get-object —bucket cmsc389l-colink —key hello_world.txt out.txt
+$ aws s3api get-object --bucket cmsc389l-colink --key hello_world.txt out.txt
 ```
 
 As you see, you'll get a `NoSuchKey` exception.
@@ -288,12 +288,12 @@ Great, you should now be familiar with the basic operations on S3. You can progr
 
 In class, we talked about four storage classes: Default, Reduced Redundancy Storage (RRS), Infrequently Accessed (IA), and Glacier. We're not going to cover Glacier here, since it's API is fairly complicated. However, let's experiment with moving objects between the other three storage types.
 
-We can toggle between the first three storage classes of an S3 object using the `—storage-class` flag for the `s3api put-object` command. Note that moving to Glacier is a separate process. Why? Objects in the first three classes are all accessible in real-time, while objects in Glacier are not.
+We can toggle between the first three storage classes of an S3 object using the `--storage-class` flag for the `s3api put-object` command. Note that moving to Glacier is a separate process. Why? Objects in the first three classes are all accessible in real-time, while objects in Glacier are not.
 
 For this process, let's re-upload a file into our bucket:
 
 ```
-$ aws s3api put-object —bucket cmsc389l-colink —key hello_world.txt —body hello_world.txt
+$ aws s3api put-object --bucket cmsc389l-colink --key hello_world.txt --body hello_world.txt
 ```
 
 ##### Configuring RRS or IA
@@ -301,13 +301,13 @@ $ aws s3api put-object —bucket cmsc389l-colink —key hello_world.txt —body 
 Before we change the storage class, we can inspect the contents of the file we just uploaded to determine what storage class it is held in.
 
 ```
-$ aws s3api list-objects —bucket cmsc389l-colink —prefix hello_world.txt
+$ aws s3api list-objects --bucket cmsc389l-colink --prefix hello_world.txt
 ```
 
 There are two ways to modify the storage class. The first involves overwriting the object already in S3 with a new object which has a different storage class set:
 
 ```
-$ aws s3api put-object —bucket cmsc389l-colink —key hello_world.txt —storage-class REDUCED_REDUNDANCY
+$ aws s3api put-object --bucket cmsc389l-colink --key hello_world.txt --storage-class REDUCED_REDUNDANCY
 ```
 
 Perform the `s3api list-objects` command again to double-check that it modified the storage class.
@@ -315,7 +315,7 @@ Perform the `s3api list-objects` command again to double-check that it modified 
 The second is that we can use the `s3api copy-object` command to avoid the extra bandwidth charges that arise from uploading the object all over again. In this case, it will only change the storage class on the object.
 
 ```
-$ aws s3api copy-object —bucket cmsc389l-colink —copy-source cmsc389l-colink/hello_world.txt —key hello_world.txt —storage-class STANDARD_IA
+$ aws s3api copy-object --bucket cmsc389l-colink --copy-source cmsc389l-colink/hello_world.txt --key hello_world.txt --storage-class STANDARD_IA
 ```
 
 If you perform one last `s3api list-objects` command, you'll see that it changed the storage class again.
@@ -323,9 +323,9 @@ If you perform one last `s3api list-objects` command, you'll see that it changed
 Remember that each of these modes still provide real-time access to these objects, so we can read them and get them back quickly:
 
 ```
-$ time aws s3api get-object —bucket cmsc389l-colink —key hello_world.txt out.txt
+$ time aws s3api get-object --bucket cmsc389l-colink --key hello_world.txt out.txt
 ...
-aws s3api get-object —bucket cmsc389l-colink —key hello_world.txt out.txt 0.29s user 0.05s system 41% cpu 0.817 total
+aws s3api get-object --bucket cmsc389l-colink --key hello_world.txt out.txt 0.29s user 0.05s system 41% cpu 0.817 total
 ```
 
 Instead, if you were to move these files into Glacier, then you would need to trigger a transfer job which would move files back into an S3 bucket. This process will usually take hours.
@@ -374,7 +374,7 @@ Then here are a few examples of the resulting state in S3:
 ##### Example 1
 
 ```
-$ python upload.py a.txt —bucket cmsc389l-colink
+$ python upload.py a.txt --bucket cmsc389l-colink
 ```
 
 ```
@@ -384,7 +384,7 @@ a.txt
 ##### Example 2
 
 ```
-$ python upload.py a.txt —bucket cmsc389l-colink —destination z.txt
+$ python upload.py a.txt --bucket cmsc389l-colink --destination z.txt
 ```
 
 ```
@@ -394,7 +394,7 @@ z.txt
 ##### Example 3
 
 ```
-$ python upload.py . —bucket cmsc389l-colink
+$ python upload.py . --bucket cmsc389l-colink
 ```
 
 ```
@@ -407,7 +407,7 @@ folder2/folder3/d.txt
 ##### Example 4
 
 ```
-$ python upload.py folder1 —bucket cmsc389l-colink —destination uploads
+$ python upload.py folder1 --bucket cmsc389l-colink --destination uploads
 ```
 
 ```
@@ -457,7 +457,7 @@ $ git clone https://github.com/UMD-CS-STICs/UMD-CS-STICs.github.io
 Then, create a new bucket specifically for this site, such as `cmsc389l-<directory id>-website`. Then, enable website hosting from that bucket:
 
 ```
-$ aws s3 website s3://cmsc389l-colink-website —index-document index.html
+$ aws s3 website s3://cmsc389l-colink-website --index-document index.html
 ```
 
 ##### upload.py
@@ -465,7 +465,7 @@ $ aws s3 website s3://cmsc389l-colink-website —index-document index.html
 Assuming that your tool will properly set the Content-Type header, then you can copy the source code into the root directory of this new bucket using your tool:
 
 ```
-$ python upload.py UMD-CS-STICs.github.io —bucket cmsc389l-colink-website —acl public-read
+$ python upload.py UMD-CS-STICs.github.io --bucket cmsc389l-colink-website --acl public-read
 ```
 
 ##### View the site!
