@@ -3,7 +3,7 @@
 ### Course Introduction
 
 * [Syllabus](README.md)
-* [Environment Setup](env.md)
+* [Environment Setup](env/README.md)
 * [Resources](resources/README.md)
 
 ### Final Project
