@@ -116,11 +116,7 @@ Feel free to ask on Piazza if you have any trouble or questions about boto3 APIs
 
 ##### CLI Overview
 
-<<<<<<< HEAD
-*This section relies on having the AWS cli installed, see [Environment Setup](../../../env.md)*
-=======
 *This section relies on having the AWS cli installed, see [Environment Setup](../../env)*
->>>>>>> fix
 
 The `aws` cli exposes commands for almost every service in the form of:
 
