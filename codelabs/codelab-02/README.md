@@ -442,7 +442,7 @@ As mentioned in class, you can use S3 to host static content, like static websit
 
 At this point the assignment, you have a tool that you could use to upload static content for a website, however the tool does not yet set the content type of each file when they are uploaded (they default to a byte stream type). If you tried to open an HTML file in your browser that was hosted on S3 with this content type, then your browser would just download the file instead of serving it. This is because the browser doesn't use the file ending to determine the type of file, as you might expect, it instead uses the content type header in the response.
 
-So, what we want to do is let S3 know what type of content it's getting during upload. You will do this by updating your tool to detect and set the content type header. S3 will then be able to pass that information to a browser, enabling it to display our content as desired. Take a look at the documentation again and note that `path`, `bucket`, `acl`, and `s3_dest` are not the only paramaters defined for the upload function.
+So, what we want to do is let S3 know what type of content it's getting during upload. You will do this by updating your tool to detect and set the content type header. S3 will then be able to pass that information to a browser, enabling it to display our content as desired. Take a look at the documentation again and note that `path`, `bucket`, `acl`, and `s3_dest` are not the only parameters defined for the upload function.
 
 How do we know what to pass as arguments? Why, by using a library of course! It's just 2-3 lines with a package like [`mimetypes`](https://docs.python.org/3/library/mimetypes.html) to detect and set the content type. 
 

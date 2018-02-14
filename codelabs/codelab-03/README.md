@@ -91,7 +91,7 @@ $ ./lat-test.sh
     - download: The average download speed that curl measured for the complete download. Bytes per second.
     - total: The total time, in seconds, that the full operation lasted.
 
-Don't be too surprised if it's several whole seconds (our image is nearly 7MB) . Unlike a ping request which simply tests reachability, this script includes server side and download time. More information about curl may be found on the [manpage](https://curl.haxx.se/docs/manpage.html).
+Don't be too surprised if it's several whole seconds (our image is nearly 7MB) . Unlike a ping request which simply tests reachability, this script includes server side and download time. More information about curl may be found on the [man page](https://curl.haxx.se/docs/manpage.html).
 
 ![lat-test-s3-1 Page](../../../media/codelabs/codelab-03/lat-test-s3-1.png)
 
@@ -132,7 +132,7 @@ You will be submitting:
 - Two other screenshots of lat-test.sh output on two different images from the internet.
 - Screenshot of lat-test.sh output on canyon.jpg in CloudFront
 - Screenshot showing the invalidation command you used and its console output
-- 3-5 sentences explaining the tradeoff associated with time duration of objects in the cache.
+- 3-5 sentences explaining the trade-off associated with time duration of objects in the cache.
 
 Do this for when the image is hosted in S3 alone AND once it has been deployed in CloudFront. Similarly, capture the command and output for your invalidation. Finally, write your `summary.txt` file.
 

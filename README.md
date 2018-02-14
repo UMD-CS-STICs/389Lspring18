@@ -35,7 +35,7 @@ By the end of the semester, the above diagram should make sense to you and you w
 
 ## Schedule
 
-Here is the tentative schedule for this semester. Learn more about these services in [plain english](https://www.expeditedssl.com/aws-in-plain-english) or from [AWS](https://www.amazonaws.cn/en/products/).
+Here is the tentative schedule for this semester. Learn more about these services in [plain English](https://www.expeditedssl.com/aws-in-plain-english) or from [AWS](https://www.amazonaws.cn/en/products/).
 
 Keep in mind that once the final project is released, the length of the codelabs will decrease.
 

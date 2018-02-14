@@ -2,7 +2,7 @@
 
 ### Due Date
 
-This codelab is due on *Thursday, Febuary 1st at 11:59:59PM*.
+This codelab is due on *Thursday, February 1st at 11:59:59PM*.
 
 ### Goal
 
@@ -24,7 +24,7 @@ Each week, when new content is pushed into this repository, you'll need to pull 
 
 	$ git pull
 
-This is a good time to remind you to not publically share any of your solutions to these codelabs. However, you are more than welcome to collaborate with other students in this class.
+This is a good time to remind you to not publicly share any of your solutions to these codelabs. However, you are more than welcome to collaborate with other students in this class.
 
 ### Python
 
