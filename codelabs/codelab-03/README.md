@@ -1,4 +1,4 @@
-# Codelab 3: AWS + S3 + ClounFront
+# Codelab 3: AWS + S3 + CloudFront
 
 ### Due Date
 
@@ -6,7 +6,7 @@ This is codelab 3, which expands upon [codelab-02](../codelab-02/README.md) by i
 
 ### Goal
 
-In this codelab, you'll get to play around with ClounFront.
+In this codelab, you'll get to play around with CloudFront.
 - You'll set up CloudFront via the AWS GUI
 - You'll test latency 
 - You'll issue an invalidation
