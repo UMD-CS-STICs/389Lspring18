@@ -41,9 +41,9 @@ Keep in mind that once the final project is released, the length of the codelabs
 
 | Week       | Topic                                    | Codelab    |
 | ---------- | ---------------------------------------- | ---------- |
-| 1/26/2018  |	Introduction and AWS 101				| Codelab 1: Python  |
-| 2/2/2018   |	Object Storage: S3 						| Codelab 2: S3 |
-| 2/9/2018   |	Content Delivery Networks: CloudFront 	| Codelab 3: S3 + CloudFront |
+| 1/26/2018  |	Introduction and AWS 101				| [Codelab 1: Python](codelabs/codelab-01)  |
+| 2/2/2018   |	Object Storage: S3 						| [Codelab 2: S3](codelabs/codelab-02) |
+| 2/9/2018   |	Content Delivery Networks: CloudFront 	| [Codelab 3: S3 + CloudFront](codelabs/codelab-03) |
 | 2/16/2018  |  Compute 1: EC2							| Codelab 4: EC2  |
 | 2/23/2018  |	Compute 2: EC2							|            |
 | 3/2/2018   | 	Now You're Thinking with Queues: SQS	| Codelab 5: EC2 + SQS  |
