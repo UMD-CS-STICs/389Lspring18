@@ -76,7 +76,7 @@ To work with the CLI, you'll need to first create an IAM user via the AWS Consol
 
 ##### Testing the CLI
 
-If you haven't already done so, set up your local development environment. Follow the instructions here: ![Environment Setup](../../../env.md). Upon entering the final command, you will be prompted to give the keys you just obtained. Set `us-east-1` and `json` as the default region and output respectively.
+If you haven't already done so, set up your local development environment. Follow the instructions here: [Environment Setup](../../../env.md). Upon entering the final command, you will be prompted to give the keys you just obtained. Set `us-east-1` and `json` as the default region and output respectively.
 
 ```
 $ aws configure
@@ -116,7 +116,7 @@ Feel free to ask on Piazza if you have any trouble or questions about boto3 APIs
 
 ##### CLI Overview
 
-*This section relies on having the AWS cli installed, see ![Environment Setup](../../../env.md)*
+*This section relies on having the AWS cli installed, see [Environment Setup](../../../env.md)*
 
 The `aws` cli exposes commands for almost every service in the form of:
 
