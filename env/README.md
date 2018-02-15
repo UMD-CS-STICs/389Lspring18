@@ -32,7 +32,9 @@ If you are on Windows 10 and you don't already have the Linux subsystem installe
 
 > **If you are not on Windows 10**, you are going to want to just use Vagrant. There are some instructions [here](https://umd-cs-stics.gitbooks.io/cmsc389l-fall2017/content/lectures/lecture-01/codelab.html), from a previous offering of CMSC389L that used Vagrant.
 
-Once you have the Ubuntu app installed, you can just follow the Linux instructions above. All of the TAs use macOS, so let us know if we can improve these instructions at all. Much appreciated!
+Once you have the Ubuntu app installed, you'll likely need to create a new non-root user that you will login as. Check out these [instructions](https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-ubuntu-16-04).
+
+From here, you can just follow the Linux instructions above. All of the TAs use macOS, so let us know if we can improve these instructions at all. Any feedback here is much appreciated!
 
 #### Python
 
