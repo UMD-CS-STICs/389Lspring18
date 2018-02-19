@@ -132,7 +132,7 @@ You will be submitting:
 - Two other screenshots of `lat-test.sh` output on any two internet URLs (images, websites, etc.).
 - Screenshot of `lat-test.sh` output on canyon.jpg in CloudFront
 - Screenshot showing the invalidation command you used and its console output
-- 3-5 sentences explaining the trade-off associated with time duration of objects in the cache. Write this in a text file called `summary.txt`.
+- A short paragraph explaining the trade-off associated with time duration (or TTL) of objects in CloudFront. Write this in a text file called `summary.txt`.
 
 Submit this assignment to `codelab3` on the submit server. Upload a zipped directory containing the following files:
 
