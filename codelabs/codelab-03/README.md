@@ -91,11 +91,11 @@ $ ./lat-test.sh https://s3.amazonaws.com/cmsc389l-public/codelab-04/canyon.jpg
     - download: The average download speed that curl measured for the complete download. Bytes per second.
     - total: The total time, in seconds, that the full operation lasted.
 
-Don't be too surprised if it's several whole seconds (our image is nearly 7MB) . Unlike a ping request which simply tests reachability, this script includes server side and download time. More information about curl may be found on the [man page](https://curl.haxx.se/docs/manpage.html).
+Don't be too surprised if it's several whole seconds (our image is nearly 7MB). Unlike a ping request which simply tests reachability, this script includes server side and download time. More information about curl may be found on the [man page](https://curl.haxx.se/docs/manpage.html).
 
 ![lat-test-s3-1 Page](../../../media/codelabs/codelab-03/lat-test-s3-1.png)
 
-For comparison, try some other URLs in the script. If you use the link for the index file from codelab-02, the time should be on the order of .5 seconds (recall we used us-east-1 which is located in northern Virginia).
+For comparison, try some other URLs in the script. You can grab URLs from any websites only (like `./lat-test.sh https://en.wikipedia.org/wiki/Sydney`). If you use the link for the index file from codelab-02, the time should be on the order of .5 seconds (recall we used us-east-1 which is located in northern Virginia).
 
 #### CloudFront
 
@@ -128,9 +128,9 @@ Your assignment for this codelab is to reference the [documentation](https://doc
 ### Submission
 
 You will be submitting:
-1. Screenshot of lat-test.sh output on canyon.jpg in Sydney S3
-- Two other screenshots of lat-test.sh output on two different images from the internet.
-- Screenshot of lat-test.sh output on canyon.jpg in CloudFront
+1. Screenshot of `lat-test.sh` output on canyon.jpg in Sydney S3
+- Two other screenshots of `lat-test.sh` output on any two internet URLs (images, websites, etc.).
+- Screenshot of `lat-test.sh` output on canyon.jpg in CloudFront
 - Screenshot showing the invalidation command you used and its console output
 - 3-5 sentences explaining the trade-off associated with time duration of objects in the cache.
 
