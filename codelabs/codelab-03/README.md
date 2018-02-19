@@ -78,7 +78,7 @@ $ chmod +x lat-test.sh
 Now execute it but running:
 
 ```
-$ ./lat-test.sh
+$ ./lat-test.sh https://s3.amazonaws.com/cmsc389l-public/codelab-04/canyon.jpg
 ```
 
 - What is the output?
