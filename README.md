@@ -55,7 +55,7 @@ Keep in mind that once the final project is released, the length of the codelabs
 | 4/13/2018  |	Databases: DynamoDB 			        | Codelab 10: DynamoDB + Lambda  |
 | 4/20/2018  |	Microservices: ECS                    	| Codelab 11: ECS |
 | 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 12: Elasticsearch |
-| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 13: CloudFormation | 
+| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 13: CloudFormation |
 
 ## Final Project
 
@@ -88,7 +88,7 @@ Students will have access to AWS resources via the [AWS Free Tier](https://aws.a
 | instructor 		| Hours               													| Location |
 | ----------------- | --------------------------------------------------------------------- | -------- |
 | Colin King 		| Wednesday 1-2PM, Fridays 2-3PM, or [by appt](mailto:colink@umd.edu).   | CSIC 3107 (Sandbox)      |
-| Andrej Rasevic 	| TBD, or [by appt](mailto:arasevic@cs.umd.edu).				   		| TBD     |
+| Andrej Rasevic 	| Wednesday 1130AM-1230PM, Fridays 1130AM-1230PM, or [by appt](mailto:arasevic@cs.umd.edu).				   		| AV Williams 1124     |
 | Isaac Lockwood 	| Mondays 2-3PM, Thursdays 445-545PM or [by appt](mailto:ialock@terpmail.umd.edu).   					| ESJ 1204 Huddle Room      |
 
 ### Codelab Submission
