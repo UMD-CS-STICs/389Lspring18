@@ -31,3 +31,8 @@
 ### February 16th
 * [Slides](lectures/lecture-04/slides.md)
 * [Feedback](lectures/lecture-04/feedback.md)
+
+### February 23rd
+* [Slides](lectures/lecture-05/slides.md)
+* [Feedback](lectures/lecture-05/feedback.md)
+* [Codelab 4](codelabs/codelab-04/README.md)
