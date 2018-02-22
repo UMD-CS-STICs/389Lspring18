@@ -43,8 +43,12 @@ $ chmod 700 <keypairName.pem>
 ```
 
 ### Elastic IP
-Persistent Address
-<!-- to do real quick -->
+
+So, we now have an instance running on EC2. If we were to stop it from running though, we'd likely be assigned a new pubic IP address from amazon's pool. That's a bit problematic for a box serving content. Enter... Elastic IP (EIP), a static IPv4 address designed for cloud computing.
+
+In the EC2 console, navigate to "Elastic IPs". Click "Allocate new address". Now, right click and "Associate address", selecting your instance. That's it, you're done. Please note, Elastic IPs are free when associated with devices *in use*, but not so if an instance isn't running. To avoid hourly fees, do *release* addresses not in use.
+
+Further reading is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 
 <!-- NEED TO TRY CONFIGURING MY DOMAIN WITH Route53 BEFORE WRITING
 ### Your Domain
@@ -54,11 +58,9 @@ Register your own domain name at [namecheap.com](https://www.namecheap.com).
 
 ### SSH to EC2
 
-You will first need to get the IP address of your EC2 instance. Look for it in the "Public IPv4" column of the "Running Instances" table, or in the metadata list after selecting one of these instances.
+Having gotten a static IP address of your EC2 instance, we're ready to advance. *If you need to find it again, check the "Running Instances" table in the metadata list after selecting one of these instances.* Note that you can also use the DNS identifier in place of the IP address ("Public DNS (IPv4)").
 
-Note that you can also use the DNS identifier in place of the IP address ("Public DNS (IPv4)").
-
-![Instance Descriptions](../../../media/codelabs/codelab-04/description2.png)
+![Instance Descriptions](../../../media/codelabs/codelab-04/description.png)
 
 ```
 $ ssh -i <path to keypairName.pem file> ubuntu@<public IPv4 address>
@@ -108,7 +110,7 @@ Now, lets test to see if our instance is serving. Attempt to navigate to your ne
 
 ### Wordpress
 
-Now that we've got MySQL, we can create a database for WordPress to use and install. One way to do this would be to use PhpMyAdmin, but i couldn't figure it out so it wouldn't be right to ask you to. Instead, you have two options, [Sequel Pro](http://www.sequelpro.com) (Mac OS) and [MySYQL Workbench](http://www.mysql.com/products/workbench/) (Windows/Linux). Both are free.
+Since we've got MySQL, we can create a database for WordPress to use and install. One way to do this would be to use PhpMyAdmin, but i couldn't figure it out so it wouldn't be right to ask you to. Instead, you have two options, [Sequel Pro](http://www.sequelpro.com) (Mac OS) and [MySYQL Workbench](http://www.mysql.com/products/workbench/) (Windows/Linux). Both are free.
 
 Create a new connection in your DB client:
 - MySQL Host: 127.0.0.1
@@ -124,7 +126,7 @@ This example is from Sequel Pro
 
 Once connected, create a new database. You may name it whatever you like, but ensure your encoding is `utf8` and your collation is `utf8_general_ci`.
 
-*Optional recommendation: for security, consider creating a new user as well; one that only allows connections from localhost or 127.0.0.1 and has full scheama privileges but no admin privileges. This makes it harder for an adversary to do damage. Also, the root password wouldn't be in `wp-config.php`*
+*Optional recommendation: for security, consider creating a new user as well; one that only allows connections from localhost or 127.0.0.1 and has full schema privileges but no admin privileges. This makes it harder for an adversary to do damage. Also, the root password wouldn't be in `wp-config.php`*
 
 Now, it's back to the command line to deploy wordpress. Run the following commands in order. We're loading files into `/var/www/html` because that's where the server will host files by default.
 
@@ -166,7 +168,7 @@ Once you've completed the tutorial, you page should look something like this.
 
 ### Amazon Machine Image
 
-That was a lot of work to get our instance just the was we want it. As instructive as that process is, maybe we don't want to have to do that every time we need a webserver like this. Is there a way to take a 'snapshop' and save our setup? Yes, with an Amazon Machine Image (AMI). You've been using them already when launching an instance. `Ubuntu Server 16.04` is one of many such AMIs.
+That was a lot of work to get our instance just the was we want it. As instructive as that process is, maybe we don't want to have to do that every time we need a webserver like this. Is there a way to take a 'snapshop' and save our setup? Yes, with an Amazon Machine Image (AMI)! You've been using them already when launching an instance. `Ubuntu Server 16.04` is one of many such AMIs.
 
 Let's make our own. Using the AWS GUI, navigate to your list of EC2 instances. Select ("Actions" > "Image" > "Create Image")
 	
@@ -178,6 +180,11 @@ Create a new connection in your DB client:
 *note: This process for creating an AMI only works for instances that have an EBS volume as their root storage device. [Would you like to know more?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)*
 
 AMI creation time will vary, but should only be a few minutes for our task.
+
+<!-- 
+if you're not using a static ip, you may can update by modifying the DB
+
+update wp_options set option_value = replace(option_value, 'ec2-<old_ip>', 'ec2-<new_ip>') -->
 
 ### Wrapping Up
 
