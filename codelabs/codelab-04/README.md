@@ -81,7 +81,7 @@ To get this us up and running, we'll need Apache (HTTP Server), PHP (server-side
 ```
 ubuntu@ip-1-2-3-4:~$ sudo apt-get install lamp-server^
 ```
-You'll be prompted to create a password for the MySQL root user, do so and write it down; not leave it blank.
+You'll be prompted to create a password for the MySQL root user, do so and write it down; do not leave it blank.
 
 ![create-password](../../../media/codelabs/codelab-04/create-password.png)
 
