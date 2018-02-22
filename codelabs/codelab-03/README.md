@@ -57,7 +57,7 @@ Select your new object (again, you have to click the name itself). This page sim
 
 Copy the link and paste it in the URL bar of a new tab in your browser. The canyon should start loading, albeit slowly. Why so slow? Well, we did place it in a region half-way 'round the world. 
 
-Let's try to quantify that speed. Edit the last line in the included shell script `lat-test.sh`, using a command line text editor or IDE, and drop in the copied link. If you haven't already, enter your environment now by running:
+Let's try to quantify that speed. If you haven't already, enter your environment now by running:
 
 ```
  $ pipenv shell
@@ -130,8 +130,8 @@ Your assignment for this codelab is to reference the [documentation](https://doc
 You will be submitting:
 1. Screenshot of `lat-test.sh` output on canyon.jpg in Sydney S3
 - Two other screenshots of `lat-test.sh` output on any two internet URLs (images, websites, etc.).
-- Screenshot of `lat-test.sh` output on canyon.jpg in CloudFront
-- Screenshot showing the invalidation command you used and its console output
+- Screenshot of `lat-test.sh` output on canyon.jpg in CloudFront.
+- Screenshot showing the invalidation command you used and its console output.
 - A short paragraph explaining the trade-off associated with time duration (or TTL) of objects in CloudFront. Write this in a text file called `summary.txt`.
 
 Submit this assignment to `codelab3` on the submit server. Upload a zipped directory containing the following files:
