@@ -18,11 +18,11 @@ We'll be working heavily from the AWS GUI here, so go ahead and log in with your
 
 ### Launch an EC2 instance
 
-Launch an EC2 instance via the AWS GUI:
+Launch an Ubuntu Server 16.04 instance on EC2 via the AWS GUI:
 - AMI: Ubuntu Server 16.04 LTS 64-bit
 - Instance Type: t2.micro
 - Configuration Details: Use the defaults
-- Storage: **set Size to 16**
+- Storage: **8**
 - Tags: None
 - Security Group: See below
 - Review: Launch
@@ -41,6 +41,16 @@ Well also need to restrict the permissions of this file, which ends in `.pem`, s
 ```
 $ chmod 700 <keypairName.pem>
 ```
+
+### Elastic IP
+Persistent Address
+<!-- to do real quick -->
+
+<!-- NEED TO TRY CONFIGURING MY DOMAIN WITH Route53 BEFORE WRITING
+### Your Domain
+
+Register your own domain name at [namecheap.com](https://www.namecheap.com).
+-->
 
 ### SSH to EC2
 
@@ -64,13 +74,14 @@ First thing's first, now that we're on the box let's make sure everything is up 
 ubuntu@ip-1-2-3-4:~$ sudo apt-get update
 ```
 
-To get this us up and running, we'll need Apache (HTTP Server), PHP (server-side scripting), and MySQL (relational DBMS). Run the following command to install all three. You'll be prompted to create a password for the MySQL root user, do not leave it blank.
+To get this us up and running, we'll need Apache (HTTP Server), PHP (server-side scripting), and MySQL (relational DBMS). Run the following command to install all three. 
 
 ```
 ubuntu@ip-1-2-3-4:~$ sudo apt-get install lamp-server^
 ```
-<!--ubuntu@ip-1-2-3-4:~$ sudo service mysql start-->
+You'll be prompted to create a password for the MySQL root user, do so and write it down; not leave it blank.
 
+![create-password](../../../media/codelabs/codelab-04/create-password.png)
 
 <!-- TRIED THIS, SEQUEL PRO WORKED BETTER
 ```
@@ -89,51 +100,88 @@ sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 sudo apt-get install phpmyadmin php-mbstring php-gettext
 sudo service apache2 restart
 -->
+<!--ubuntu@ip-1-2-3-4:~$ sudo service mysql start-->
 
-Sequel Pro and MySYQL Workbench info
+Now, lets test to see if our instance is serving. Attempt to navigate to your new webserver by using either the DNS identifier or public ip address in your browser. You should see a default page stating "It works".
+
+![it-works](../../../media/codelabs/codelab-04/it-works.png)
+
+### Wordpress
+
+Now that we've got MySQL, we can create a database for WordPress to use and install. One way to do this would be to use PhpMyAdmin, but i couldn't figure it out so it wouldn't be right to ask you to. Instead, you have two options, [Sequel Pro](http://www.sequelpro.com) (Mac OS) and [MySYQL Workbench](http://www.mysql.com/products/workbench/) (Windows/Linux). Both are free.
+
+Create a new connection in your DB client:
+- MySQL Host: 127.0.0.1
+- Username: root
+- Password: <the one you wrote down earlier>
+- SSH Host: <public ip>
+- SSH User: ubuntu
+- SSH Key: <keyName.pem>
+	
+This example is from Sequel Pro
 
 ![pro-connection](../../../media/codelabs/codelab-04/pro-connection.png)
 
-commands for deploying wordpress
+Once connected, create a new database. You may name it whatever you like, but ensure your encoding is `utf8` and your collation is `utf8_general_ci`.
+
+*Optional recommendation: for security, consider creating a new user as well; one that only allows connections from localhost or 127.0.0.1 and has full scheama privileges but no admin privileges. This makes it harder for an adversary to do damage. Also, the root password wouldn't be in `wp-config.php`*
+
+Now, it's back to the command line to deploy wordpress. Run the following commands in order. We're loading files into `/var/www/html` because that's where the server will host files by default.
 
 ```
 ubuntu@ip-1-2-3-4:~$ cd /var/www/html
 ubuntu@ip-1-2-3-4:~$ sudo wget http://wordpress.org/latest.tar.gz
 ubuntu@ip-1-2-3-4:~$ sudo tar -zxvf latest.tar.gz
-ubuntu@ip-1-2-3-4:~$ mv wordpress/* .
-ubuntu@ip-1-2-3-4:~$  rm -rf wordpress
-ubuntu@ip-1-2-3-4:~$  rm -f latest.tar.gz
+ubuntu@ip-1-2-3-4:~$ sudo mv wordpress/* .
+ubuntu@ip-1-2-3-4:~$ sudo rm -rf wordpress
+ubuntu@ip-1-2-3-4:~$ sudo rm -f latest.tar.gz
+ubuntu@ip-1-2-3-4:~$ sudo service mysql start
+ubuntu@ip-1-2-3-4:~$ sudo service apache2 reload
 ```
 
-*note: you might consider changing the ownership/permissions of `/var/www/html` to allow for plugins or updates* <!--i had to manually create wp-config.php with copypasta to the command line-->
+Once again we'll, connect to your webserver via your browser. If you still see the "It works" page, try clearing your cache. This time to complete the "famous 5-minute tutorial" for WordPress.
 
-"famous 5-minute tutorial" should end with
+![lets-go](../../../media/codelabs/codelab-04/lets-go.png)
 
-![wordpress-success](../../../media/codelabs/codelab-04/wordpress-success.png)
+This is what you'll need.
 
-might look something like this
+![you-will-need](../../../media/codelabs/codelab-04/you-will-need.png)
+
+If you are unable to write the `wp-config.php` file, create one in `/var/www/html` via the command line.
+
+```
+ubuntu@ip-1-2-3-4:~$ cd /var/www/html
+ubuntu@ip-1-2-3-4:~$ sudo nano wp-config.php
+```
+
+and paste in the provided text
+
+![copypasta](../../../media/codelabs/codelab-04/copypasta.png)
+
+*note: you might need to change the ownership/permissions of `/var/www/html` to allow for plugins or updates* <!--i had to manually create wp-config.php with copypasta to the command line-->
+
+Once you've completed the tutorial, you page should look something like this.
 
 ![wordpress-default-page](../../../media/codelabs/codelab-04/wordpress-default-page.png)
 
-### Persistent State
-	Creating an AMI
+### Amazon Machine Image
+
+That was a lot of work to get our instance just the was we want it. As instructive as that process is, maybe we don't want to have to do that every time we need a webserver like this. Is there a way to take a 'snapshop' and save our setup? Yes, with an Amazon Machine Image (AMI). You've been using them already when launching an instance. `Ubuntu Server 16.04` is one of many such AMIs.
+
+Let's make our own. Using the AWS GUI, navigate to your list of EC2 instances. Select ("Actions" > "Image" > "Create Image")
 	
-<!-- to do -->
+Create a new connection in your DB client:
+- Image name: give it a unique name
+- Image description: optional, limited to 255 characters
+- No reboot: by default, EC2 shuts down the image to take its snapshots and then reboots; _If selected, data integrity cannot be guaranteed_
 	
-### Persistent Address
-	Elastic IP
+*note: This process for creating an AMI only works for instances that have an EBS volume as their root storage device. [Would you like to know more?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)*
 
-<!-- to do real quick -->
-
-<!-- NEED TO TRY CONFIGURING MY DOMAIN WITH Route53 BEFORE WRITING
-### Your Domain
-
-Register your own domain name at [namecheap.com](https://www.namecheap.com).
--->
+AMI creation time will vary, but should only be a few minutes for our task.
 
 ### Wrapping Up
 
-Make sure to stop ("Actions" > "Instance State" > "Strop") or terminate ("Actions" > "Instance State" > "Terminate") your EC2 instances when you are no longer using them, or else they will eat into your free credit.
+Make sure to stop ("Actions" > "Instance State" > "Stop") or terminate ("Actions" > "Instance State" > "Terminate") your EC2 instances when you are no longer using them, or else they will eat into your free credit.
 <!--
 Here are some [ideas](http://www.wpbeginner.com/beginners-guide/top-10-most-important-things-to-do-after-installing-wordpress/) for what to do with your site, now that it's up.
 -->
@@ -141,8 +189,10 @@ Here are some [ideas](http://www.wpbeginner.com/beginners-guide/top-10-most-impo
 
 There is no submission for this codelab. However, you'll be expected to understand the concepts covered in this codelab (not the commands -- just the concepts).
 
-<!--
-BEGIN LEGACY CODELAB
+
+
+
+<!--# LEGACY CODELAB-03
 
 ### Webserver on EC2
 
