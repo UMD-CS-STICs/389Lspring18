@@ -35,3 +35,7 @@
 ### February 16th
 * [Slides](lectures/lecture-04/slides.md)
 * [Feedback](lectures/lecture-04/feedback.md)
+
+### February 23rd
+* [Lecture Notes](lectures/lecture-05/README.md)
+* [Feedback](lectures/lecture-05/feedback.md)
