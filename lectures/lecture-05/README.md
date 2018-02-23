@@ -25,6 +25,8 @@ Inspect the disk storage:
 
 Create a simple HTML file:
 
+	$ mdkir web && cd web
+
 	$ echo "Hello World! From <your name>" > index.html
 
 OR
@@ -48,3 +50,35 @@ You can double check that it matches your IP address by [googling "What's my IP 
 Can you access your neighbors site?
 
 Attempt to navigate to my website via the IP address on the board. Does it still work?
+
+### Part 5: Long Running Tasks
+
+You can use the `&` to run commands in the background:
+
+	$ ping 8.8.8.8 &
+
+OR
+
+	$ sudo python3 -m http.server 80 &
+
+However, if you exit your shell then those commands stop.
+
+We can keep commands alive (aka ignore the shutdown signals) by using `nohup`:
+
+	$ nohup sudo python3 -m http.server 80 &
+
+If you exit, your server will continue to run!
+
+### Part 6: Second Web Server
+
+Let's run a second server on the same EC2 instance.
+
+Create a new folder `api` in the home directory:
+
+	$ mkdir ~/api && cd ~/api
+
+Create a different HTML file in that folder and run a web server on port 8000.
+
+	$ python3 -m http.server 8000
+
+What happens when you navigate to `http://<your ip address>:8000`? How do you fix this?
