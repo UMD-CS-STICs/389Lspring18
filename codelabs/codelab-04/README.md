@@ -1,18 +1,10 @@
 # Codelab 4: EC2
 
+### Overview
+
+Today, you'll be working with EC2 to set up and host a full [Wordpress server](https://wordpress.com/)! You'll be able to view and share it to friends with a domain of your choosing.
+
 ### Setup
-
-Use pipenv, as before:
-
-```
- $ pipenv shell
-```
-
-Make sure you have the proper dependencies from the `Pipfile` with the command:
-
-```
-$ pipenv install
-```
 
 We'll be working heavily from the AWS GUI here, so go ahead and log in with your account.
 
@@ -22,31 +14,22 @@ Launch an Ubuntu Server 16.04 instance on EC2 via the AWS GUI:
 - AMI: Ubuntu Server 16.04 LTS 64-bit
 - Instance Type: t2.micro
 - Configuration Details: Use the defaults
-- Storage: **8**
+- Storage: **8 GiB** (the default)
 - Tags: None
 - Security Group: See below
-- Review: Launch
-	- Key Pair: See below
+- Key Pair: Use your existing key pair
 
-For the security group, create a new security group and open SSH, HTTP to Anywhere. Go ahead and save this security group with a memorable name, so that you can use it again.
+For the security group, create a new security group and open SSH and HTTP to Anywhere. Go ahead and save this security group with a memorable name, so that you can use it again.
 
 ![Security Group](../../../media/codelabs/codelab-04/security-group2.png)
 
-For the key pair, create a new key pair. Choose a memorable name. Download the key pair, and do not lose it! Otherwise, you will have no way to access your instances (you'll have to kill + re-launch them).
-
-Place the key pair in the `keys/` directory in `codelab-04/`, so that it is easy to find (on MAC OS, the appropriate location is `~/.ssh`).
-
-Well also need to restrict the permissions of this file, which ends in `.pem`, so only the owner my read, write, and execute it. This is accomplished by running
-
-```
-$ chmod 700 <keypairName.pem>
-```
-
 ### Elastic IP
 
-So, we now have an instance running on EC2. If we were to stop it from running though, we'd likely be assigned a new pubic IP address from amazon's pool. That's a bit problematic for a box serving content. Enter... Elastic IP (EIP), a static IPv4 address designed for cloud computing.
+So, we now have an instance running on EC2. If we were to stop it from running though, we'd likely be assigned a new pubic IP address from amazon's pool of IP addresses ([they have quite a few](https://ip-ranges.amazonaws.com/ip-ranges.json)). As we talked about in class, internet devices are assigned a Dynamic IP address, because of the limited size of the IPv4 address space. If we want to give a instance a Static IP address (guaranteeing that it won't change), then we can get one using AWS EIP (Elastic IP). After all, we want to have an IP address that we can share (or eventually map a domain name to).
 
-In the EC2 console, navigate to "Elastic IPs". Click "Allocate new address". Now, right click and "Associate address", selecting your instance. That's it, you're done. Please note, Elastic IPs are free when associated with devices *in use*, but not so if an instance isn't running. To avoid hourly fees, do *release* addresses not in use.
+In the [EC2 console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1), navigate to "Elastic IPs". Click "Allocate new address". Now, right click the EIP and "Associate address", selecting your instance. That's it, you're done. Please note, Elastic IPs are free when associated with devices *in use*, but not if an instance isn't running. To avoid hourly fees, do *release* addresses not in use.
+
+Once you associate the address, notice that the Public IP of your instance has changed to the EIP you just allocated.
 
 Further reading is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 
@@ -58,9 +41,11 @@ Register your own domain name at [namecheap.com](https://www.namecheap.com).
 
 ### SSH to EC2
 
-Having gotten a static IP address of your EC2 instance, we're ready to advance. *If you need to find it again, check the "Running Instances" table in the metadata list after selecting one of these instances.* Note that you can also use the DNS identifier in place of the IP address ("Public DNS (IPv4)").
+Having gotten a static IP address of your EC2 instance, we're ready to advance. Note that you can also use the DNS identifier in place of the IP address ("Public DNS (IPv4)").
 
 ![Instance Descriptions](../../../media/codelabs/codelab-04/description.png)
+
+Go ahead and SSH onto your instance. If you run into any problems, see [this section of the EC2 SSH tutorial](../../lectures/lecture-04/ssh.md#common-problems).
 
 ```
 $ ssh -i <path to keypairName.pem file> ubuntu@<public IPv4 address>
@@ -68,7 +53,7 @@ $ ssh -i <path to keypairName.pem file> ubuntu@<public IPv4 address>
 
 There's a lot of useful information here, so take a look around. For example, you can check the rules defined by your security group, get public IP addresses, check which keypair you configured for this instance and you can check on the state of the instance (whether it has finished launching or not, for example).
 
-### Webserver on EC2
+### Basic LAMP Server on EC2
 
 First thing's first, now that we're on the box let's make sure everything is up to date
 
@@ -76,11 +61,12 @@ First thing's first, now that we're on the box let's make sure everything is up 
 ubuntu@ip-1-2-3-4:~$ sudo apt-get update
 ```
 
-To get this us up and running, we'll need Apache (HTTP Server), PHP (server-side scripting), and MySQL (relational DBMS). Run the following command to install all three. 
+We're going to launch a basic LAMP server (Linux, Apache, MySQL, PHP). We're running Ubuntu (a flavor of Linux), but we'll need to install Apache (an HTTP Server), PHP (server-side scripting language), and MySQL (relational DBMS). Run the following command to install all three:
 
 ```
 ubuntu@ip-1-2-3-4:~$ sudo apt-get install lamp-server^
 ```
+
 You'll be prompted to create a password for the MySQL root user, do so and write it down; do not leave it blank.
 
 ![create-password](../../../media/codelabs/codelab-04/create-password.png)
@@ -104,82 +90,96 @@ sudo service apache2 restart
 -->
 <!--ubuntu@ip-1-2-3-4:~$ sudo service mysql start-->
 
-Now, lets test to see if our instance is serving. Attempt to navigate to your new webserver by using either the DNS identifier or public ip address in your browser. You should see a default page stating "It works".
+Now, let's test to see if our LAMP server is working. Attempt to navigate to your new web server by using either the DNS identifier or public IP address in your browser. You should see a default page stating "It works".
 
 ![it-works](../../../media/codelabs/codelab-04/it-works.png)
 
+If you don't see this, then double-check that your security groups opens up port 80.
+
 ### Wordpress
 
-Since we've got MySQL, we can create a database for WordPress to use and install. One way to do this would be to use PhpMyAdmin, but i couldn't figure it out so it wouldn't be right to ask you to. Instead, you have two options, [Sequel Pro](http://www.sequelpro.com) (Mac OS) and [MySYQL Workbench](http://www.mysql.com/products/workbench/) (Windows/Linux). Both are free.
+Wordpress stores its content in a MySQL database. We now have MySQL installed on your EC2 instance, so let's connect to it using a database client. Depending on your OS, we'd recommend using [Sequel Pro](http://www.sequelpro.com) (Mac OS) and [MySYQL Workbench](http://www.mysql.com/products/workbench/) (Windows/Linux). Both are free.
 
 Create a new connection in your DB client:
-- MySQL Host: 127.0.0.1
-- Username: root
-- Password: <the one you wrote down earlier>
-- SSH Host: <public ip>
-- SSH User: ubuntu
-- SSH Key: <keyName.pem>
+- MySQL Host: _127.0.0.1_
+- Username: _root_
+- Password: _the one you wrote down earlier_
+- SSH Host: _the public IP_
+- SSH User: _ubuntu_
+- SSH Key: _Path to your `your-ssh-key.pem`_
 	
 This example is from Sequel Pro
 
-![pro-connection](../../../media/codelabs/codelab-04/pro-connection.png)
+![pro-connection](../../../media/codelabs/codelab-04/sequel-pro.png)
 
-Once connected, create a new database. You may name it whatever you like, but ensure your encoding is `utf8` and your collation is `utf8_general_ci`.
+Now you can see the MySQL database running on your EC2 server. Let's create a database for Wordpress to use. You may name it whatever you like, but ensure your encoding is `utf8` and your collation is `utf8_general_ci`.
 
-*Optional recommendation: for security, consider creating a new user as well; one that only allows connections from localhost or 127.0.0.1 and has full schema privileges but no admin privileges. This makes it harder for an adversary to do damage. Also, the root password wouldn't be in `wp-config.php`*
+![Create Database](../../../media/codelabs/codelab-04/create-database.png)
 
-Now, it's back to the command line to deploy wordpress. Run the following commands in order. We're loading files into `/var/www/html` because that's where the server will host files by default.
+*Note: for security, you generally want to create multiple users on your server, each with limited permissions ("[The Principle of Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege)"). In this case, you'd likely have a `mysql` user who is the only user who can access your database, but which can't access anything else on your server. Therefore, if your `mysql` user was compromised, the surface area for an attacker to wreak havoc on your server is limited. We're instead using the root user.*
+
+Now, it's back to the command line to deploy Wordpress. Run the following commands in order. We're loading files into `/var/www/html` because that's where the Wordpress server will host files by default.
 
 ```
 ubuntu@ip-1-2-3-4:~$ cd /var/www/html
 ubuntu@ip-1-2-3-4:~$ sudo wget http://wordpress.org/latest.tar.gz
 ubuntu@ip-1-2-3-4:~$ sudo tar -zxvf latest.tar.gz
 ubuntu@ip-1-2-3-4:~$ sudo mv wordpress/* .
-ubuntu@ip-1-2-3-4:~$ sudo rm -rf wordpress
-ubuntu@ip-1-2-3-4:~$ sudo rm -f latest.tar.gz
+ubuntu@ip-1-2-3-4:~$ sudo rm -rf wordpress latest.tar.gz index.html
 ubuntu@ip-1-2-3-4:~$ sudo service mysql start
 ubuntu@ip-1-2-3-4:~$ sudo service apache2 reload
 ```
 
-Once again we'll, connect to your webserver via your browser. If you still see the "It works" page, try clearing your cache. This time to complete the "famous 5-minute tutorial" for WordPress.
+Once again we'll, connect to your web server via your browser. You should now see the following Wordpress page! If you still see the "It works" page, try force reloading (`Shift-Cmd-R`, etc.).
 
 ![lets-go](../../../media/codelabs/codelab-04/lets-go.png)
 
-This is what you'll need.
+Great! Let's set up Wordpress. You nearly have your very own blog running, hosted on EC2.
 
-![you-will-need](../../../media/codelabs/codelab-04/you-will-need.png)
+Click "Let's go" and then fill in the following information. You'll need the name of the database you created earlier and the database password. The username is "root". Everything else you can leave as the default.
 
-If you are unable to write the `wp-config.php` file, create one in `/var/www/html` via the command line.
+![you-will-need](../../../media/codelabs/codelab-04/wordpress-config.png)
+
+Wordpress doesn't have the permissions to write the `wp-config.php` file, so go ahead and create one in `/var/www/html` via the command line.
 
 ```
 ubuntu@ip-1-2-3-4:~$ cd /var/www/html
 ubuntu@ip-1-2-3-4:~$ sudo nano wp-config.php
 ```
 
-and paste in the provided text
+Paste in the provided text.
 
 ![copypasta](../../../media/codelabs/codelab-04/copypasta.png)
 
-*note: you might need to change the ownership/permissions of `/var/www/html` to allow for plugins or updates* <!--i had to manually create wp-config.php with copypasta to the command line-->
+Go ahead and configure your blog however you like (site name, username, etc.). You'll want to remember that username/password so that you can log into the Wordpress Admin page.
 
-Once you've completed the tutorial, you page should look something like this.
+Now, you can go to the Admin page at `http://<your-ip-address>/wp-admin/`) to create posts and manage the blog. You can go to `http://<your-ip-address>/` to view the blog itself.
+
+If everything worked, your page should look something like this!
 
 ![wordpress-default-page](../../../media/codelabs/codelab-04/wordpress-default-page.png)
 
 ### Amazon Machine Image
 
-That was a lot of work to get our instance just the was we want it. As instructive as that process is, maybe we don't want to have to do that every time we need a webserver like this. Is there a way to take a 'snapshop' and save our setup? Yes, with an Amazon Machine Image (AMI)! You've been using them already when launching an instance. `Ubuntu Server 16.04` is one of many such AMIs.
+That was a lot of work to get our instance just the way we want it!
 
-Let's make our own. Using the AWS GUI, navigate to your list of EC2 instances. Select ("Actions" > "Image" > "Create Image")
-	
-Create a new connection in your DB client:
-- Image name: give it a unique name
-- Image description: optional, limited to 255 characters
-- No reboot: by default, EC2 shuts down the image to take its snapshots and then reboots; _If selected, data integrity cannot be guaranteed_
-	
-*note: This process for creating an AMI only works for instances that have an EBS volume as their root storage device. [Would you like to know more?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)*
+As instructive as that process is, we probably don't want to have to do that every time we want to launch a Wordpress blog. Is there a way to take a 'snapshot' and save our setup? Yes, with a custom Amazon Machine Image (AMI)! You've already been using custom AMIs, specifically a custom AMI that comes pre-configured with Ubuntu.
 
-AMI creation time will vary, but should only be a few minutes for our task.
+Let's make our own. Using the AWS Management Console, navigate to your list of EC2 instances. Select ("Actions" > "Image" > "Create Image")
+	
+Configure the new image with a name and description, so that you can tell what the AMI is. AMI creation time will vary, but should only be a few minutes for our task.
+
+Now that you have an AMI created, go ahead and launch it. Navigate to the "AMIs" section here:
+
+![AMI section](../../../media/codelabs/codelab-04/amis.png)
+
+Click "Launch", which will take you to the EC2 launch wizard. Make sure to set the security group to the same security group you used earlier, but otherwise all of the settings should be the same as before.
+
+Once that instance launches, browse to the public IP address of your new instance in your browser. It just works!
+
+You can de-allocate the EIP from your previous instance and allocate it to the new instance. Once you do this, your EIP will now forward traffic to your new instance.
+
+There's a lot of neat things can do with AMIs. You can even sell your AMIs on a marketplace! Feel free to read up more on AMIs [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
 
 <!-- 
 if you're not using a static ip, you may can update by modifying the DB
