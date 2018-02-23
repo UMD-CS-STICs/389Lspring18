@@ -6,12 +6,9 @@
 * [Environment Setup](env/README.md)
 * [Resources](resources/README.md)
 
-### Setting Up EC2
-* [Tutorial](EC2/README.md)
-
-### Connecting to EC2 via SSH
-
-* [Tutorial](EC2/SSH.md)
+### EC2 Tutorials
+* [Setting up EC2](lectures/lecture-04/setup.md)
+* [Connecting via SSH](lectures/lecture-04/ssh.md)
 
 ### Final Project
 
