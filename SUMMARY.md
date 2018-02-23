@@ -6,6 +6,10 @@
 * [Environment Setup](env/README.md)
 * [Resources](resources/README.md)
 
+### EC2 Tutorials
+* [Setting up EC2](lectures/lecture-04/setup.md)
+* [Connecting via SSH](lectures/lecture-04/ssh.md)
+
 ### Final Project
 
 * [Final Project](final-project/README.md)
@@ -33,6 +37,7 @@
 * [Feedback](lectures/lecture-04/feedback.md)
 
 ### February 23rd
-* [Slides](lectures/lecture-05/slides.md)
+
+* [Lecture Notes](lectures/lecture-05/README.md)
 * [Feedback](lectures/lecture-05/feedback.md)
 * [Codelab 4](codelabs/codelab-04/README.md)
