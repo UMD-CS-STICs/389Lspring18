@@ -159,6 +159,20 @@ If everything worked, your page should look something like this!
 
 ![wordpress-default-page](../../../media/codelabs/codelab-04/wordpress-default-page.png)
 
+#### First post
+
+While we're here, let's put sometime up to show we can. From the dashboard, navigate to the new post page.
+
+![navigate](../../../media/codelabs/codelab-04/navigate.png)
+
+Use your name as the title, fill the body with arbitrary content, and post.
+
+![new-post](../../../media/codelabs/codelab-04/new-post.png)
+
+View your page; it should now be updated!
+
+![verified-site-example](../../../media/codelabs/codelab-04/verified-site-example.png)
+
 ### Amazon Machine Image
 
 That was a lot of work to get our instance just the way we want it!
@@ -188,11 +202,22 @@ update wp_options set option_value = replace(option_value, 'ec2-<old_ip>', 'ec2-
 
 ### Wrapping Up
 
-Make sure to stop ("Actions" > "Instance State" > "Stop") or terminate ("Actions" > "Instance State" > "Terminate") your EC2 instances when you are no longer using them, or else they will eat into your free credit.
+Leave your content up for us to verify. Before starting the next codelab, be sure to stop 
+("Actions" > "Instance State" > "Stop") 
+or terminate 
+("Actions" > "Instance State" > "Terminate") 
+your EC2 instances (if you are no longer using them); else they will eat into your free credit.
 <!--
 Here are some [ideas](http://www.wpbeginner.com/beginners-guide/top-10-most-important-things-to-do-after-installing-wordpress/) for what to do with your site, now that it's up.
 -->
 ### Submission
 
-There is no submission for this codelab. However, you'll be expected to understand the concepts covered in this codelab (not the commands -- just the concepts).
+You will be submitting a text file called `ip.txt`. 
+
+Submit this assignment to `codelab4` on the submit server. Upload a zipped directory with the file:
+
+```
+<directory id>.zip
+	ip.txt
+```
 
