@@ -29,7 +29,7 @@ For the security group, create a new security group and open SSH and HTTP to Any
 
 ### Elastic IP
 
-So, we now have an instance running on EC2. If we were to stop it from running though, we'd likely be assigned a new pubic IP address from amazon's pool of IP addresses ([they have quite a few](https://ip-ranges.amazonaws.com/ip-ranges.json)). As we talked about in class, internet devices are assigned a Dynamic IP address, because of the limited size of the IPv4 address space. If we want to give a instance a Static IP address (guaranteeing that it won't change), then we can get one using AWS EIP (Elastic IP). After all, we want to have an IP address that we can share (or eventually map a domain name to).
+So, we now have an instance running on EC2. If we were to stop it from running though, we'd likely be assigned a new pubic IP address from amazon's pool of IP addresses ([they have quite a few](https://ip-ranges.amazonaws.com/ip-ranges.json)). As we talked about in class, internet devices are assigned a Dynamic IP address, because of the limited size of the IPv4 address space. If we want to give a instance a Static IP address (guaranteeing that it won't change), then we can get one using AWS Elastic IP (EIP). After all, we want to have an IP address that we can share (or eventually map a domain name to).
 
 In the [EC2 console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1), navigate to "Elastic IPs". Click "Allocate new address". Now, right click the EIP and "Associate address", selecting your instance. That's it, you're done. Please note, Elastic IPs are free when associated with devices *in use*, but not if an instance isn't running. To avoid hourly fees, do *release* addresses not in use.
 
@@ -206,17 +206,19 @@ update wp_options set option_value = replace(option_value, 'ec2-<old_ip>', 'ec2-
 
 ### Wrapping Up
 
-Leave your content up for us to verify. Before starting the next codelab, be sure to stop
+Leave your content up for us to verify. We'll be looking for your post at an EIP address you will submit.
+
+If you are running any other EC2 instances that you are no longer using, be sure to stop
 ("Actions" > "Instance State" > "Stop")
 or terminate
 ("Actions" > "Instance State" > "Terminate")
-your EC2 instances (if you are no longer using them); else they will eat into your free credit.
+them; else they will eat into your free credit.
 <!--
 Here are some [ideas](http://www.wpbeginner.com/beginners-guide/top-10-most-important-things-to-do-after-installing-wordpress/) for what to do with your site, now that it's up.
 -->
 ### Submission
 
-You will be submitting a text file called `ip.txt`.
+You will be submitting a text file called `ip.txt` containing just your Elastic IP address.
 
 Submit this assignment to `codelab4` on the submit server. Upload a zipped directory with the file:
 
