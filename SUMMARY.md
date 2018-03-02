@@ -41,3 +41,7 @@
 * [Lecture Notes](lectures/lecture-05/README.md)
 * [Feedback](lectures/lecture-05/feedback.md)
 * [Codelab 4](codelabs/codelab-04/README.md)
+
+### March 1st
+
+* [Codelab 5](codelabs/codelab-05/README.md)

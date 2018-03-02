@@ -1,9 +1,9 @@
 import argparse
-import boto3
-from os import listdir
-from os.path import isfile, isdir, join
 import json
+from os import listdir
+from os.path import isdir, isfile, join
 
+import boto3
 from config import SQS_QUEUE_NAME
 
 sqs = boto3.resource('sqs')
@@ -38,4 +38,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-send_messages(SQS_QUEUE_NAME, args.bucket, args.keys, args.height, args.width)
+    send_messages(SQS_QUEUE_NAME, args.bucket,
+                  args.keys, args.height, args.width)

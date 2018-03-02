@@ -1,3 +1,4 @@
+# TODO: change me!
 USERNAME = 'colink'
 
 # SQS

@@ -1,12 +1,12 @@
 import argparse
-import boto3
 import json
+from os.path import basename, join, splitext
 
-from os.path import join, basename, splitext
+import boto3
+
+from config import S3_OUTPUT_BUCKET, SQS_QUEUE_NAME
 from PIL import Image, ImageOps
-
-from config import SQS_QUEUE_NAME, S3_OUTPUT_BUCKET
-from utils import upload_s3_file, download_s3_file
+from utils import download_s3_file, upload_s3_file
 
 sqs = boto3.resource('sqs')
 s3 = boto3.resource('s3')
@@ -45,7 +45,8 @@ def run(local_originals_dir, local_thumbnails_dir):
         local_originals_dir (string): Relative directory path to temporarily store original image files from S3.
         local_thumbnails_dir (string): Relative directory path to temporarily store thumbnail image files before uploading to S3.
     """
-    # TODO(you)
+    # TODO: poll the SQS queue (SQS_QUEUE_NAME) for a message and then generate the thumbnail + store in S3.
+    # Hint: There's a handy generate_thumbnail() method above.
     pass
 
 
@@ -59,4 +60,4 @@ if __name__ == '__main__':
     local_originals_dir = join(args.tmp, 'originals')
     local_thumbnails_dir = join(args.tmp, 'thumbnails')
 
-run(local_originals_dir, local_thumbnails_dir)
+    run(local_originals_dir, local_thumbnails_dir)

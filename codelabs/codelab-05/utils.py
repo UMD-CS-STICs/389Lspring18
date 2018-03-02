@@ -1,9 +1,9 @@
-import botocore
-import boto3
 import json
 import time
-
 from os.path import basename, join
+
+import boto3
+import botocore
 
 from config import *
 
@@ -27,7 +27,8 @@ def initialize_queue(queue_name, dlq_name):
     Returns:
         SQS.Queue object of the SQS queue that was created.
     """
-    # TODO(you)
+    # TODO: Use boto3 to create the two SQS queues you need.
+    # (Everything else can be left alone in this file.)
     pass
 
 
@@ -201,4 +202,4 @@ def _wait_on_server(instance):
 
     instance.reload()
     print('Instance {}: running ({})'.format(
-instance.id, instance.public_ip_address))
+        instance.id, instance.public_ip_address))

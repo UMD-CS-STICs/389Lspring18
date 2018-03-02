@@ -2,11 +2,12 @@
 
 import argparse
 import time
-
 from os.path import join
 
 from config import *
-from utils import initialize_queue, initialize_bucket, upload_s3_file, initialize_instance_profile, initialize_ssh_security_group, initilize_server
+from utils import (initialize_bucket, initialize_instance_profile,
+                   initialize_queue, initialize_ssh_security_group,
+                   initilize_server, upload_s3_file)
 
 
 def setup(args):
@@ -14,6 +15,7 @@ def setup(args):
 
     # Create an SQS queue with a Dead-Letter queue for thumbnailing requests.
     if args.queue or args.all:
+        # TODO: implement initialize_queue()
         queue = initialize_queue(SQS_QUEUE_NAME, DLQ_NAME)
         print('SQS Queue: {}'.format(queue.url))
 
@@ -77,4 +79,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-setup(args)
+    setup(args)
