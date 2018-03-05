@@ -89,7 +89,7 @@ Students will have access to AWS resources via the [AWS Free Tier](https://aws.a
 | ----------------- | --------------------------------------------------------------------- | -------- |
 | Colin King 		| Wednesday 1-2PM, Fridays 2-3PM, or [by appt](mailto:colink@umd.edu).   | CSIC 3107 (Sandbox)      |
 | Andrej Rasevic 	| Wednesdays 11:30AM-12:30PM, Fridays 11:30AM-12:30PM, or [by appt](mailto:arasevic@cs.umd.edu).				   		| AV Williams 1124     |
-| Isaac Lockwood 	| Mondays 2-3PM, Thursdays 445-545PM or [by appt](mailto:ialock@terpmail.umd.edu).   					| ESJ 1204 Huddle Room      |
+| Isaac Lockwood 	| Mondays 1-2PM, Thursdays 445-545PM or [by appt](mailto:ialock@terpmail.umd.edu).   					| ESJ 1204 Huddle Room      |
 
 ### Codelab Submission
 
