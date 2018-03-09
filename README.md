@@ -109,7 +109,13 @@ Up to one in-class worksheet may be dropped, for any reason. If you can document
 
 ### Course Staff Communications
 
-Students can interact with the instructors in two ways: in-person during office hours and online via Piazza. Email should only be used for emergencies and not class related questions (e.g., codelabs).
+Students can get in contact with the instructors in-person during office hours or online via Piazza. Email should only be used for emergencies and not class related questions (e.g., codelabs).
+
+If you need to reach us directly, we recommend sending a private message on Piazza, but you can also email any of us:
+- Andrej Rasevic: [arasevic@terpmail.umd.edu](mailto:arasevic@terpmail.umd.edu)
+- Colin King: [colink@umd.edu](mailto:colink@umd.edu)
+- Dr. Neil Spring: [nspring@cs.umd.edu](mailto:nspring@cs.umd.edu)
+- Isaac Lockwood: [ialock@terpmail.umd.edu](mailto:ialock@terpmail.umd.edu)
 
 ### Excused Absence and Academic Accommodations
 
