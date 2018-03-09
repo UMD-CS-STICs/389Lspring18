@@ -2,7 +2,6 @@ import argparse
 import time
 
 import boto3
-from playsound import playsound
 
 # Get the service resource
 sqs = boto3.resource('sqs')
@@ -48,7 +47,7 @@ def main(args):
                 message.delete()
                 print(" [Deletion Request Sent]")
             else:
-                print("")
+                print(" [No Deletion Request Sent!]")
 
 
 if __name__ == '__main__':
@@ -61,10 +60,6 @@ if __name__ == '__main__':
     parser.add_argument(
         "-d", "--delete", default=False,
         help="whether to send delete request for received message from queue or not.", action='store_true'
-    )
-    parser.add_argument(
-        "-p", "--play-sound", type=bool, default=False,
-        help="whether to play audio or not. Only tested in Mac environment."
     )
     args = parser.parse_args()
 

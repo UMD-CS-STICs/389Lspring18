@@ -11,16 +11,38 @@ $ pipenv shell
 ...
 ```
 
-Locally, go ahead and run the message processor:
+### Processing Messages
+
+#### No Deletion Request
 
 ```
-% python process-mesages.py
+$ python process-mesages.py
 ...
 ```
 
-### Posting Messages
+#### With Deletion Requests
 
+```
+$ python process-mesages.py --delete
+...
+```
 
 ### Recreating this Demo
 
-You can perform this demo with your own account. You'll need to create a standard SQS queue and then update `add-message.py` and `process-messages.py` with your AWS account id and the name of the queue you created. (You won't have write access to our queue, so you )
+If you want, you can recreate this demo outside of class to play around with SQS queues.
+
+You'll need to create a standard SQS queue and then update `add-message.py` and `process-messages.py` with your AWS account id and the name of the queue you created.
+
+Then, you can post messages as follows:
+
+```
+$ python add-messages.py
+...
+```
+
+Or multiple at once:
+
+```
+$ python add-messages.py -n=10
+...
+```
