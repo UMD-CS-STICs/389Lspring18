@@ -2,34 +2,7 @@ import argparse
 import time
 
 import boto3
-# For Colin!!!!
 from playsound import playsound
-
-
-def countdown_to_delete_message(t):
-    while t:
-        mins, secs = divmod(t, 60)
-        timeformat = '{:02d}:{:02d}'.format(mins, secs)
-        print(timeformat, end='\r')
-        time.sleep(1)
-        t -= 1
-
-
-parser = argparse.ArgumentParser(
-    description='Process message from an existing queue assuming you have read access.')
-parser.add_argument(
-    "-t", "--time-until-delete", type=int, default=2,
-    help="time in seconds until a delete request for processed message is sent."
-)
-parser.add_argument(
-    "-d", "--delete", type=bool, default=False,
-    help="whether to send delete request for received message from queue or not."
-)
-parser.add_argument(
-    "-p", "--play-sound", type=bool, default=False,
-    help="whether to play audio or not. Only tested in Mac environment."
-)
-args = parser.parse_args()
 
 # Get the service resource
 sqs = boto3.resource('sqs')
@@ -40,30 +13,59 @@ queue = sqs.get_queue_by_name(
     QueueOwnerAWSAccountId='800593953112'
 )
 
-# Process message by printing out body
-# Note: receive_messages retuns a list and by default grabs a single message
-message = queue.receive_messages()[0]
 
-# Print message body to console
-print("The message received has the following body:")
-print(message.body)
-if args.play_sound:
-    playsound("sounds/ferraris.mp3")
-# This sound can be muted by your terminal setting even though it is playing
-else:
-    print('\a')
-print("\n*********************************")
+def format_time(t):
+    mins, secs = divmod(t, 60)
+    return '{:02d}:{:02d}'.format(mins, secs)
 
-# Print timer to console until message is deleted
-countdown_to_delete_message(args.time_until_delete)
 
-if args.delete:
-    message.delete()
-    print("sent request to delete message")
-    if args.play_sound:
-        playsound("sounds/deleted.mp3")
-else:
-    print("No request to delete message")
+def countdown_to_delete_message(body, t):
+    total_time = format_time(t)
+    print('')
+    while t:
+        print(
+            f"\rMessage Received: \"{body}\" ({format_time(t)}/{total_time})", end='')
+        time.sleep(1)
+        t -= 1
 
-    # Let the queue know that the message is processed
-    # message.delete()
+
+def main(args):
+    # Listen for messages indefinitely
+    while True:
+        # Returns either 0 or 1 SQS message.
+        messages = queue.receive_messages(
+            MaxNumberOfMessages=1, WaitTimeSeconds=2)
+        if len(messages) == 0:
+            print("\nNo messages found...")
+        else:
+            # Process message by printing out body
+            message = messages[0]
+
+            # Print timer to console until message is deleted
+            countdown_to_delete_message(message.body, args.time_until_delete)
+
+            if args.delete:
+                message.delete()
+                print(" [Deletion Request Sent]")
+            else:
+                print("")
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Process message from an existing queue assuming you have read access.')
+    parser.add_argument(
+        "-t", "--time-until-delete", type=int, default=2,
+        help="time in seconds until a delete request for processed message is sent."
+    )
+    parser.add_argument(
+        "-d", "--delete", default=False,
+        help="whether to send delete request for received message from queue or not.", action='store_true'
+    )
+    parser.add_argument(
+        "-p", "--play-sound", type=bool, default=False,
+        help="whether to play audio or not. Only tested in Mac environment."
+    )
+    args = parser.parse_args()
+
+    main(args)
