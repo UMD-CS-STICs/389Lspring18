@@ -1,8 +1,11 @@
 import argparse
-import boto3
 import time
+
+import boto3
+
 # For Colin!!!!
 from playsound import playsound
+
 
 def countdown_to_delete_message(t):
     while t:
@@ -13,7 +16,8 @@ def countdown_to_delete_message(t):
         t -= 1
 
 
-parser = argparse.ArgumentParser(description='Process message from an existing queue assuming you have read access.')
+parser = argparse.ArgumentParser(
+    description='Process message from an existing queue assuming you have read access.')
 parser.add_argument(
     "-t", "--time-until-delete", type=int, default=2,
     help="time in seconds until a delete request for processed message is sent."
@@ -46,7 +50,7 @@ print("The message received has the following body:")
 print(message.body)
 if args.play_sound:
     playsound("ferraris.mp3")
-# This sound can be muted by your terminal setting even though it is playing    
+# This sound can be muted by your terminal setting even though it is playing
 else:
     print('\a')
 print("\n*********************************")
@@ -55,14 +59,12 @@ print("\n*********************************")
 countdown_to_delete_message(args.time_until_delete)
 
 if args.delete:
-   message.delete()
-   print("sent request to delete message")
-   if args.play_sound:
-       playsound("deleted.mp3")
+    message.delete()
+    print("sent request to delete message")
+    if args.play_sound:
+        playsound("deleted.mp3")
 else:
     print("No request to delete message")
 
-
-
     # Let the queue know that the message is processed
-   # message.delete()
+    # message.delete()
