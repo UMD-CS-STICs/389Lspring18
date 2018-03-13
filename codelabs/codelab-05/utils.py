@@ -2,9 +2,9 @@ import json
 import time
 from os.path import basename, join
 
-import boto3
 import botocore
 
+import boto3
 from config import *
 
 s3 = boto3.resource('s3')
@@ -152,7 +152,7 @@ def initialize_ssh_security_group(security_group):
 
 def initilize_server(security_group, keypair=None):
     """Initializes an Ubuntu 16.04 t2.micro for the thumbnailer.
-    The instance is configured with a "codelab-04" tag to make it easy to find and clean up. It also has the previously generated instance profile attached, along with the SSH security group. It will execute the setup.sh script on launch as user data.
+    The instance is configured with a "codelab-05" tag to make it easy to find and clean up. It also has the previously generated instance profile attached, along with the SSH security group. It will execute the setup.sh script on launch as user data.
     Args:
         security_group (string): Name of the SSH security group to create.
         keypair (string): Name of the keypair to associate with the instance. If None, no keypair is used.

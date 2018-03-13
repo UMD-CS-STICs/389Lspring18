@@ -24,15 +24,15 @@ Your assignment will be to complete the SQS portions of this service. I'll detai
 
 Your service will be able to take images from an S3 bucket, like this one:
 
-![Full size canyon shot](https://s3.amazonaws.com/cmsc389l-public/codelab-04/canyon.jpg)
+![Full size canyon shot](https://s3.amazonaws.com/cmsc389l-public/codelab-05/canyon.jpg)
 
-> https://s3.amazonaws.com/cmsc389l-public/codelab-04/canyon.jpg
+> https://s3.amazonaws.com/cmsc389l-public/codelab-05/canyon.jpg
 
 And generate a thumbnail just like this:
 
-![400x400 thumbnail canyon shot](https://s3.amazonaws.com/cmsc389l-public/codelab-04/output/canyon-400x400.jpg)
+![400x400 thumbnail canyon shot](https://s3.amazonaws.com/cmsc389l-public/codelab-05/output/canyon-400x400.jpg)
 
-> https://s3.amazonaws.com/cmsc389l-public/codelab-04/output/canyon-400x400.jpg
+> https://s3.amazonaws.com/cmsc389l-public/codelab-05/output/canyon-400x400.jpg
 
 Seems simple enough, right?
 
@@ -174,7 +174,7 @@ An example message may look like this:
 ```
 {
 	bucket: "cmsc389l-public",
-	key: "codelab-04/owl.jpg",
+	key: "codelab-05/owl.jpg",
 	width: 400,
 	height: 400
 }
