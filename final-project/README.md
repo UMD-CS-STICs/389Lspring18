@@ -40,10 +40,10 @@ Here are the major deadlines that you should keep in mind:
 
 | Deliverable    	| Due Date    | Percent             |
 | ----------------- | ----------- | ------------------- |
-| Proposal       	| 3/30        | 10%                 |
+| Proposal       	| 4/1        | 10%                 |
 | Checkpoint 1     	| 4/13        | 10%                  |
 | Checkpoint 2     	| 4/27        | 10%                  |
-| Codebase       	| 5/11        | 30% (10% per service) | 
+| Codebase       	| 5/11        | 30% (10% per service) |
 | Video Demo     	| 5/11        | 10%                 |
 | In-person Demo 	| by 5/19     | 10%                 |
 | (Creativity) 		| N/A    	  | 20%                 |
