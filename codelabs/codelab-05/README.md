@@ -2,7 +2,7 @@
 
 ### Due Date
 
-This codelab is due on *Thursday, March 15th at 11:59:59PM*. **You've been warned: start early!** This codelab has a lot of code to read, but in the end you'll get to see how an end-to-end system works that incorporates multiple AWS services that we've used!
+This codelab is due on *Thursday, March 29th at 11:59:59PM*. **You've been warned: start early!** This codelab has a lot of code to read, but in the end you'll get to see how an end-to-end system works that incorporates multiple AWS services that we've used!
 
 ### Introduction
 
