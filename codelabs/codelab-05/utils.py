@@ -150,12 +150,12 @@ def initialize_ssh_security_group(security_group):
 # EC2
 
 
-def initilize_server(security_group, keypair=None):
+def initilize_server(security_group, keypair):
     """Initializes an Ubuntu 16.04 t2.micro for the thumbnailer.
     The instance is configured with a "codelab-05" tag to make it easy to find and clean up. It also has the previously generated instance profile attached, along with the SSH security group. It will execute the setup.sh script on launch as user data.
     Args:
         security_group (string): Name of the SSH security group to create.
-        keypair (string): Name of the keypair to associate with the instance. If None, no keypair is used.
+        keypair (string): Name of the keypair to associate with the instance.
     Returns:
         EC2.Instance object of the created instance.
     """

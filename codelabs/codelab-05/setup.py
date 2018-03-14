@@ -45,8 +45,8 @@ def setup(args):
     # Create an EC2 instance running image.py
     if args.instance or args.all:
         if args.keypair == None:
-            print(
-                'Creating EC2 instance without an authentication mechanism (use "--keypair")')
+            raise Exception(
+                'No --keypair argument provided. Can not launch instance.')
         if args.profile or args.all:
             print('Waiting for instance profile to propagate...')
             time.sleep(10)

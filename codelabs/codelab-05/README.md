@@ -118,7 +118,7 @@ Or, all together, like so:
  $ python setup.py --all --keypair colink-cmsc389l
 ```
 
-Note that if you run the `--instance` step, then you will need to specify a keypair. If you don't, then it will launch an EC2 instance which you can not access with SSH.
+Note that if you run the `--instance` step, then you will need to specify a keypair.
 
 ###### EC2 Instance Logs
 
