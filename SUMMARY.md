@@ -48,3 +48,7 @@
 * [Feedback](lectures/lecture-07/feedback.md)
 * [Demo](lectures/lecture-07/demo.md)
 * [Codelab 5](codelabs/codelab-05/README.md)
+
+### March 16th
+* [Slides](lectures/lecture-08/slides.md)
+* [Feedback](lectures/lecture-08/feedback.md)
