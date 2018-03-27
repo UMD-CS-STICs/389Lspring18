@@ -45,7 +45,7 @@ Here are the major deadlines that you should keep in mind:
 | Checkpoint 2     	| 4/27        | 10%                  |
 | Codebase       	| 5/11        | 30% (10% per service) |
 | Video Demo     	| 5/11        | 10%                 |
-| In-person Demo 	| by 5/19     | 10%                 |
+| In-person Demo 	| 5/11 - 5/17     | 10%                 |
 | (Creativity) 		| N/A    	  | 20%                 |
 
 You can get an extra 10% per service that you use, up to 30% extra credit. You can also get up to an extra 10% for load testing your app (f.e. with [Bees with Machine Guns](https://github.com/newsapps/beeswithmachineguns)) and including this in your video demo.
@@ -77,9 +77,9 @@ Every two weeks between when the proposal is due and when the demo is due, you w
 You will need to submit a write-up that includes:
 - An overview of the progress you have made so far.
 - The remaining work to be completed.
-- Any changes you have made to your project since your last proposal/checkpoint.
+- A list of changes you have made to your project since your last proposal/checkpoint.
 - Problems that you have encountered so far and how you have addressed them.
-- A link to your updated GitHub codebase.
+- A link to your updated GitHub codebase. Make sure to include a `README.md`.
 
 You can submit the checkpoints to the submit server.
 

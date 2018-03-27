@@ -31,3 +31,6 @@ vagrant/codelabs/codelab-04/images
 
 *.log
 keys/*.pem
+
+# Experiment folder
+experiments
