@@ -48,14 +48,14 @@ Keep in mind that once the final project is released, the length of the codelabs
 | 2/23/2018  |	[Compute 2: EC2](lectures/lecture-05/README.md)							| [Codelab 4: EC2 (w/ Wordpress!)](codelabs/codelab-04) |
 | 3/2/2018   | 	*Wind Day 💨🍃 (Campus Closed)*	|   |
 | 3/9/2018   |	[Now You're Thinking with Queues: SQS](lectures/lecture-07/slides.md) 				    | [Codelab 5: EC2 + SQS](codelabs/codelab-05)  |
-| 3/16/2018	 |	Load Balancers: ALBs					   	    | Codelab 6: EC2 + ALBs           |
-| 3/23/2018  |	*Spring Break (Campus Closed)*	 		|            |
-| 3/30/2018  |	FaaS: Lambda	 				    | Codelab 7: Lambda  |
-| 4/6/2018   |	APIs: API Gateway	 					| Codelab 8: API Gateway + Lambda  |
-| 4/13/2018  |	Databases: DynamoDB 			        | Codelab 9: DynamoDB + Lambda  |
-| 4/20/2018  |	Microservices: ECS                    	| Codelab 10: ECS |
-| 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 11: Elasticsearch |
-| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 12: CloudFormation |
+| 3/16/2018	 |	Load Balancers: ALBs					   	    | [Codelab 6: EC2 + ALB](codelabs/codelab-06) |
+| 3/23/2018  |	*Spring Break (Campus Closed)*	 		|  |
+| 3/30/2018  |	FaaS: Lambda	 				    |   |
+| 4/6/2018   |	APIs: API Gateway	 					| Codelab 7: API Gateway + Lambda  |
+| 4/13/2018  |	Databases: DynamoDB 			        | Codelab 8: DynamoDB + Lambda  |
+| 4/20/2018  |	Microservices: ECS                    	| Codelab 9: ECS |
+| 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 10: Elasticsearch |
+| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 11: CloudFormation |
 
 ## Final Project
 

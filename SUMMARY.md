@@ -52,3 +52,6 @@
 ### March 16th
 * [Slides](lectures/lecture-08/slides.md)
 * [Feedback](lectures/lecture-08/feedback.md)
+
+### March 30th
+* [Codelab 6](codelabs/codelab-06/README.md)
