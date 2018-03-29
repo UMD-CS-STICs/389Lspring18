@@ -2,7 +2,7 @@
 
 ### Overview
 
-Today, you'll be working with EC2 and an Application Load Balancer (ALB) to support scaling a website.
+Today, you'll be working with Application Load Balancers (ALBs) to scale a Wordpress website under load.
 
 ### Due Date
 
@@ -10,29 +10,49 @@ This code is due on *Thursday, April 5th at 11:59:59PM*.
 
 ### Setup
 
-Make sure to do a pull on your git repo and then set up your pipenv as usual. This codelab has packaged with it a test utility, [beeswithmachineguns](https://github.com/newsapps/beeswithmachineguns) *"...for arming (creating) many bees (micro EC2 instances) to attack (load test) targets (web applications)"*, which will install with your pipenv shell. We'll also be working heavily from the AWS GUI here, so go ahead and log in with your account.
+Make sure to do a pull on your git repo and then set up your pipenv as usual. This codelab has packaged with it a test utility called [Bees With Machine Guns (BWMG)](https://github.com/newsapps/beeswithmachineguns):
 
-It's possible to complete this codelab using the IAM user and the key pair you already have, but it's best practice to create new ones. This aids in security (principle of least priviledge), identifying what code is doing what, and solving the problem of your former memorable name not being so memorable.
+> A utility for arming (creating) many bees (small EC2 instances) to attack (load test) targets (web applications).
 
-#### IAM
+It is automatically installed in your pipenv shell (`bees --help`).
 
-As in [Codelab 2](codelabs/codelab-02/README.md), add a user in the "IAM" service via the AWS Console. Give it a name that tells you its purpose. Since the user will be Bees (our test utility), "Buzz" might be a good choice. When creating a new group select "EC2FullAccess" instead of administrator. Again, _make sure to save your access keys_ as you will need them later.
+We'll be working heavily from the AWS GUI here, so go ahead and log in with your account.
+
+### IAM
+
+#### IAM User for Bees
+
+As in [Codelab 2 (AWS/S3)](/codelabs/codelab-02/README.md), add a new IAM user with programmatic access. This user will be used purely for BWMG, so give it a clear name. Bees will only need access to EC2 instances, so attach the `AmazonEC2FullAccess` policy instead of giving it administrator privileges. _Make sure to save your access keys_ as you will need them later.
+
+> **Note**: While it is possible to complete this codelab using the IAM user and the key pair you already have, it is generally a best practice to create a new one. This aids in security by following the principle of least privilege.
 
 ![newIAMuser](../../../media/codelabs/codelab-06/newIAMuser.png)
 
-#### EC2
+### EC2
 
-Moving to EC2, under the NETWORK & SECURITY tab, create a new key pair and give it a *memorable* name. Then, after you have it downloaded, move a copy to the `.ssh` folder in your home directory. This is where Bees will look for it.
+#### Key Pair for Bees
+
+Next, we will create a key pair specifically for Bees.
+
+Moving to EC2, under the `Network and Security` tab, create a new key pair and give it a memorable name. Then, after you have it downloaded, move a copy to the `.ssh` folder in your home directory. This is where Bees will look for it.
 
 ```
  $ cp ~/Downloads/<bees>.pem ~/.ssh/<bees>.pem
 ```
 
-While we're here under this tab, take a look at Security Groups and remind yourself of the memorable name you used in [Codelab 4](codelabs/codelab-04/README.md). This is important because Bees will need access to ports 80 and 22.
+#### Security Group for Bees
 
-### Web server
+While you're here, go ahead and create a new security group that opens up SSH and HTTP for Bees.
 
-For our server, will use a pre-built AMI from the AWS Marketplace that is similar to the one configured in Codelab 4. Using the EC2 service in the AWS Console, start the Launch Instance wizard. From the AWS Marketplace tab, search for and select "WordPress Certified by Bitnami".
+> **Tip**: It's generally a good idea to create separate security groups for different services, because you can modify the rules in the security group at any time, but you can't change security groups after you've created an EC2 instance. Therefore, if you re-used a security group and Bees needed an extra port opened, then you would have to open that port for all services using that security group.
+
+#### Launch a Wordpress AMI
+
+For our server, will use a pre-built AMI from the AWS Marketplace that is similar to the one you all created in Codelab 4.
+
+> **Note**: You can't use the same server from Codelab 4, because that server hardcodes its IP address, so if we launched it from an AMI then it would be assigned a new IP and you would have to manually update the hardcoded IP -- Bitnami's Wordpress image solves this problem for us.
+
+Go ahead and open the EC Launch Instance wizard. From the AWS Marketplace tab, search for and select "WordPress Certified by Bitnami".
 
 ![marketplace](../../../media/codelabs/codelab-06/marketplace.png)
 
@@ -41,43 +61,60 @@ Configure as follows:
 - Configuration Details: Use the default
 - Storage: Use the default
 - Tags: None
-- Security Group: Use your codelab 4 security group
-- Key Pair: Use your codelab 4 key pair
-
+- Security Group: Use the default
+- Key Pair: Use your EC2 key pair from previous codelabs
 
 Verify it comes up using the public DNS in your browser, it should look pretty familiar.
 
 ![usersBlog](../../../media/codelabs/codelab-06/usersBlog.png)
 
-*Note: from the bees README "please keep in mind the following important caveat: they are, more-or-less a distributed denial-of-service attack in a fancy package and, therefore, if you point them at any server you don’t own you will behaving unethically, have your Amazon Web Services account locked-out, and be liable in a court of law for any downtime you cause. You have been warned."*
+> **Note** (from the authors of Bees):
+>
+> "If you decide to use the Bees, please keep in mind the following important caveat: they are, more-or-less a distributed denial-of-service attack in a fancy package and, therefore, if you point them at any server you don’t own you will behaving unethically, have your Amazon Web Services account locked-out, and be liable in a court of law for any downtime you cause.
+>
+> You have been warned."*
 
-### Send in the drones
+### Send in the drones 🐝
 
-#### Crashcourse on Bees commands
+#### How to manage the bee hive
 
-up:
-- -s: flag preceeding specified number of instances
-- -g: flag preceeding security group name (must have port 22 access)
-- -k: flag preceeding key pair filename (omit .pem extension)
+The `bees` command works by launching a set of EC2 instances which then attack a given URL by drowning it with HTTP requests.
 
-attack:
-- -n: flag preceeding specified number of requests
-- -c: flag preceeding number of requests to send at a time
-- -u: flag preceeding url to be attacked
+There are two commands you will need to know and use (`up` and `attack`). The former launches the servers which will then wait around until directed to attack a URL with the latter command.
 
-#### On keyboard
+```
+$ bees up -s NUM_SERVERS -g BEES_SECURITY_GROUP_NAME -k KEY_PAIR_FILENAME
+```
 
-Moving to your pipenv shell, first export your IAM Bees keys obtained in setup.
+- `-s NUM_SERVERS`: The number of Bees servers to run.
+- `-g BEES_SECURITY_GROUP_NAME`: The Bees security group from earlier.
+- `-k KEY_PAIR_FILENAME`: The name of the Bees key pair you created earlier (without the `.pem` extension).
+
+```
+$ bees attack -n NUM_REQUESTS -c NUM_CONCURRENT_REQUESTS -u URL
+```
+
+- `-n NUM_REQUESTS`: The number of total connections to make to the target.
+- `-c NUM_CONCURRENT_REQUESTS`: The number of concurrent connections to make to the target.
+- `-u URL`: URL of the target to attack.
+
+There are a number of other flags we haven't covered (see `bees --help`).
+
+#### Attack your Wordpress server!
+
+Moving to your pipenv shell, first set the environment variables corresponding to the access keys for your IAM Bees user.
 
 ```
 $ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 $ export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-Next, it's time to muster the troops. 
+If you exit this shell, these variables will be unset. So make sure to store them somewhere.
+
+Next, it's time to muster the troops.
 
 ```
-$ bees up -s 1 -g <security group> -k <key.pem>
+$ bees up -s 1 -g <security group> -k <key>
 ```
 
 Then, over the top!
@@ -86,102 +123,55 @@ Then, over the top!
 $ bees attack -n 2000 -c 250 -u http://<public DNS>
 ```
 
-You should get output that's something like this.
+You should get an output like this. How would you feel accessing a blog post if it took an average of 6.854 seconds to load a page?! Try accessing the blog while Bees is running -- it should be slow to load.
 
 ![firstTest1instance](../../../media/codelabs/codelab-06/firstTest1instance.png)
 
-More information may be found by consulting the [docs](https://github.com/newsapps/beeswithmachineguns) or with `$ ./bees --help`
-
-*Note: i know, i know, bee drones are male and the utiliy uses feminine pronouns for the bees, which means they're prabably workers.. i just think it's a clearer reference as a pun*
+*Note: i know, i know, bee drones are male and the utility uses feminine pronouns for the bees, which means they're probably workers...*
 
 ### ALB
 
-Let's see if we can improve on those results with a tool to balance the load.
+Our server is having trouble keeping up with the load. So, let's see if we can improve on those results by balancing the load across more than one instance.
 
-#### Invocation
+#### Configure the ALB
 
-Using EC2 service in AWS Console, find the LOAD BALANCING tab and click
+Go ahead and launch an Application Load Balancer under the `Load Balancing` tab under EC2 in the AWS console.
 
- --> Load Balancers --> Create Load Balancer --> Application Load Balancer --> Create
+You are going to use mostly defaults for this ALB. For the AZs, select all of them (you need at least two). On the security group window, create a new one, but use the default security group that it recommends (with port 80 open). On the `Register Targets` page, add the Wordpress server you launched. Then launch!
 
-Configure as follows:
-- Name: give it a memerable one
-- Scheme: Use the default (internet-facing)
-- IP address type: Use the default (ipv4)
-- Listeners: Use the default (HTTP port 80)
-- VPC: Use the default (default)
-- Availability Zones: use the AZ as you just launched an instance in and an alternate
-
-_You must select two AZs_
-
-![mustPickTwo](../../../media/codelabs/codelab-06/mustPickTwo.png)
-
-
- --> Next: Configure Security Settings
- 
-We will not be using secure listeners in this codelab.
-
-
- --> Next: Configure Security Groups --> Create a _new_ Security Group
-
-All defaults here are fine. This will create an inbound rule that allows traffic on the listener we just made (HTTP port 80) and allow all outbound traffic. Optionally you may customize the name or description.
-
-
- --> Next: Configure Routing.
-
-- Target group: Use the default (New target group)
-- Name: give it a memerable one
-- Protocol: Use the default (HTTP)
-- Port: Use the default (80)
-- Target type: Use the default (instance)
-- Protocol: Use the default (HTTP)
-- Path: Use the default (/)
-
-
- --> Next: Register Targets.
-
-Select the instance you just launched, keeping the default port (80)
-
-
- --> Add to registered --> Next: Review --> Create
-
-The ALB will take a few moments to be created. You may check status by clicking "Load Balancers" under the LOAD BALANCING tab. While your there, check the description for the field _DNS name:_. This is what you will be submitting when you're finished. One the ALB is spun up, again verify it loads in your browser.
+The ALB will take a few moments to be created. You can see the state of your load balancer in the `Load Balancing` tab. It starts as `provisioning` and will be ready when it gets to `active`. While waiting go ahead and check the description for the field `DNS name:`. This is what you will be submit in a `dns.txt` file when you're finished. Once the ALB is spun up, go ahead and visit the DNS and verify it loads the Wordpress server in your browser.
 
 #### Testing part 2: Electric boogaloo
 
-Order another attack, this time at the ALB
+Order another attack, this time at the ALB. You should get roughly the same latency metrics.
 
 ![1instanceBehindALB](../../../media/codelabs/codelab-06/1instanceBehindALB.png)
 
-and try adding instances to see if we can improve.
+Then launch a second instance (using the same steps as above) and register it to the ALB's target group. What happens to the latency of your Wordpress server?
 
 ![2instancesBehindALB](../../../media/codelabs/codelab-06/2instancesBehindALB.png)
 
+> **Note**: If you add a new instance to the load balancer before it has fully launched, then it might fail the health check from the load balancer. It'll take a few minutes to pass the health check, since it by default will have to pass 5 health checks (performed once per 30s) before being considered healthy. You can increase the health check frequency and reduce the threshold to be considered healthy to speed this up.
+
+> **Note**: You can also double-check that the load balancer is routing you to multiple servers by commenting on a blog post. The blog's state is not replicated across all instances, so each instance has it's own state (comments, posts, etc.).
+
 ### Assignment
 
-Your goal is simple. Given a swarm of 4 bees shooting 10000 requests, 250 at a time, ensure the mean response is within 3 seconds or less.
+Your goal is simple. Given a swarm of 4 bees servers shooting 10000 requests, 250 at a time, ensure the mean response (`Time per request`) is under 3 seconds. Launch as many t2.micro instances behind your load balancer as you need to hit that goal, but no more.
 
 ### Wrapping Up
 
-Leave your content up for us to verify. We'll be looking for your site at a DNS name you will submit.
+Leave the load balancer and the servers set up for us to verify. We'll be testing your site at the DNS name you submit in a `dns.txt` file. We'll post on Piazza when you can shut down these instances.
 
-Make sure to let your bees go home with the command `bees down`.
+However, you can shut down your bees servers. Make sure to let your bees go home with the command `bees down`.
 
-If you are running any other EC2 instances that you are no longer using, be sure to stop
+If you are running any other EC2 instances that you are no longer using, be sure to terminate them, under `EC2 > Actions > Instance State > Terminate`.
 
- --> Actions --> Instance State --> Stop
- 
-or terminate
-
- --> Actions --> Instance State --> Terminate
- 
-them; else they will eat into your free credit.
-
-*Note: Our setup is contrived. Here we will use a turn-key AMI to demonstrate scaling of a static site. In practice, a scalable wordpress website would use stateless servers (which could be spun up/down as needed) that rely on another service for their data (e.g. S3 or EBS).*
+> **Note**: Our setup is contrived. Here we will use a turn-key AMI to demonstrate scaling of a static site. In practice, a scalable Wordpress website would use stateless servers (which could be spun up/down as needed) that rely on a replicated database to store blog data (e.g. MySQL running in RDS) rather than running the database on the server itself.
 
 ### Submission
 
-You will be submitting a text file called `ip.txt` containing only the DNS name of your load balencer.
+You will be submitting a text file called `dns.txt` containing only the DNS name of your load balancer.
 
 Submit this assignment to `codelab6` on the submit server. Upload a zipped directory with the file:
 
