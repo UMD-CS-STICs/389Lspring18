@@ -186,6 +186,8 @@ However, you are welcome to change the format of these SQS messages, if you woul
 
 This codelab will set up a handful of AWS services that you will want to shut down afterwards. I have provided a shell script (`./scripts/clear_env.sh`) which will delete these resources for you. Feel free to use it while testing, too (especially `setup.py`!).
 
+You may need to install the `jq` command from your OS's package manager. Depending on your system, run `apt-get install jq` (Ubuntu) or `brew install jq` (macOS).
+
 *Note that there is a timeout after deleting a queue, which prevents you from re-creating the queue within 60 seconds.*
 
 **Make sure to change the `UMD_USERNAME` environment variable before running this yourself.**
