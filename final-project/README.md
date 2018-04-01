@@ -40,7 +40,7 @@ Here are the major deadlines that you should keep in mind:
 
 | Deliverable    	| Due Date    | Percent             |
 | ----------------- | ----------- | ------------------- |
-| Proposal       	| 4/1        | 10%                 |
+| [Proposal](https://piazza.com/class/jcsfmcmvvp46ju?cid=92)       	| 4/1        | 10%                 |
 | Checkpoint 1     	| 4/13        | 10%                  |
 | Checkpoint 2     	| 4/27        | 10%                  |
 | Codebase       	| 5/11        | 30% (10% per service) |
@@ -64,7 +64,7 @@ Your proposal will be structured as a slide deck. It should touch on at least th
 
 See [this slide deck](http://slides.com/colinking/example-proposal) for an example of what a proposal may look like.
 
-Submit a PDF version of your proposal slides (or website link, if hosted online) as a follow-up discussion post to a TBD Piazza post.
+Submit a link to your proposal slides (Dropbox, slides.com, etc.) as a follow-up discussion post to [this Piazza post](https://piazza.com/class/jcsfmcmvvp46ju?cid=92).
 
 To create an architecture diagram, I would recommend either [Draw.io](https://www.draw.io/?splash=0&libs=aws2) or [Cloudcraft](https://cloudcraft.co/app).
 
