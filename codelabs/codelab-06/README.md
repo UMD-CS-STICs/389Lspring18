@@ -117,10 +117,10 @@ Next, it's time to muster the troops.
 $ bees up -s 1 -g <security group> -k <key>
 ```
 
-Then, over the top!
+Since we're testing the instance directly, make sure to use the IPv4 Public IP for the address. Then, over the top!
 
 ```
-$ bees attack -n 2000 -c 250 -u http://<public DNS>
+$ bees attack -n 2000 -c 250 -u http://<address>
 ```
 
 You should get an output like this. How would you feel accessing a blog post if it took an average of 6.854 seconds to load a page?! Try accessing the blog while Bees is running -- it should be slow to load.
@@ -143,7 +143,7 @@ The ALB will take a few moments to be created. You can see the state of your loa
 
 #### Testing part 2: Electric boogaloo
 
-Order another attack, this time at the ALB. You should get roughly the same latency metrics.
+Order another attack, this time at the ALB, using its DNS name for address. You should get roughly the same latency metrics.
 
 ![1instanceBehindALB](../../../media/codelabs/codelab-06/1instanceBehindALB.png)
 
