@@ -143,7 +143,7 @@ The ALB will take a few moments to be created. You can see the state of your loa
 
 #### Testing part 2: Electric boogaloo
 
-Order another attack, this time at the ALB, using its DNS name for address. You should get roughly the same latency metrics.
+Order another attack, this time at the ALB (use its DNS name for address). You should get roughly the same latency metrics.
 
 ![1instanceBehindALB](../../../media/codelabs/codelab-06/1instanceBehindALB.png)
 
