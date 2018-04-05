@@ -10,7 +10,7 @@ This code is due on *Thursday, April 5th at 11:59:59PM*.
 
 ### Setup
 
-Make sure to do a pull on your git repo and then set up your pipenv as usual. This codelab has packaged with it a test utility called [Bees With Machine Guns (BWMG)](https://github.com/newsapps/beeswithmachineguns):
+Make sure to do a pull on your git repo and then set up as usual with `pipenv install`. This codelab has packaged with it a test utility called [Bees With Machine Guns (BWMG)](https://github.com/newsapps/beeswithmachineguns):
 
 > A utility for arming (creating) many bees (small EC2 instances) to attack (load test) targets (web applications).
 
