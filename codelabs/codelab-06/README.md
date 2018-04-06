@@ -64,7 +64,7 @@ Configure as follows:
 - Security Group: Use the default
 - Key Pair: Use your EC2 key pair from previous codelabs
 
-Verify it comes up using the public DNS in your browser, it should look pretty familiar.
+Verify it comes up using the IPv4 Public IP in your browser, it should look pretty familiar.
 
 ![usersBlog](../../../media/codelabs/codelab-06/usersBlog.png)
 
