@@ -41,17 +41,17 @@ Keep in mind that once the final project is released, the length of the codelabs
 
 | Week       | Topic                                    | Codelab    |
 | ---------- | ---------------------------------------- | ---------- |
-| 1/26/2018  |	[Introduction and AWS 101](lectures/lecture-01/slides.md)				| [Codelab 1: Python](codelabs/codelab-01)  |
-| 2/2/2018   |	[Object Storage: S3](lectures/lecture-02/slides.md) 						| [Codelab 2: S3](codelabs/codelab-02) |
-| 2/9/2018   |	[Content Delivery Networks: CloudFront](lectures/lecture-03/slides.md) 	| [Codelab 3: S3 + CloudFront](codelabs/codelab-03) |
+| 1/26/2018  |	[Introduction and AWS 101](lectures/lecture-01/slides.md)				| [Codelab 1: Python](codelabs/codelab-01/)  |
+| 2/2/2018   |	[Object Storage: S3](lectures/lecture-02/slides.md) 						| [Codelab 2: S3](codelabs/codelab-02/) |
+| 2/9/2018   |	[Content Delivery Networks: CloudFront](lectures/lecture-03/slides.md) 	| [Codelab 3: S3 + CloudFront](codelabs/codelab-03/) |
 | 2/16/2018  |  [Compute 1: EC2](lectures/lecture-04/slides.md)							|  |
-| 2/23/2018  |	[Compute 2: EC2](lectures/lecture-05/README.md)							| [Codelab 4: EC2 (w/ Wordpress!)](codelabs/codelab-04) |
+| 2/23/2018  |	[Compute 2: EC2](lectures/lecture-05/README.md)							| [Codelab 4: EC2 (w/ Wordpress!)](codelabs/codelab-04/) |
 | 3/2/2018   | 	*Wind Day 💨🍃 (Campus Closed)*	|   |
-| 3/9/2018   |	[Now You're Thinking with Queues: SQS](lectures/lecture-07/slides.md) 				    | [Codelab 5: EC2 + SQS](codelabs/codelab-05)  |
-| 3/16/2018	 |	Load Balancers: ALBs					   	    | [Codelab 6: EC2 + ALB](codelabs/codelab-06) |
+| 3/9/2018   |	[Now You're Thinking with Queues: SQS](lectures/lecture-07/slides.md) 				    | [Codelab 5: EC2 + SQS](codelabs/codelab-05/)  |
+| 3/16/2018	 |	[Load Balancers: ALBs](lectures/lecture-08/slides.md)					   	    | [Codelab 6: EC2 + ALB](codelabs/codelab-06/) |
 | 3/23/2018  |	*Spring Break (Campus Closed)*	 		|  |
-| 3/30/2018  |	FaaS: Lambda	 				    |   |
-| 4/6/2018   |	APIs: API Gateway	 					| Codelab 7: API Gateway + Lambda  |
+| 3/30/2018  |	[FaaS: Lambda](lectures/lecture-09/slides.md)	 				    |   |
+| 4/6/2018   |	[APIs: API Gateway](lectures/lecture-10/slides.md)	 					| Codelab 7: API Gateway + Lambda  |
 | 4/13/2018  |	Databases: DynamoDB 			        | Codelab 8: DynamoDB + Lambda  |
 | 4/20/2018  |	Microservices: ECS                    	| Codelab 9: ECS |
 | 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 10: Elasticsearch |
