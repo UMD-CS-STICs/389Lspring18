@@ -18,8 +18,13 @@ def lambda_handler(data, context):
     """Handle an incoming HTTP request from a Slack chat-bot.
     """
     logging.warn(data)
-    if "challenge" in data:
-        return data["challenge"]
+
+    #TODO Uncomment lines 26-27 (the if statement below) after you initially cut and paste your
+    # Invoke URL (what Amazon calls your endpoint) where Slack asks for your
+    # Request URL to verify authentication
+
+    #if "challenge" in data:
+    #    return data["challenge"]
 
     # Grab the Slack event data.
     slack_event = data['event']

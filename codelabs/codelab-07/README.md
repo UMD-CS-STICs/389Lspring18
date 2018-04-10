@@ -18,7 +18,7 @@ successfully completing. Finally you will launch your new API endpoint.
 Part 3: Verifying Everything works!  
 You will use your new API endpoint to verify a successful connection between your endpoint and Slack.
 
-Part 4: Make your Bot say something different :)  
+Part 4: Make your bot says something different that what you messaged it! :)  
 Uncomment the code we provided you with and look for the comment that says `TODO:`. This is where you will
 add some custom parsing of the message you typed in Slack to send to your bot and will be your Lamda acting in the
 role of your bot.
