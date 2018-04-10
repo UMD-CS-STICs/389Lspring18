@@ -1,12 +1,34 @@
 # Final Project
 
+### Changelog
+
+- April 10th, 2018
+  - Added requirement for an architecture diagram in Checkpoint 1.
+  - Added two-person group requirements.
+
 ### Overview
 
 The goal of the final project is for all of you to build some kind of meaningful project that proves your AWS skillset to employers.
 
 It should also help you develop experience planning the architecture of a cloud system, and interconnecting different AWS services to build a project in a scalable fashion.
 
-We'll be discussing this project on 3/16, however you are more than welcome to start early.
+### Deliverables
+
+Here are the major deadlines that you should keep in mind:
+
+| Deliverable    	| Due Date    | Percent             |
+| ----------------- | ----------- | ------------------- |
+| [Proposal](https://piazza.com/class/jcsfmcmvvp46ju?cid=92)       	| 4/1        | 10%                 |
+| Checkpoint 1     	| 4/13        | 10%                  |
+| Checkpoint 2     	| 4/27        | 10%                  |
+| Codebase       	| 5/11        | 30% (10% per service) |
+| Video Demo     	| 5/11        | 10%                 |
+| In-person Demo 	| 5/11 - 5/17     | 10%                 |
+| (Creativity) 		| N/A    	  | 20%                 |
+
+You can get an extra 10% per service that you use, up to 30% extra credit. You can also get up to an extra 10% for load testing your app (f.e. with [Bees with Machine Guns](https://github.com/newsapps/beeswithmachineguns)) and including this in your video demo.
+
+All deliverables are due by 11:59:59PM on the above due date.
 
 ### Requirements
 
@@ -14,6 +36,8 @@ This project is meant to be extremely open-ended. There are really just two requ
 
 1. You must use **at least three** AWS services.
 2. **At least one** of those services must have not been covered in class.
+
+If you are working in a two-person group, then the requirements are simply double (6 services, 2 of which must be new).
 
 Some AWS services are not going to be eligible to be counted towards the above requirement. These services are either required for almost any project, or are not going to be substantive in their implementation. For now, this list includes:
 - IAM
@@ -33,24 +57,6 @@ The following services will be covered, but you are welcome to count them toward
 - ECS
 - Elasticsearch Service
 - CloudFormation
-
-### Deliverables
-
-Here are the major deadlines that you should keep in mind:
-
-| Deliverable    	| Due Date    | Percent             |
-| ----------------- | ----------- | ------------------- |
-| [Proposal](https://piazza.com/class/jcsfmcmvvp46ju?cid=92)       	| 4/1        | 10%                 |
-| Checkpoint 1     	| 4/13        | 10%                  |
-| Checkpoint 2     	| 4/27        | 10%                  |
-| Codebase       	| 5/11        | 30% (10% per service) |
-| Video Demo     	| 5/11        | 10%                 |
-| In-person Demo 	| 5/11 - 5/17     | 10%                 |
-| (Creativity) 		| N/A    	  | 20%                 |
-
-You can get an extra 10% per service that you use, up to 30% extra credit. You can also get up to an extra 10% for load testing your app (f.e. with [Bees with Machine Guns](https://github.com/newsapps/beeswithmachineguns)) and including this in your video demo.
-
-All deliverables are due by 11:59:59PM on the above due date.
 
 #### Proposal
 
@@ -74,14 +80,14 @@ A sign-up sheet will be released later this semester to sign up for a time slot 
 
 Every two weeks between when the proposal is due and when the demo is due, you will submit a checkpoint to update the facilitators on your progress and any roadblocks you've run into.
 
-You will need to submit a write-up that includes:
-- An overview of the progress you have made so far.
-- The remaining work to be completed.
-- A list of changes you have made to your project since your last proposal/checkpoint.
-- Problems that you have encountered so far and how you have addressed them.
-- A link to your updated GitHub codebase. Make sure to include a `README.md`.
+It will be formatted as a short write-up. Include the following:
+- A brief overview of the progress you have made so far, and any problems you have encountered.
+- A brief overview of what work remains to be completed.
+- An updated architecture diagram using [Cloudcraft](https://cloudcraft.co/app) (preferable), [Draw.io](https://www.draw.io/?splash=0&libs=aws2), or a comparable tool.
+- A list of any open questions you have.
+- A link to your updated (public) GitHub codebase. Make sure to include a `README.md` in your repo.
 
-You can submit the checkpoints to the submit server.
+You will submit the checkpoints to the submit server. If you are working as a group, then you only need to submit one checkpoint.
 
 #### Codebase
 
