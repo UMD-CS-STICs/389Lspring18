@@ -3,8 +3,7 @@
 ### Overview
 
 In this codelab you will gain experience with Lambda and API Gateway by writing a serverless Slack chat bot.
-You will also gain experience with both using a third-party REST API and make your own REST endpoint. The required
-steps to successfully complete this codelab can be summarized as follows:  
+You will also gain experience with both using a third-party REST API and make your own REST endpoint. This codelab is based off of an [online tutorial](https://chatbotslife.com/write-a-serverless-slack-chat-bot-using-aws-e2d2432c380e) by Rigel Di Scala at ChatBotsLife. The required steps to successfully complete this codelab can be summarized as follows:  
 
 Part 1: Setting Up Slack Chat Bot
 You will create a new Slack App and associated Bot. You will additionally generate the Oauth tokens you will need to
@@ -12,7 +11,7 @@ save in your API Gateway settings.
 
 Part 2: Setting Up API Gateway and Lambda  
 You will begin a new instance of API Gateway and generate the single resource required to complete this codelab. You
-will also drop in some test code in your lamda function to be used in `Part 3` to verify all the API requests are
+will also drop in some test code in your lambda function to be used in `Part 3` to verify all the API requests are
 successfully completing. Finally you will launch your new API endpoint.  
 
 Part 3: Verifying Everything works!  
@@ -25,7 +24,7 @@ role of your bot.
 
 ### Due Date
 
-This code is due on *, April  at 11:59:59PM*.
+This code is due on Thursday, April 19th, at 11:59:59PM.
 
 ### Setup
 
