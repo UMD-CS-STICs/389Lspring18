@@ -19,7 +19,7 @@ Modify the Lambda function so that your Slack bot does something fun (up to you!
 
 ### Due Date
 
-This code is due on *Sunday, April 22nd at 11:59:59PM.
+This code is due on *Sunday, April 22nd at 11:59:59PM*.
 
 ### Setup
 
