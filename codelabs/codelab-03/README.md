@@ -8,7 +8,7 @@ This is codelab 3, which expands upon [codelab-02](../codelab-02/README.md) by i
 
 In this codelab, you'll get to play around with CloudFront.
 - You'll set up CloudFront via the AWS GUI
-- You'll test latency 
+- You'll test latency
 - You'll issue an invalidation
 
 ### Setting Up
@@ -55,7 +55,7 @@ Click the `Upload` button in the lower-left corner.
 
 Select your new object (again, you have to click the name itself). This page similarly lets you see some details and configure properties. What we're after is the URL at the bottom of the page, under the label `Link`.
 
-Copy the link and paste it in the URL bar of a new tab in your browser. The canyon should start loading, albeit slowly. Why so slow? Well, we did place it in a region half-way 'round the world. 
+Copy the link and paste it in the URL bar of a new tab in your browser. The canyon should start loading, albeit slowly. Why so slow? Well, we did place it in a region half-way 'round the world.
 
 Let's try to quantify that speed. If you haven't already, enter your environment now by running:
 
@@ -73,7 +73,7 @@ You may need to make the script executable. While in the same directory as the s
 
 ```
 $ chmod +x lat-test.sh
-``` 
+```
 
 Now execute it but running:
 
@@ -117,7 +117,7 @@ Edit the shell script again and run it a few times. Does the total time change?
 
 ![lat-test-cf-3 Page](../../../media/codelabs/codelab-03/lat-test-cf-3.png)
 
-Now suppose we want to change the image we're serving. Using the [AWS GUI](https://console.aws.amazon.com/console/home?region=us-east-1#) again, delete the current `canyon.jpg` and replace it with [this one](https://s3.amazonaws.com/cmsc389l-ialock-lab3/canyon.jpg). *Note: make sure the S3 keys are identical* (`canyon.jpg`) 
+Now suppose we want to change the image we're serving. Using the [AWS GUI](https://console.aws.amazon.com/console/home?region=us-east-1#) again, delete the current `canyon.jpg` and replace it with [this one](https://s3.amazonaws.com/cmsc389l-ialock-lab3/canyon.jpg). *Note: make sure the S3 keys are identical* (`canyon.jpg`)
 
 Verify you can reach it by the S3 link from your browser. Then try to reach it with your CloudFront link... and you might not be able to. So what is happening here? Why is CloudFront serving a stale version of our canyon.jpg image? This is because every object cached by CloudFront has an associated "Time-To-Live" (TTL) which expresses how long a file should be served from an edge location before being considered expired. This defaults to 24 hours -- so if you waited 24 hours and then re-visited this file via the CloudFront distribution, you would get the new version of `canyon.jpg`.
 
@@ -130,7 +130,7 @@ Your assignment for this codelab is to reference the [documentation](https://doc
 You will be submitting:
 1. Screenshot of `lat-test.sh` output on canyon.jpg in Sydney S3
 - Two other screenshots of `lat-test.sh` output on any two internet URLs (images, websites, etc.).
-- Screenshot of `lat-test.sh` output on canyon.jpg in CloudFront.
+- Screenshot of `lat-test.sh` output on canyon.jpg in CloudFront. Make sure to run this a few times before taking the screenshot, so that the local edge nodes can cache the resource leading to decreased latency.
 - Screenshot showing the invalidation command you used and its console output.
 - A short paragraph explaining the trade-off associated with time duration (or TTL) of objects in CloudFront. Write this in a text file called `summary.txt`.
 
@@ -139,9 +139,9 @@ Submit this assignment to `codelab3` on the submit server. Upload a zipped direc
 ```
 <directory id>.zip
 	s3.png
-	screenshot1.png 
-	screenshot2.png 
+	screenshot1.png
+	screenshot2.png
 	cloudfront.png
-	invalidation.png 
+	invalidation.png
 	summary.txt
 ```
