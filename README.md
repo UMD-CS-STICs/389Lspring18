@@ -51,7 +51,7 @@ Keep in mind that once the final project is released, the length of the codelabs
 | 3/16/2018	 |	[Load Balancers: ALBs](lectures/lecture-08/slides.md)					   	    | [Codelab 6: EC2 + ALB](codelabs/codelab-06/README.md) |
 | 3/23/2018  |	*Spring Break (Campus Closed)*	 		|  |
 | 3/30/2018  |	[FaaS: Lambda](lectures/lecture-09/slides.md)	 				    |   |
-| 4/6/2018   |	[APIs: API Gateway](lectures/lecture-10/slides.md)	 					| [Codelab 7: API Gateway + Lambda](codelabs)/codelab-07/README.md)  |
+| 4/6/2018   |	[APIs: API Gateway](lectures/lecture-10/slides.md)	 					| [Codelab 7: API Gateway + Lambda](codelabs/codelab-07/README.md)  |
 | 4/13/2018  |	Databases: DynamoDB 			        | Codelab 8: DynamoDB + Lambda  |
 | 4/20/2018  |	Microservices: ECS                    	| Codelab 9: ECS |
 | 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 10: Elasticsearch |
