@@ -62,3 +62,4 @@
 ### April 6th
 * [Slides](lectures/lecture-10/slides.md)
 * [Feedback](lectures/lecture-10/feedback.md)
+* [Codelab 7](codelabs/codelab-07/README.md)
