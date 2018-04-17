@@ -88,7 +88,7 @@ It will be formatted as a short write-up. Include the following:
 - [20%] A list of any open questions you have.
 - [20%] A link to your updated (public) GitHub codebase. Make sure to include a `README.md` in your repo.
 
-You will submit the checkpoints to the submit server. If you are working as a group, then you only need to submit one checkpoint.
+You will submit the checkpoints (as a `.PDF`) to the submit server. If you are working as a group, then you only need to submit one checkpoint.
 
 #### Codebase
 
