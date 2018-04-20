@@ -6,16 +6,18 @@ In this codelab will learn about DynamoDB, a [NoSQL](https://aws.amazon.com/nosq
 
 ![ArchitectureDiagram](../../../media/codelabs/codelab-08/archCL8.png) 
 
+<!-- 
 ### Due Date
 
 This code is due on *Thursday, April 26nd at 11:59:59PM*.
+ -->
 
 ### Setup
 
 Make sure to update your local repo with the remote by executing `git pull`. 
-<!-- 
-You won`t need to set up your pipenv environment for this codelab.
- -->
+
+You won't need to set up your pipenv environment for this codelab.
+
 
 ### DynamoDB
 
@@ -53,19 +55,38 @@ Here, we can query on the student ID
 
 This is a limitation of NoSQL databases. Though there is a workaround using scan, this is part of the tradeoff we make for flexibility and scalability.
 
-### IAM
 
-In order to scale, we can't be relying on manual data entry. We want a lambda function to interact with DynamoDB on our behalf, which it will need permissions to do. Using the AWS Management Console, create a new role `Roles > Create role` and select `Lambda` as the service that will use this role.
+### API Gateway part1
 
-![IAMlambda](../../../media/codelabs/codelab-08/IAMlambda.png)
+In order to scale, we can't be relying on manual data entry. We want a lambda function to interact with DynamoDB on our behalf. But first, we want a way to route traffic. As in codelab-07, we'll use the AWS Management Console to create a new regional API. 
 
-For permissions, use AWSLambdaDynamoDBExecutionRole
+![newAPIregional](../../../media/codelabs/codelab-08/newAPIregional.png)
 
-![IAMpermissions](../../../media/codelabs/codelab-08/IAMpermissions.png)
+Create a new endpoint `Actions > Create Resource` called dynamodb.
 
-<!-- 
-might need to use the following instead
+![newResource](../../../media/codelabs/codelab-08/newResource.png)
 
+Here we can expose various methods that will be available to request. For now, we'll add GET `Actions > Create Method` and use `Mock` as the integration type.
+
+![GETmockIntegration](../../../media/codelabs/codelab-08/GETmockIntegration.png)
+
+This will allow us to deploy the API `Actions > Deploy AOPI` and set up out Lambda functions. Do this now.
+
+![deployAPI](../../../media/codelabs/codelab-08/deployAPI.png)
+
+### Lambda
+
+Head over to the Lambda service in the AWS Management Console. We'll create a new function using the _microservice-http-endpoint-python3_ blueprint.
+
+![lambdaTemplate](../../../media/codelabs/codelab-08/lambdaTemplate.png)
+
+Give the function a name, and select `Create a custom role` from the drop-down menu. This will open a new tab. Select `Create a new IAM Role`, name it, and view the policy document. We want to edit this and replace what's there with our own.
+
+![newIAMrole](../../../media/codelabs/codelab-08/newIAMrole.png)
+
+Here is what we are copying in *also included with the codelab as a json file*
+
+```
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -94,17 +115,13 @@ might need to use the following instead
     }
   ]
 }
+```
 
--->
+After clicking allow and being redirected back to Lambda, we fill in our api-gateway information, and create the function.
 
-Finally, give it a name
+![configureLambda](../../../media/codelabs/codelab-08/configureLambda.png)
 
-![IAMrolename](../../../media/codelabs/codelab-08/IAMrolename.png)
-
-### Lambda
-
-![functionFromScratch](../../../media/codelabs/codelab-08/functionFromScratch.png)
-
+```
 <!-- 
 
 from __future__ import print_function
@@ -116,12 +133,7 @@ print(`Loading function`)
 
 
 def handler(event, context):
-    ```Provide an event that contains the following keys:
-
-      - operation: one of the operations in the operations dict below
-      - tableName: required for operations that interact with DynamoDB
-      - payload: a parameter to pass to the operation being performed
-    ```
+    
     #print("Received event: " + json.dumps(event, indent=2))
 
     operation = event[`operation`]
@@ -144,27 +156,50 @@ def handler(event, context):
     else:
         raise ValueError(`Unrecognized operation "{}"`.format(operation))
 -->
+```
 
-### API Gateway
+### API Gateway part2
 
-As in codelab-07, we'll use the AWS Management Console to create a new API endpoint. 
+Select _/dynamodb_ and again create a new resource. We can pass arguments by enclosing the name in braces.
 
-![newAPIregional](../../../media/codelabs/codelab-08/newAPIregional.png)
+![newChildResource](../../../media/codelabs/codelab-08/newChildResource.png)
 
-![createResource](../../../media/codelabs/codelab-08/createResource.png)
+And we can expose multiple methods.
 
-This resource will be called `/items`
+![addMethods](../../../media/codelabs/codelab-08/addMethods.png)
 
-<!-- something with arguments? {#} -->
+Configure the PUT method with the lambda Function we just created and save.
 
-### Assignment
+![configureMethods](../../../media/codelabs/codelab-08/configureMethods.png)
 
-### Wrapping Up
+You should see something like this. We can now test our function! Click the blue test thunderbolt.
 
-If you're interested in being able to create tables using python, there's a tutorial available [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.html). 
+![testBolt](../../../media/codelabs/codelab-08/testBolt.png)
+
+The `{table}` field can be left blank, as we're not using arguments in the url. Instead, our function will be reading a JSON file. Use the one below to get our table.
+
+```
+{
+	"httpMethod": "GET",
+	"queryStringParameters": {
+	"TableName": "codelab-08"
+    }
+}
+```
+
+![testResponse](../../../media/codelabs/codelab-08/testResponse.png)
+
+### Further Reading
+
+If you're interested in being able to create tables using python, there's a great tutorial in the  [docs](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.html). 
+
+Additionally, Colin King found a great end-to-end example of a serverless RESTful API available [here](https://github.com/serverless/examples/tree/master/aws-python-rest-api-with-dynamodb)
 
 ### Submission
 
+There is no submission for this codelab.
+
+<!-- 
 You will be submitting a text file called `arn.txt` containing only the Amazon Resource Number (ARN) of your API Gateway.
 
 Submit this assignment to `codelab8` on the submit server. Upload a zipped directory with the file:
@@ -173,3 +208,4 @@ Submit this assignment to `codelab8` on the submit server. Upload a zipped direc
 <directory id>.zip
 	arn.txt
 ```
+ -->
