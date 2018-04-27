@@ -77,3 +77,4 @@
 ### April 27th
 * [Slides](lectures/lecture-13/slides.md)
 * [Feedback](lectures/lecture-13/feedback.md)
+* [Demo](lectures/lecture-13/demo.md)
