@@ -1,0 +1,687 @@
+[
+    {
+        "name": "Daniel Abadi",
+        "url": "http://www.cs.umd.edu/people/abadi",
+        "username": "abadi"
+    },
+    {
+        "name": "Ashok Agrawala",
+        "url": "http://www.cs.umd.edu/people/agrawala",
+        "username": "agrawala"
+    },
+    {
+        "name": "John Aloimonos",
+        "url": "http://www.cs.umd.edu/people/jyaloimo",
+        "username": "jyaloimo"
+    },
+    {
+        "name": "Leilani Battle",
+        "url": "http://www.cs.umd.edu/people/leilani",
+        "username": "leilani"
+    },
+    {
+        "name": "Ben Bederson",
+        "url": "http://www.cs.umd.edu/people/bederson",
+        "username": "bederson"
+    },
+    {
+        "name": "Bobby Bhattacharjee",
+        "url": "http://www.cs.umd.edu/people/bobby",
+        "username": "bobby"
+    },
+    {
+        "name": "Jordan Boyd-Graber",
+        "url": "http://www.cs.umd.edu/people/ying",
+        "username": "ying"
+    },
+    {
+        "name": "Marine Carpuat",
+        "url": "http://www.cs.umd.edu/people/marine",
+        "username": "marine"
+    },
+    {
+        "name": "Andrew Childs",
+        "url": "http://www.cs.umd.edu/people/amchilds",
+        "username": "amchilds"
+    },
+    {
+        "name": "Rance Cleaveland",
+        "url": "http://www.cs.umd.edu/people/wcleavel",
+        "username": "wcleavel"
+    },
+    {
+        "name": "Hector Corrada Bravo",
+        "url": "http://www.cs.umd.edu/people/hcorrada",
+        "username": "hcorrada"
+    },
+    {
+        "name": "Hal Daumé III",
+        "url": "http://www.cs.umd.edu/people/hal3",
+        "username": "hal3"
+    },
+    {
+        "name": "Larry Davis",
+        "url": "http://www.cs.umd.edu/people/lsdavis",
+        "username": "lsdavis"
+    },
+    {
+        "name": "Amol Deshpande",
+        "url": "http://www.cs.umd.edu/people/adeshpan",
+        "username": "adeshpan"
+    },
+    {
+        "name": "John Dickerson",
+        "url": "http://www.cs.umd.edu/people/dickerson",
+        "username": "dickerson"
+    },
+    {
+        "name": "Ramani Duraiswami",
+        "url": "http://www.cs.umd.edu/people/rduraisw",
+        "username": "rduraisw"
+    },
+    {
+        "name": "Howard Elman",
+        "url": "http://www.cs.umd.edu/people/helman",
+        "username": "helman"
+    },
+    {
+        "name": "Fawzi Emad",
+        "url": "http://www.cs.umd.edu/people/fpe",
+        "username": "fpe"
+    },
+    {
+        "name": "Jason Filippou",
+        "url": "http://www.cs.umd.edu/people/jasonfil",
+        "username": "jasonfil"
+    },
+    {
+        "name": "Jeffrey Foster",
+        "url": "http://www.cs.umd.edu/people/jfoster4",
+        "username": "jfoster4"
+    },
+    {
+        "name": "William Gasarch",
+        "url": "http://www.cs.umd.edu/people/gasarch",
+        "username": "gasarch"
+    },
+    {
+        "name": "Tom Goldstein",
+        "url": "http://www.cs.umd.edu/people/tomg",
+        "username": "tomg"
+    },
+    {
+        "name": "Evan Golub",
+        "url": "http://www.cs.umd.edu/people/egolub",
+        "username": "egolub"
+    },
+    {
+        "name": "Mohammad Hajiaghayi",
+        "url": "http://www.cs.umd.edu/people/hajiagha",
+        "username": "hajiagha"
+    },
+    {
+        "name": "Larry Herman",
+        "url": "http://www.cs.umd.edu/people/larry",
+        "username": "larry"
+    },
+    {
+        "name": "Michael Hicks",
+        "url": "http://www.cs.umd.edu/people/mhicks2",
+        "username": "mhicks2"
+    },
+    {
+        "name": "Jeffrey K. Hollingsworth",
+        "url": "http://www.cs.umd.edu/people/hollings",
+        "username": "hollings"
+    },
+    {
+        "name": "Furong Huang",
+        "url": "http://www.cs.umd.edu/people/furongh",
+        "username": "furongh"
+    },
+    {
+        "name": "Michelle Hugue",
+        "url": "http://www.cs.umd.edu/people/meesh",
+        "username": "meesh"
+    },
+    {
+        "name": "David Jacobs",
+        "url": "http://www.cs.umd.edu/people/dwj",
+        "username": "dwj"
+    },
+    {
+        "name": "Jonathan Katz",
+        "url": "http://www.cs.umd.edu/people/jkatz2",
+        "username": "jkatz2"
+    },
+    {
+        "name": "Pete Keleher",
+        "url": "http://www.cs.umd.edu/people/keleher",
+        "username": "keleher"
+    },
+    {
+        "name": "Samir Khuller",
+        "url": "http://www.cs.umd.edu/people/samirk",
+        "username": "samirk"
+    },
+    {
+        "name": "Clyde Kruskal",
+        "url": "http://www.cs.umd.edu/people/ckruskal",
+        "username": "ckruskal"
+    },
+    {
+        "name": "Max Leiserson",
+        "url": "http://www.cs.umd.edu/people/mdml",
+        "username": "mdml"
+    },
+    {
+        "name": "Dave Levin",
+        "url": "http://www.cs.umd.edu/people/levindm",
+        "username": "levindm"
+    },
+    {
+        "name": "Ming Lin",
+        "url": "http://www.cs.umd.edu/people/lin",
+        "username": "lin"
+    },
+    {
+        "name": "Anwar Mamat",
+        "url": "http://www.cs.umd.edu/people/anwar",
+        "username": "anwar"
+    },
+    {
+        "name": "Dinesh Manocha",
+        "url": "http://www.cs.umd.edu/people/dmanocha",
+        "username": "dmanocha"
+    },
+    {
+        "name": "Michelle Mazurek",
+        "url": "http://www.cs.umd.edu/people/mmazurek",
+        "username": "mmazurek"
+    },
+    {
+        "name": "Atif Memon",
+        "url": "http://www.cs.umd.edu/people/amemon",
+        "username": "amemon"
+    },
+    {
+        "name": "David Mount",
+        "url": "http://www.cs.umd.edu/people/mount",
+        "username": "mount"
+    },
+    {
+        "name": "Dana Nau",
+        "url": "http://www.cs.umd.edu/people/nau",
+        "username": "nau"
+    },
+    {
+        "name": "Nelson Padua-Perez",
+        "url": "http://www.cs.umd.edu/people/nelsonp",
+        "username": "nelsonp"
+    },
+    {
+        "name": "Don Perlis",
+        "url": "http://www.cs.umd.edu/people/perlis",
+        "username": "perlis"
+    },
+    {
+        "name": "Jandelyn Plane",
+        "url": "http://www.cs.umd.edu/people/jplane",
+        "username": "jplane"
+    },
+    {
+        "name": "Mihai Pop",
+        "url": "http://www.cs.umd.edu/people/mpop",
+        "username": "mpop"
+    },
+    {
+        "name": "Adam Porter",
+        "url": "http://www.cs.umd.edu/people/aporter",
+        "username": "aporter"
+    },
+    {
+        "name": "James Purtilo",
+        "url": "http://www.cs.umd.edu/people/purtilo",
+        "username": "purtilo"
+    },
+    {
+        "name": "James Reggia",
+        "url": "http://www.cs.umd.edu/people/reggia",
+        "username": "reggia"
+    },
+    {
+        "name": "William Regli",
+        "url": "http://www.cs.umd.edu/people/regli",
+        "username": "regli"
+    },
+    {
+        "name": "Nicholas Roussopoulos",
+        "url": "http://www.cs.umd.edu/people/nickr",
+        "username": "nickr"
+    },
+    {
+        "name": "Eytan Ruppin",
+        "url": "http://www.cs.umd.edu/people/ruppin",
+        "username": "ruppin"
+    },
+    {
+        "name": "Pedram Sadeghian",
+        "url": "http://www.cs.umd.edu/people/pedram",
+        "username": "pedram"
+    },
+    {
+        "name": "Hanan Samet",
+        "url": "http://www.cs.umd.edu/people/hjs",
+        "username": "hjs"
+    },
+    {
+        "name": "Vibha  Sazawal",
+        "url": "http://www.cs.umd.edu/people/vibha",
+        "username": "vibha"
+    },
+    {
+        "name": "A. Udaya Shankar",
+        "url": "http://www.cs.umd.edu/people/shankar",
+        "username": "shankar"
+    },
+    {
+        "name": "Abhinav Shrivastava",
+        "url": "http://www.cs.umd.edu/people/abhinav",
+        "username": "abhinav"
+    },
+    {
+        "name": "Neil Spring",
+        "url": "http://www.cs.umd.edu/people/nspring",
+        "username": "nspring"
+    },
+    {
+        "name": "Aravind Srinivasan",
+        "url": "http://www.cs.umd.edu/people/asriniv1",
+        "username": "asriniv1"
+    },
+    {
+        "name": "Alan Sussman",
+        "url": "http://www.cs.umd.edu/people/asussman",
+        "username": "asussman"
+    },
+    {
+        "name": "David Van Horn",
+        "url": "http://www.cs.umd.edu/people/dvanhorn",
+        "username": "dvanhorn"
+    },
+    {
+        "name": "Amitabh Varshney",
+        "url": "http://www.cs.umd.edu/people/varshney",
+        "username": "varshney"
+    },
+    {
+        "name": "Xiaodi Wu",
+        "url": "http://www.cs.umd.edu/people/xiaodiwu",
+        "username": "xiaodiwu"
+    },
+    {
+        "name": "Ilchul Yoon",
+        "url": "http://www.cs.umd.edu/people/iyoon",
+        "username": "iyoon"
+    },
+    {
+        "name": "Matthias Zwicker",
+        "url": "http://www.cs.umd.edu/people/zwicker",
+        "username": "zwicker"
+    },
+    {
+        "name": "William Arbaugh",
+        "url": "http://www.cs.umd.edu/people/warbaugh",
+        "username": "warbaugh"
+    },
+    {
+        "name": "Victor Basili",
+        "url": "http://www.cs.umd.edu/people/basivic",
+        "username": "basivic"
+    },
+    {
+        "name": "Bonnie Dorr",
+        "url": "http://www.cs.umd.edu/people/bdorr",
+        "username": "bdorr"
+    },
+    {
+        "name": "Laveen Kanal",
+        "url": "http://www.cs.umd.edu/people/kanal",
+        "username": "kanal"
+    },
+    {
+        "name": "Raymond Miller",
+        "url": "http://www.cs.umd.edu/people/millerre",
+        "username": "millerre"
+    },
+    {
+        "name": "Jack Minker",
+        "url": "http://www.cs.umd.edu/people/minker",
+        "username": "minker"
+    },
+    {
+        "name": "Dianne O'Leary",
+        "url": "http://www.cs.umd.edu/people/oleary",
+        "username": "oleary"
+    },
+    {
+        "name": "William Pugh",
+        "url": "http://www.cs.umd.edu/people/pugh",
+        "username": "pugh"
+    },
+    {
+        "name": "Ben Shneiderman",
+        "url": "http://www.cs.umd.edu/people/bshneide",
+        "username": "bshneide"
+    },
+    {
+        "name": "G.W. (Pete) Stewart",
+        "url": "http://www.cs.umd.edu/people/stewart",
+        "username": "stewart"
+    },
+    {
+        "name": "Marvin Zelkowitz",
+        "url": "http://www.cs.umd.edu/people/mvz",
+        "username": "mvz"
+    },
+    {
+        "name": "Roger Eastman",
+        "url": "http://www.cs.umd.edu/people/reastman",
+        "username": "reastman"
+    },
+    {
+        "name": "Dov Gordon",
+        "url": "http://www.cs.umd.edu/people/gordon",
+        "username": "gordon"
+    },
+    {
+        "name": "Aliakbar Jalali",
+        "url": "http://www.cs.umd.edu/people/jalali",
+        "username": "jalali"
+    },
+    {
+        "name": "Tae Wook Kwon",
+        "url": "http://www.cs.umd.edu/people/kwon",
+        "username": "kwon"
+    },
+    {
+        "name": "Michael Marsh",
+        "url": "http://www.cs.umd.edu/people/mmarsh",
+        "username": "mmarsh"
+    },
+    {
+        "name": "Namachivayam Thirumazhusai",
+        "url": "http://www.cs.umd.edu/people/sthiruma",
+        "username": "sthiruma"
+    },
+    {
+        "name": "Peter Druschel",
+        "url": "http://www.cs.umd.edu/people/pdrusche",
+        "username": "pdrusche"
+    },
+    {
+        "name": "Jon Froehlich",
+        "url": "http://www.cs.umd.edu/people/jonf",
+        "username": "jonf"
+    },
+    {
+        "name": "Lise Getoor",
+        "url": "http://www.cs.umd.edu/people/lgetoor",
+        "username": "lgetoor"
+    },
+    {
+        "name": "John Grant",
+        "url": "http://www.cs.umd.edu/people/grantj",
+        "username": "grantj"
+    },
+    {
+        "name": "Brad Lackey",
+        "url": "http://www.cs.umd.edu/people/bclackey",
+        "username": "bclackey"
+    },
+    {
+        "name": "Mikael Lindvall",
+        "url": "http://www.cs.umd.edu/people/mlindval",
+        "username": "mlindval"
+    },
+    {
+        "name": "Yi-Kai Liu",
+        "url": "http://www.cs.umd.edu/people/yikailiu",
+        "username": "yikailiu"
+    },
+    {
+        "name": "Carl Miller",
+        "url": "http://www.cs.umd.edu/people/camiller",
+        "username": "camiller"
+    },
+    {
+        "name": "Arnab Ray",
+        "url": "http://www.cs.umd.edu/people/aray3",
+        "username": "aray3"
+    },
+    {
+        "name": "Anirudha (Anirud) Sahoo",
+        "url": "http://www.cs.umd.edu/people/sahoo",
+        "username": "sahoo"
+    },
+    {
+        "name": "Elaine  Shi",
+        "url": "http://www.cs.umd.edu/people/runting",
+        "username": "runting"
+    },
+    {
+        "name": "Aleksandrs Slivkins",
+        "url": "http://www.cs.umd.edu/people/slivkins",
+        "username": "slivkins"
+    },
+    {
+        "name": "Gavin Taylor",
+        "url": "http://www.cs.umd.edu/people/gtaylor7",
+        "username": "gtaylor7"
+    },
+    {
+        "name": "Gorjan Alagic",
+        "url": "http://www.cs.umd.edu/people/galagic",
+        "username": "galagic"
+    },
+    {
+        "name": "Alexander Barg",
+        "url": "http://www.cs.umd.edu/people/abarg",
+        "username": "abarg"
+    },
+    {
+        "name": "Rajeev Barua",
+        "url": "http://www.cs.umd.edu/people/barua",
+        "username": "barua"
+    },
+    {
+        "name": "Ramalingam Chellappa",
+        "url": "http://www.cs.umd.edu/people/chella",
+        "username": "chella"
+    },
+    {
+        "name": "Eun Kyoung Choe",
+        "url": "http://www.cs.umd.edu/people/choe",
+        "username": "choe"
+    },
+    {
+        "name": "Michel Cukier",
+        "url": "http://www.cs.umd.edu/people/mcukier",
+        "username": "mcukier"
+    },
+    {
+        "name": "Michael Cummings",
+        "url": "http://www.cs.umd.edu/people/mcummin1",
+        "username": "mcummin1"
+    },
+    {
+        "name": "Dana Dachman-Soled",
+        "url": "http://www.cs.umd.edu/people/danadach",
+        "username": "danadach"
+    },
+    {
+        "name": "Leila De Floriani",
+        "url": "http://www.cs.umd.edu/people/deflo",
+        "username": "deflo"
+    },
+    {
+        "name": "Colin Dixon",
+        "url": "http://www.cs.umd.edu/people/cdixon",
+        "username": "cdixon"
+    },
+    {
+        "name": "David Doermann",
+        "url": "http://www.cs.umd.edu/people/doermann",
+        "username": "doermann"
+    },
+    {
+        "name": "Tudor Dumitras",
+        "url": "http://www.cs.umd.edu/people/tdumitra",
+        "username": "tdumitra"
+    },
+    {
+        "name": "Niklas Elmqvist",
+        "url": "http://www.cs.umd.edu/people/elm",
+        "username": "elm"
+    },
+    {
+        "name": "Naomi Feldman",
+        "url": "http://www.cs.umd.edu/people/nhf",
+        "username": "nhf"
+    },
+    {
+        "name": "Leah Findlater",
+        "url": "http://www.cs.umd.edu/people/leahkf",
+        "username": "leahkf"
+    },
+    {
+        "name": "Vanessa Frias-Martinez",
+        "url": "http://www.cs.umd.edu/people/vfrias",
+        "username": "vfrias"
+    },
+    {
+        "name": "Jennifer Golbeck",
+        "url": "http://www.cs.umd.edu/people/jgolbeck",
+        "username": "jgolbeck"
+    },
+    {
+        "name": "Babak Hamidzadeh",
+        "url": "http://www.cs.umd.edu/people/babak1",
+        "username": "babak1"
+    },
+    {
+        "name": "Sridhar Hannenhalli",
+        "url": "http://www.cs.umd.edu/people/sridhar",
+        "username": "sridhar"
+    },
+    {
+        "name": "John Horty",
+        "url": "http://www.cs.umd.edu/people/horty",
+        "username": "horty"
+    },
+    {
+        "name": "Joseph Ja' Ja'",
+        "url": "http://www.cs.umd.edu/people/josephj",
+        "username": "josephj"
+    },
+    {
+        "name": "Bruce Jacob",
+        "url": "http://www.cs.umd.edu/people/blj",
+        "username": "blj"
+    },
+    {
+        "name": "Hernisa Kacorri",
+        "url": "http://www.cs.umd.edu/people/hernisa",
+        "username": "hernisa"
+    },
+    {
+        "name": "Richard Marciano",
+        "url": "http://www.cs.umd.edu/people/marciano",
+        "username": "marciano"
+    },
+    {
+        "name": "Keith Marzullo",
+        "url": "http://www.cs.umd.edu/people/marzullo",
+        "username": "marzullo"
+    },
+    {
+        "name": "ThanhVu Nguyen",
+        "url": "http://www.cs.umd.edu/people/tvnguyen",
+        "username": "tvnguyen"
+    },
+    {
+        "name": "Doug Oard",
+        "url": "http://www.cs.umd.edu/people/oard",
+        "username": "oard"
+    },
+    {
+        "name": "Charalampos (Babis) Papamanthou",
+        "url": "http://www.cs.umd.edu/people/cpap",
+        "username": "cpap"
+    },
+    {
+        "name": "Subramanian Raghavan",
+        "url": "http://www.cs.umd.edu/people/raghavan",
+        "username": "raghavan"
+    },
+    {
+        "name": "Louiqa Raschid",
+        "url": "http://www.cs.umd.edu/people/lraschid",
+        "username": "lraschid"
+    },
+    {
+        "name": "Philip Resnik",
+        "url": "http://www.cs.umd.edu/people/resnik",
+        "username": "resnik"
+    },
+    {
+        "name": "Andre Tits",
+        "url": "http://www.cs.umd.edu/people/andre",
+        "username": "andre"
+    },
+    {
+        "name": "Uzi Vishkin",
+        "url": "http://www.cs.umd.edu/people/vishkin",
+        "username": "vishkin"
+    },
+    {
+        "name": "Donald Yeung",
+        "url": "http://www.cs.umd.edu/people/yeung",
+        "username": "yeung"
+    },
+    {
+        "name": "Ray Chen",
+        "url": "http://www.cs.umd.edu/people/rchen",
+        "username": "rchen"
+    },
+    {
+        "name": "Thomas Gilray",
+        "url": "http://www.cs.umd.edu/people/tgilray",
+        "username": "tgilray"
+    },
+    {
+        "name": "Feng-Hao Liu",
+        "url": "http://www.cs.umd.edu/people/fenghao",
+        "username": "fenghao"
+    },
+    {
+        "name": "Ravindra Passan",
+        "url": "http://www.cs.umd.edu/people/rpassan",
+        "username": "rpassan"
+    },
+    {
+        "name": "Kun Ren",
+        "url": "http://www.cs.umd.edu/people/kunren",
+        "username": "kunren"
+    },
+    {
+        "name": "Sukhyun Song",
+        "url": "http://www.cs.umd.edu/people/shsong",
+        "username": "shsong"
+    },
+    {
+        "name": "Lei Zhang",
+        "url": "http://www.cs.umd.edu/people/zl1978",
+        "username": "zl1978"
+    }
+]
