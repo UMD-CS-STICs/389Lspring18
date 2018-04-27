@@ -52,10 +52,10 @@ Keep in mind that once the final project is released, the length of the codelabs
 | 3/23/2018  |	*Spring Break (Campus Closed)*	 		|  |
 | 3/30/2018  |	[FaaS: Lambda](lectures/lecture-09/slides.md)	 				    |   |
 | 4/6/2018   |	[APIs: API Gateway](lectures/lecture-10/slides.md)	 					| [Codelab 7: API Gateway + Lambda](codelabs/codelab-07/README.md)  |
-| 4/13/2018  |	Databases: DynamoDB 			        | Codelab 8: DynamoDB + Lambda  |
-| 4/20/2018  |	Microservices: ECS                    	| Codelab 9: ECS |
-| 4/27/2018  |  Search: Elasticsearch Service		    | Codelab 10: Elasticsearch |
-| 5/4/2018   |  Infrastructure as Code: CloudFormation  | Codelab 11: CloudFormation |
+| 4/13/2018  |	[Databases: DynamoDB](lectures/lecture-11/slides.md) 			        | [Codelab 8: DynamoDB + Lambda](codelabs/codelab-08/README.md)  |
+| 4/20/2018  |	[Microservices: ECS](lectures/lecture-12/slides.md)                    	| [Codelab 9: ECS](codelabs/codelab-09/README.md) |
+| 4/27/2018  |  [Search: Elasticsearch Service](lectures/lecture-13/slides.md)		    | |
+| 5/4/2018   |  Infrastructure as Code: CloudFormation  |  | |
 
 ## Final Project
 
@@ -77,7 +77,7 @@ Students will have access to AWS resources via the [AWS Free Tier](https://aws.a
 
 | % Total | Assignment           | Description |
 | ------- | -------------------- | ----------- |
-| 40%     | Codelabs             | Graded for completion |
+| 40%     | Codelabs             | Graded for completion (1 can be dropped) |
 | 20%     | In-class worksheets  | Graded for completion (1 can be dropped) |
 | 40%     | Final Project + Demo | A free-form final project with a video demo. |
 
