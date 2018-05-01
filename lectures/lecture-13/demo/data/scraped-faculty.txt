@@ -1,0 +1,137 @@
+Daniel Abadi  	/people/abadi
+Ashok Agrawala  	/people/agrawala
+John Aloimonos  	/people/jyaloimo
+Leilani Battle  	/people/leilani
+Ben Bederson  	/people/bederson
+Bobby Bhattacharjee  	/people/bobby
+Jordan Boyd-Graber  	/people/ying
+Marine Carpuat  	/people/marine
+Andrew Childs  	/people/amchilds
+Rance Cleaveland  	/people/wcleavel
+Hector Corrada Bravo  	/people/hcorrada
+Hal Daumé III  	/people/hal3
+Larry Davis  	/people/lsdavis
+Amol Deshpande  	/people/adeshpan
+John Dickerson  	/people/dickerson
+Ramani Duraiswami  	/people/rduraisw
+Howard Elman  	/people/helman
+Fawzi Emad  	/people/fpe
+Jason Filippou  	/people/jasonfil
+Jeffrey Foster  	/people/jfoster4
+William Gasarch  	/people/gasarch
+Tom Goldstein  	/people/tomg
+Evan Golub  	/people/egolub
+Mohammad Hajiaghayi  	/people/hajiagha
+Larry Herman  	/people/larry
+Michael Hicks  	/people/mhicks2
+Jeffrey K. Hollingsworth  	/people/hollings
+Furong Huang  	/people/furongh
+Michelle Hugue  	/people/meesh
+David Jacobs  	/people/dwj
+Jonathan Katz  	/people/jkatz2
+Pete Keleher  	/people/keleher
+Samir Khuller  	/people/samirk
+Clyde Kruskal  	/people/ckruskal
+Max Leiserson  	/people/mdml
+Dave Levin  	/people/levindm
+Ming Lin  	/people/lin
+Anwar Mamat  	/people/anwar
+Dinesh Manocha  	/people/dmanocha
+Michelle Mazurek  	/people/mmazurek
+Atif Memon  	/people/amemon
+David Mount  	/people/mount
+Dana Nau  	/people/nau
+Nelson Padua-Perez  	/people/nelsonp
+Don Perlis  	/people/perlis
+Jandelyn Plane  	/people/jplane
+Mihai Pop  	/people/mpop
+Adam Porter  	/people/aporter
+James Purtilo  	/people/purtilo
+James Reggia  	/people/reggia
+William Regli  	/people/regli
+Nicholas Roussopoulos  	/people/nickr
+Eytan Ruppin  	/people/ruppin
+Pedram Sadeghian  	/people/pedram
+Hanan Samet  	/people/hjs
+Vibha  Sazawal  	/people/vibha
+A. Udaya Shankar  	/people/shankar
+Abhinav Shrivastava  	/people/abhinav
+Neil Spring  	/people/nspring
+Aravind Srinivasan  	/people/asriniv1
+Alan Sussman  	/people/asussman
+David Van Horn  	/people/dvanhorn
+Amitabh Varshney  	/people/varshney
+Xiaodi Wu  	/people/xiaodiwu
+Ilchul Yoon  	/people/iyoon
+Matthias Zwicker  	/people/zwicker
+William Arbaugh  	/people/warbaugh
+Victor Basili  	/people/basivic
+Bonnie Dorr  	/people/bdorr
+Laveen Kanal  	/people/kanal
+Raymond Miller  	/people/millerre
+Jack Minker  	/people/minker
+Dianne O'Leary  	/people/oleary
+William Pugh  	/people/pugh
+Ben Shneiderman  	/people/bshneide
+G.W. (Pete) Stewart  	/people/stewart
+Marvin Zelkowitz  	/people/mvz
+Roger Eastman  	/people/reastman
+Dov Gordon  	/people/gordon
+Aliakbar Jalali  	/people/jalali
+Tae Wook Kwon  	/people/kwon
+Michael Marsh  	/people/mmarsh
+Namachivayam Thirumazhusai  	/people/sthiruma
+Peter Druschel  	/people/pdrusche
+Jon Froehlich  	/people/jonf
+Lise Getoor  	/people/lgetoor
+John Grant  	/people/grantj
+Brad Lackey  	/people/bclackey
+Mikael Lindvall  	/people/mlindval
+Yi-Kai Liu  	/people/yikailiu
+Carl Miller  	/people/camiller
+Arnab Ray  	/people/aray3
+Anirudha (Anirud) Sahoo  	/people/sahoo
+Elaine  Shi  	/people/runting
+Aleksandrs Slivkins  	/people/slivkins
+Gavin Taylor  	/people/gtaylor7
+Gorjan Alagic  	/people/galagic
+Alexander Barg  	/people/abarg
+Rajeev Barua  	/people/barua
+Ramalingam Chellappa  	/people/chella
+Eun Kyoung Choe  	/people/choe
+Michel Cukier  	/people/mcukier
+Michael Cummings  	/people/mcummin1
+Dana Dachman-Soled  	/people/danadach
+Leila De Floriani  	/people/deflo
+Colin Dixon  	/people/cdixon
+David Doermann  	/people/doermann
+Tudor Dumitras  	/people/tdumitra
+Niklas Elmqvist  	/people/elm
+Naomi Feldman  	/people/nhf
+Leah Findlater  	/people/leahkf
+Vanessa Frias-Martinez  	/people/vfrias
+Jennifer Golbeck  	/people/jgolbeck
+Babak Hamidzadeh  	/people/babak1
+Sridhar Hannenhalli  	/people/sridhar
+John Horty  	/people/horty
+Joseph Ja' Ja'  	/people/josephj
+Bruce Jacob  	/people/blj
+Hernisa Kacorri  	/people/hernisa
+Richard Marciano  	/people/marciano
+Keith Marzullo  	/people/marzullo
+ThanhVu Nguyen  	/people/tvnguyen
+Doug Oard  	/people/oard
+Charalampos (Babis) Papamanthou  	/people/cpap
+Subramanian Raghavan  	/people/raghavan
+Louiqa Raschid  	/people/lraschid
+Philip Resnik  	/people/resnik
+Andre Tits  	/people/andre
+Uzi Vishkin  	/people/vishkin
+Donald Yeung  	/people/yeung
+Ray Chen  	/people/rchen
+Thomas Gilray  	/people/tgilray
+Feng-Hao Liu  	/people/fenghao
+Ravindra Passan  	/people/rpassan
+Kun Ren  	/people/kunren
+Sukhyun Song  	/people/shsong
+Lei Zhang  	/people/zl1978

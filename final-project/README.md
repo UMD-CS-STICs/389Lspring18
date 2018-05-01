@@ -81,13 +81,14 @@ A sign-up sheet will be released later this semester to sign up for a time slot 
 Every two weeks between when the proposal is due and when the demo is due, you will submit a checkpoint to update the facilitators on your progress and any roadblocks you've run into.
 
 It will be formatted as a short write-up. Include the following:
-- A brief overview of the progress you have made so far, and any problems you have encountered.
-- A brief overview of what work remains to be completed.
-- An updated architecture diagram using [Cloudcraft](https://cloudcraft.co/app) (preferable), [Draw.io](https://www.draw.io/?splash=0&libs=aws2), or a comparable tool.
-- A list of any open questions you have.
-- A link to your updated (public) GitHub codebase. Make sure to include a `README.md` in your repo.
+- Your name(s)
+- [20%] A brief overview of the progress you have made so far, and any problems you have encountered.
+- [20%] A brief overview of what work remains to be completed.
+- [20%] An updated architecture diagram using [Cloudcraft](https://cloudcraft.co/app) (preferable), [Draw.io](https://www.draw.io/?splash=0&libs=aws2), or a comparable tool.
+- [20%] A list of any open questions you have.
+- [20%] A link to your updated (public) GitHub codebase. Make sure to include a `README.md` in your repo. No credit if there is no code or AWS configurations in the repo.
 
-You will submit the checkpoints to the submit server. If you are working as a group, then you only need to submit one checkpoint.
+You will submit the checkpoints (as a `.PDF`) to the submit server. If you are working as a group, then you only need to submit one checkpoint.
 
 #### Codebase
 
