@@ -68,7 +68,6 @@
 * [Slides](lectures/lecture-11/slides.md)
 * [Feedback](lectures/lecture-11/feedback.md)
 * [Codelab 8](codelabs/codelab-08/README.md)
-* [Codelab 8b](codelabs/codelab-08/new.md)
 
 ### April 20th
 * [Slides](lectures/lecture-12/slides.md)
