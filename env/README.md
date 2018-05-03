@@ -150,6 +150,7 @@ If you make this mistake ([it happens](https://github.com/search?utf8=%E2%9C%93&
 ## Docker
 
 Install the Docker Community Edition for your OS here: https://store.docker.com/search?offering=community&type=edition
-**note: certain adblockers, like ublock, may prevent you from seeing the downloadable versions. You can also find the community edition [here](https://www.docker.com/community-edition)**
+
+*note: certain adblockers, like ublock, may prevent you from seeing the downloadable versions. You can also find the community edition [here](https://www.docker.com/community-edition)*
 
 Double-check that it installed properly with `docker version`.
