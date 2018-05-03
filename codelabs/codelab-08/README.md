@@ -4,7 +4,7 @@
 
 In this codelab, you will create a simple User Profile API that persists user data to a DynamoDB database. It'll expose various HTTP methods to allow you to search for users, update users, and delete users.
 
-![Architecture Diagram](../../../media/codelabs/codelab-08/architecture.png)
+![Architecture Diagram](../../media/codelabs/codelab-08/architecture.png)
 
 The API will support the following endpoints:
 
