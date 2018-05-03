@@ -1,6 +1,0 @@
-{
-	"httpMethod": "GET",
-	"queryStringParameters": {
-	"TableName": "codelab-08"
-    }
-}

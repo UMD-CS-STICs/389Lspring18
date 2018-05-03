@@ -1,4 +1,0 @@
-{
-"httpMethod": "POST",
-"body": "{\"TableName\":\"TokenStorage\",\"Item\": {\"token_id\": {\"N\": \"1\"},\"Token\": {\"S\": \"this_is_my_test_token\"}}}"
-}

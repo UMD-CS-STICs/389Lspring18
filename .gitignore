@@ -35,3 +35,7 @@ keys/*.pem
 # Experiment folder
 experiments
 tmp
+
+# Lambda deployment packages
+deployment
+*.zip

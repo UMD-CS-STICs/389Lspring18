@@ -2,210 +2,134 @@
 
 ### Overview
 
-In this codelab will learn about DynamoDB, a [NoSQL](https://aws.amazon.com/nosql/) database service. You will also gain more experience using API Gateway and Lambda. At the end of this codelab, you will be able to read and right to your database simply by touching and endpoint.
+In this codelab, you will create a simple User Profile API that persists user data to a DynamoDB database. It'll expose various HTTP methods to allow you to search for users, update users, and delete users.
 
-![ArchitectureDiagram](../../../media/codelabs/codelab-08/archCL8.png) 
+![Architecture Diagram](../../../media/codelabs/codelab-08/architecture.png)
 
-<!-- 
+The API will support the following endpoints:
+
+- `GET /users[?email=:email]`
+- `POST /users`
+- `DELETE /users`
+- `GET /users/:id`
+- `PUT /users/:id`
+- `DELETE /users/:id`
+
 ### Due Date
 
-This code is due on *Thursday, April 26nd at 11:59:59PM*.
- -->
+This code is due on *Thursday, May 10th at 11:59:59PM*.
 
 ### Setup
 
-Make sure to update your local repo with the remote by executing `git pull`. 
+Make sure to update your local repo with the remote by executing `git pull`.
 
-You won't need to set up your pipenv environment for this codelab.
+Open a `pipenv` shell with `pipenv shell` and install the required dependencies with `pipenv install`.
 
+You're going to need Docker to run the tests. Go ahead and run through the installation instructions here: [Environment Setup](/env#docker). If you already have Docker installed, just make sure that the docker daemon is running (f.e., run `docker ps`).
+
+Next: Let's set up the DynamoDB table, Lambda functions, and API Gateway that we will need for this assignment.
 
 ### DynamoDB
 
-First, we want to create a place to store our data. Using the AWS Management Console, navigate to DynamoDB and `Create table`. Name it "codelab-08" and give it a String partition key called "studentID". Add a String sort key called "courseCode".
+You will need to first create a DynamoDB table to store User Profile data. Call it `user-profiles`, and give it a partition key on the string `id` attribute.
 
-**Note**: For large datasets, AWS will use your partiton key to distribute your data across multiple servers.
-
-![createTable](../../../media/codelabs/codelab-08/createTable.png)  
-
-It'll take just a few moments to be created, then we can start loading data.
-
-![tableBeingCreated](../../../media/codelabs/codelab-08/tableBeingCreated.png)
-
-Now, we make a data object called an Item. Under the Items tab, select `Create item`. Enter in "Terpy" for studentID field, and "CMSC389L" for courseCode, then save. Do this a few times.
-
-**Note**: The partition key, together with the sort key, uniquely identify an item.
-
-![items](../../../media/codelabs/codelab-08/items.png)
-
-From the drop-down menu, switch from `Scan` to `Query`.
-
-![selectQuery](../../../media/codelabs/codelab-08/selectQuery.png)
-
-Here, we can query on the student ID
-
-![partition](../../../media/codelabs/codelab-08/partition.png)
-
-... the studentID AND the courseCode
-
-![partitionANDsort](../../../media/codelabs/codelab-08/partitionANDsort.png)
-
-... but not the courseCode alone.
-
-![noPartitionKey](../../../media/codelabs/codelab-08/noPartitionKey.png)
-
-This is a limitation of NoSQL databases. Though there is a workaround using scan, this is part of the tradeoff we make for flexibility and scalability.
-
-
-### API Gateway part1
-
-In order to scale, we can't be relying on manual data entry. We want a lambda function to interact with DynamoDB on our behalf. But first, we want a way to route traffic. As in codelab-07, we'll use the AWS Management Console to create a new regional API. 
-
-![newAPIregional](../../../media/codelabs/codelab-08/newAPIregional.png)
-
-Create a new endpoint `Actions > Create Resource` called dynamodb.
-
-![newResource](../../../media/codelabs/codelab-08/newResource.png)
-
-Here we can expose various methods that will be available to request. For now, we'll add GET `Actions > Create Method` and use `Mock` as the integration type.
-
-![GETmockIntegration](../../../media/codelabs/codelab-08/GETmockIntegration.png)
-
-This will allow us to deploy the API `Actions > Deploy AOPI` and set up out Lambda functions. Do this now.
-
-![deployAPI](../../../media/codelabs/codelab-08/deployAPI.png)
+![Create Table](../../media/codelabs/codelab-08/create-table.png)
 
 ### Lambda
 
-Head over to the Lambda service in the AWS Management Console. We'll create a new function using the _microservice-http-endpoint-python3_ blueprint.
+We're going to need a lot of Lambda functions (six!).
 
-![lambdaTemplate](../../../media/codelabs/codelab-08/lambdaTemplate.png)
+But, we'll first need to create an IAM role that we will give to all of these functions. Open IAM and create a new Role. On the `"Choose the service that will use this role"`, select `Lambda`. Add the `CloudWatchLogsFullAccess`, `AmazonDynamoDBFullAccess`, and `AWSXrayWriteOnlyAccess` policies to your new role, too. (This is a bit more permissive than we actually need, but we're keeping things simple.)
 
-Give the function a name, and select `Create a custom role` from the drop-down menu. This will open a new tab. Select `Create a new IAM Role`, name it, and view the policy document. We want to edit this and replace what's there with our own.
+![Create IAM Role Page](../../media/codelabs/codelab-08/create-iam-role.png)
 
-![newIAMrole](../../../media/codelabs/codelab-08/newIAMrole.png)
+Let's start by creating the Lambda function for the `GET /users` endpoint. Create a new function called `user-profile-get-all` with a Python 3.6 environment and the IAM role you just created.
 
-Here is what we are copying in *also included with the codelab as a json file*
+![Create function](../../media/codelabs/codelab-08/create-lambda-get-all.png)
 
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1428341300017",
-      "Action": [
-        "dynamodb:DeleteItem",
-        "dynamodb:GetItem",
-        "dynamodb:PutItem",
-        "dynamodb:Query",
-        "dynamodb:Scan",
-        "dynamodb:UpdateItem"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    },
-    {
-      "Sid": "",
-      "Resource": "*",
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Effect": "Allow"
-    }
-  ]
-}
-```
+Now, under `"Function code"`, set the `Handler` to `users_handlers.getUsersHandler`. This will instruct Lambda to start execution in the `getUsersHandler` method of `users_handlers.py`. We'll upload the code later.
 
-After clicking allow and being redirected back to Lambda, we fill in our api-gateway information, and create the function.
+Under `"Debugging and error handling"`, set `Enable active tracing`. This will enable distributed tracing.
 
-![configureLambda](../../../media/codelabs/codelab-08/configureLambda.png)
+**Make sure to `Save`!**
 
-```
-<!-- 
+Great! Now rinse and repeat for each of the other five endpoints:
+- `user-profile-post`: `users_handlers.insertUserHandler`
+- `user-profile-delete-all`: `users_handlers.deleteUsersHandler`
+- `user-profile-get`: `users_handlers.getUserHandler`
+- `user-profile-put`: `users_handlers.updateUserHandler`
+- `user-profile-delete`: `users_handlers.deleteUserHandler`
 
-from __future__ import print_function
+![Added Functions](../../media/codelabs/codelab-08/lambda-functions.png)
 
-import boto3
-import json
+> **Note**: If you think this is a pain, then I'd agree with you! This is one of the reasons why it's worth setting up CloudFormation/Terraform or another infrastructure-as-code tool so that all of this can be automatically created. There are also various tools that make working with serverless less of a pain, like `serverless`, `apex`, or `zappa`, but we don't cover them because we want you to understand how things work!
 
-print(`Loading function`)
+### API Gateway
 
+Next, we'll create the API Gateway. Go ahead and create a new regional API.
 
-def handler(event, context):
-    
-    #print("Received event: " + json.dumps(event, indent=2))
+![Create API](../../media/codelabs/codelab-08/create-api.png)
 
-    operation = event[`operation`]
+There are 2 resources, plus 3 methods per resource that you'll need to create, corresponding to each of the Lambda functions you just created.
 
-    if `tableName` in event:
-        dynamo = boto3.resource(`dynamodb`).Table(event[`tableName`])
+Add a new resource with `Actions > Create Resource`. Create one named `users` for `/users` and another named `{id}` for `/users/{id}`.
 
-    operations = {
-        `create`: lambda x: dynamo.put_item(**x),
-        `read`: lambda x: dynamo.get_item(**x),
-        `update`: lambda x: dynamo.update_item(**x),
-        `delete`: lambda x: dynamo.delete_item(**x),
-        `list`: lambda x: dynamo.scan(**x),
-        `echo`: lambda x: x,
-        `ping`: lambda x: `pong`
-    }
+![Added Resources](../../media/codelabs/codelab-08/create-users-id-resource.png)
 
-    if operation in operations:
-        return operations[operation](event.get(`payload`))
-    else:
-        raise ValueError(`Unrecognized operation "{}"`.format(operation))
--->
-```
+Next, add the methods. To add the `GET /users` endpoint, select `Actions > Create Method` on the `/users` resource. Specify the name of the Lambda function you created (`user-profile-get-all`), and enable `Use Lambda Proxy Integration`. The latter setting will pass a host of metadata to our Lambda function in the `event` object, including path and query parameters.
 
-### API Gateway part2
+![Create Get All Users Endpoint](../../media/codelabs/codelab-08/create-get-users-api.png)
 
-Select _/dynamodb_ and again create a new resource. We can pass arguments by enclosing the name in braces.
+You know what to do: rinse and repeat for the other endpoints:
+- `POST /users`: `user-profile-post`
+- `DELETE /users`: `user-profile-delete-all`
+- `GET /users/:id`: `user-profile-get`
+- `PUT /users/:id`: `user-profile-put`
+- `DELETE /users/:id`: `user-profile-delete`
 
-![newChildResource](../../../media/codelabs/codelab-08/newChildResource.png)
+![Created Endpoints](../../media/codelabs/codelab-08/full-api.png)
 
-And we can expose multiple methods.
+For the `GET /users[?email=:email]` endpoint, we will need to tell API Gateway that we expect the `email` query parameter. This way, API Gateway will pass it on to our Lambda function. Select this method, click on `"Method Request"` (the upper-left box in the request-response diagram), and then add the query string parameter.
 
-![addMethods](../../../media/codelabs/codelab-08/addMethods.png)
+![Add Query String Parameter](../../media/codelabs/codelab-08/api-get-users-query-param.png)
 
-Configure the PUT method with the lambda Function we just created and save.
+Now that this is done, we just need to deploy our API. Go to `Actions > Deploy API`, create a new stage, and give it a name (like `test`). Once you've created your deployment stage and deployed your API, go enable logging. Open your new stage under the `Stages` tab, then open the `Log` tab and enable CloudWatch logs.
 
-![configureMethods](../../../media/codelabs/codelab-08/configureMethods.png)
+![Add API Logging](../../media/codelabs/codelab-08/api-enable-logging.png)
 
-You should see something like this. We can now test our function! Click the blue test thunderbolt.
+> **Note**: You can use this create multiple deployments for testing/staging/production, such that you can test out a new API without interfering with users who are already using your service.
 
-![testBolt](../../../media/codelabs/codelab-08/testBolt.png)
+### Deploy Boilerplate Function Code
 
-The `{table}` field can be left blank, as we're not using arguments in the url. Instead, our function will be reading a JSON file. Use the one below to get our table.
+You can deploy the boilerplate code provided by running `make deploy`.
+
+This will submit `users_handlers.py` to each of the Lambda functions you created in the prior step.
+
+Whenever you make code changes, you can run this command again to push your updated code.
+
+### Testing
+
+You can run the local tests (which validate that your Lambda handlers work correctly) by running `make test-handlers`.
+
+You can run the end-to-end tests, which validate that your API is fully setup, by running `make test-end-to-end`. Make sure to set `API_ENDPOINT` in `test_e2e.py`, first. You can get this url (the `Invoke URL`) from the `Stages` tab after clicking on your deployment stage.
+
+### Debugging
+
+CloudWatch is setup to record logs for your API deployment and for your individual Lambda functions. You can see both under [CloudWatch](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:) and looking for the corresponding log group.
+
+You can also see the individual traces with [X-Ray](https://console.aws.amazon.com/xray/home?region=us-east-1#/service-map).
+
+![Xray](../../media/codelabs/codelab-08/xray.png)
+
+### Assignment
+
+Finish the implementation of the two User Profile API methods in `users_handlers.py`. They're 2-3 lines each. You'll mostly need to consult the boto3 docs on the [DynamoDB resource](http://boto3.readthedocs.io/en/latest/reference/services/dynamodb.html#service-resource) and the [DynamoDB.Table resource](http://boto3.readthedocs.io/en/latest/reference/services/dynamodb.html#table).
+
+Once all tests pass (`make test`), you're good to go.
+
+Submit a file, `api.txt`, to the submit server with your API Gateway endpoint. For example:
 
 ```
-{
-	"httpMethod": "GET",
-	"queryStringParameters": {
-	"TableName": "codelab-08"
-    }
-}
+$ more api.txt
+https://foobarblah.execute-api.us-east-1.amazonaws.com/test/
 ```
-
-![testResponse](../../../media/codelabs/codelab-08/testResponse.png)
-
-### Further Reading
-
-If you're interested in being able to create tables using python, there's a great tutorial in the  [docs](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.html). 
-
-Additionally, Colin King found a great end-to-end example of a serverless RESTful API available [here](https://github.com/serverless/examples/tree/master/aws-python-rest-api-with-dynamodb)
-
-### Submission
-
-There is no submission for this codelab.
-
-<!-- 
-You will be submitting a text file called `arn.txt` containing only the Amazon Resource Number (ARN) of your API Gateway.
-
-Submit this assignment to `codelab8` on the submit server. Upload a zipped directory with the file:
-
-```
-<directory id>.zip
-	arn.txt
-```
- -->
