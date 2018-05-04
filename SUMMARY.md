@@ -78,3 +78,7 @@
 * [Slides](lectures/lecture-13/slides.md)
 * [Feedback](lectures/lecture-13/feedback.md)
 * [Demo](lectures/lecture-13/demo.md)
+
+### May 4th
+* [Slides](lectures/lecture-14/slides.md)
+* [Feedback](lectures/lecture-14/feedback.md)
